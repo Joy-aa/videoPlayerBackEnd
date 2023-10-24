@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.newhome.mapper.ModelMapper">
+    <insert id="addModel" parameterType="org.newhome.entity.Model">
+        insert into model
+        values (0,#{modelName},#{algoId},#{username},#{datasetId},#{modelPath})
+    </insert>
+    <select id="findModelsByUser" resultType="org.newhome.entity.Model">
+        select * from model
+        where username=#{username}
+    </select>
+    <select id="findModelByName" resultType="org.newhome.entity.Model">
+        select * from model
+        where (username=#{param1} and model_name=#{param2})
+    </select>
+    <select id="findModelsByUserAndAlgo" resultType="org.newhome.entity.Model">
+        select * from model
+        where (username=#{param1} and algo_id=#{param2})
+    </select>
+    <select id="findModelsByUserAndDataset" resultType="org.newhome.entity.Model">
+        select * from model
+        where (username=#{param1} and dataset_id=#{param2})
+    </select>
+    <select id="findModelsByUserAndAlgoAndDataset" resultType="org.newhome.entity.Model">
+        select * from model
+        where (username=#{param1} and algo_id=#{param2} and dataset_id=#{param3})
+    </select>
+    <delete id="deleteModel" parameterType="String">
+        delete from model
+        where username=#{param1} and model_name=#{param2}
+    </delete>
+    <update id="updateModel">
+        update model
+        set model_name=#{param2}
+        where model_id=#{param1}
+    </update>
+</mapper>

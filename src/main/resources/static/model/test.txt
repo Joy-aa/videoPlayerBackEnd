@@ -1,0 +1,34 @@
+@PostMapping("update")
+    public ResultBean<AddModelRes> updateModel(@RequestBody UpdateModelReq req){
+        ResultBean<AddModelRes> result = new ResultBean<>();
+        AddModelRes res = new AddModelRes();
+        ModelInfo modelInfo = iModelService.findModelByName(req.getUsername(), req.getModelName());
+        if(modelInfo == null) {
+            result.setMsg("历史记录不存在");
+            result.setData(null);
+            result.setCode(ResultBean.FAIL);
+            return result;
+        }
+        res.setModelInfo(iModelService.findModelByName(req.getUsername(), req.getNewName()));
+        if(res.getModelInfo() == null) {
+            boolean flag = iModelService.updateModel(modelInfo.getModelId(), req.getNewName());
+            if(flag){
+                modelInfo.setModelName(req.getNewName());
+                res.setModelInfo(modelInfo);
+                result.setData(res);
+                result.setMsg("修改模型名称成功");
+            }
+            else{
+                result.setMsg("修改失败");
+                result.setData(null);
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        else{
+            result.setMsg("同一用户下模型名称重复！");
+            result.setData(null);
+            result.setCode(ResultBean.FAIL);
+        }
+
+        return result;
+    }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.newhome.mapper.PictureDataMapper">
+    <select id="getPicture" resultType="org.newhome.entity.PictureData">
+        select *
+        from picture_data
+        where dataset_id = #{datasetId};
+    </select>
+    <select id="getPictureByUrl" resultType="org.newhome.entity.PictureData">
+        select *
+        from picture_data
+        where picture_url = #{pictureUrl}
+    </select>
+    <insert id="uploadPicture">
+        insert into picture_data (picture_url,  dataset_id)
+        values (#{url},  #{datasetId});
+    </insert>
+    <update id="updatePictureResult">
+        update picture_data
+        set picture_result=#{pictureResult}
+        where picture_id=#{pictureId};
+    </update>
+    <delete id="deleteDatasetPictures">
+        delete
+        from picture_data
+        where dataset_id = #{datasetId};
+    </delete>
+</mapper>
