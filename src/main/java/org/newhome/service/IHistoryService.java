@@ -2,34 +2,15 @@ package org.newhome.service;
 
 import org.newhome.entity.History;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.newhome.info.HistoryInfo;
-
-import java.util.List;
 
 /**
  * <p>
  *  服务类
  * </p>
  *
- * @author panyan
- * @since 2022-08-05
+ * @author joy_aa
+ * @since 2023-10-25
  */
 public interface IHistoryService extends IService<History> {
-    public int addHistory(HistoryInfo historyInfo);
 
-    public HistoryInfo findHistoryByName(String username, String historyName);
-
-    public List<HistoryInfo> findHistoriesByUser(String username);
-
-    public List<HistoryInfo> findHistoriesByUserAndAlgo(String username, int algoId);
-
-    public List<HistoryInfo> findHistoriesByUserAndDataset(String username, int datasetId);
-
-    public List<HistoryInfo> findHistoriesByUserAndAlgoAndDataset(String username, int algoId, int datasetId);
-
-    public boolean deleteHistory(String username, String historyName);
-
-    public boolean updateHistory(int historyId, String newHistory);
-
-    public boolean deleteHistoriesByDatasetId(int datasetId);
 }

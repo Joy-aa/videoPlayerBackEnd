@@ -1,6 +1,6 @@
 package org.newhome.service;
 
-import org.newhome.entity.User;
+import org.newhome.entity.Tagrecord;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author joy_aa
  * @since 2023-10-25
  */
-public interface IUserService extends IService<User> {
+public interface ITagrecordService extends IService<Tagrecord> {
 
 }

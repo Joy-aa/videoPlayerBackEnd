@@ -16,24 +16,18 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User implements Serializable {
+public class Relation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer userId;
+    @TableId(value = "relation_id", type = IdType.AUTO)
+    private Integer relationId;
 
-    private String username;
+    private Integer user1Id;
 
-    private String password;
+    private Integer user2Id;
 
-    private String salt;
-
-    private String email;
-
-    private String headshot;
-
-    private String introduction;
+    private Integer kind;
 
 
 }

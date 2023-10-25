@@ -1,6 +1,6 @@
 package org.newhome.mapper;
 
-import org.newhome.entity.History;
+import org.newhome.entity.Tag;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author joy_aa
  * @since 2023-10-25
  */
-public interface HistoryMapper extends BaseMapper<History> {
+public interface TagMapper extends BaseMapper<Tag> {
 
 }

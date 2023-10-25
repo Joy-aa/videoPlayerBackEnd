@@ -2,6 +2,7 @@ package org.newhome.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,22 +17,28 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User implements Serializable {
+public class Video implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId(value = "video_id", type = IdType.AUTO)
+    private Integer videoId;
+
+    private String videoName;
+
     private Integer userId;
 
-    private String username;
+    private LocalDateTime createTime;
 
-    private String password;
+    private String pageshot;
 
-    private String salt;
+    private Long likenum;
 
-    private String email;
+    private Long starNum;
 
-    private String headshot;
+    private Long shareNum;
+
+    private String videoPath;
 
     private String introduction;
 

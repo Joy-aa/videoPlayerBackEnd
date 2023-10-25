@@ -49,18 +49,18 @@ public class MysqlGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("panyan");
+        gc.setAuthor("joy_aa");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/dam");
+        dsc.setUrl("jdbc:mysql://localhost:3306/videodb");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("Ab123456");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
 

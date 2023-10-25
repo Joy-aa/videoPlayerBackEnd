@@ -16,24 +16,16 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User implements Serializable {
+public class Star implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId(value = "star_id", type = IdType.AUTO)
+    private Integer starId;
+
     private Integer userId;
 
-    private String username;
-
-    private String password;
-
-    private String salt;
-
-    private String email;
-
-    private String headshot;
-
-    private String introduction;
+    private Integer videoId;
 
 
 }

@@ -1,11 +1,10 @@
 package org.newhome.info;
 
 import lombok.Data;
-import org.newhome.entity.User;
-import org.newhome.util.MyBeanUtils;
 
 @Data
 public class UserInfo {
+    private Integer userId;
 
     private String username;
 
@@ -13,21 +12,9 @@ public class UserInfo {
 
     private String salt;
 
-    private String telephone;
+    private String email;
 
     private String headshot;
 
-    private Integer authority;
-
-    public UserInfo(){}
-
-    public UserInfo(User user){
-        MyBeanUtils.copyProperties(user, this);
-    }
-
-    public User change(){
-        User user = new User();
-        MyBeanUtils.copyProperties(this, user);
-        return user;
-    }
+    private String introduction;
 }
