@@ -1,5 +1,6 @@
 package org.newhome.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.newhome.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2023-10-25
  */
 public interface UserMapper extends BaseMapper<User> {
+    public User findByEmail(@Param("email") String email);
 
 }

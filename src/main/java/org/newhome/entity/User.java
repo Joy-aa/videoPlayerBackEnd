@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.newhome.info.UserInfo;
+import org.newhome.util.MyBeanUtils;
 
 /**
  * <p>
@@ -35,5 +37,10 @@ public class User implements Serializable {
 
     private String introduction;
 
+    public UserInfo change(){
+        UserInfo userInfo = new UserInfo();
+        MyBeanUtils.copyProperties(this, userInfo);
+        return userInfo;
+    }
 
 }

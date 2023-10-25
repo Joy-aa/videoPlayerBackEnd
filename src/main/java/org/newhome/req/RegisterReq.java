@@ -8,11 +8,7 @@ public class RegisterReq {
 
     private String password;
 
-    private String telephone;
-
-//    private String headshot;
-
-    private Integer authority;
+    private String email;
 
     private String code;
 }
