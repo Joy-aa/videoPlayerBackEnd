@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @MapperScan("org.newhome.mapper")
 @EnableScheduling
-public class DamApplication {
+public class VideoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DamApplication.class, args);
+        SpringApplication.run(VideoApplication.class, args);
     }
 
 }

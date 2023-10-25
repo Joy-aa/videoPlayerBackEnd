@@ -8,7 +8,7 @@
     <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
     <contextName>logback</contextName>
     <!--声明变量log.path, 代表日志存储的目录名称-->
-    <property name="log.path" value="/home/wj/log/" />
+    <property name="log.path" value="logs/" />
     <!--声明变量log.maxHistory, 代表日志保留的历史天数-->
     <property name="log.maxHistory" value="30" />
     <!--声明保留log.maxFileSize, 代表单个日志文件的最大上限-->

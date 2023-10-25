@@ -1,98 +1,81 @@
-//package org.newhome.controller;
-//
-//
-//import com.google.code.kaptcha.impl.DefaultKaptcha;
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.util.ClassUtils;
-//import org.springframework.util.StringUtils;
-//import org.springframework.web.bind.annotation.*;
-//
-//import org.springframework.web.multipart.MultipartFile;
-//import org.newhome.annotation.FilterAnnotation;
-//import org.newhome.config.FilterType;
-//import org.newhome.info.UserInfo;
-//import org.newhome.req.*;
-//import org.newhome.res.*;
-//import org.newhome.service.IUserService;
-//import org.newhome.util.CookieUtil;
-//import org.newhome.util.MD5Util;
-//import org.newhome.util.ResultBean;
-//import org.newhome.util.UUIDUtil;
-//
-//import javax.annotation.Resource;
-//import javax.imageio.ImageIO;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//import java.awt.image.BufferedImage;
-//import java.io.ByteArrayOutputStream;
-//import java.io.File;
-//import java.io.IOException;
-//import java.util.UUID;
-//
-//import static org.newhome.util.Base64Util.encode;
-//import static org.newhome.util.MD5Util.formPassToDBPass;
-//
-///**
-// * <p>
-// * 前端控制器
-// * </p>
-// *
-// * @author panyan
-// * @since 2022-08-05
-// */
-//@Api(tags = "用户")
-//@RestController
-//@RequestMapping("/user")
-//public class UserController {
-//    @Autowired
-//    IUserService iUserService;
-//
-//    @Autowired
-//    private DefaultKaptcha defaultKaptcha;
-//
-//    @Resource
-//    private HttpServletResponse response;
-//
-//    @Resource
-//    private HttpServletRequest request;
-//
-//    public static final String staticPath = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
-//    private String saveHeadImg(MultipartFile file) {
-//        String defaultHead = staticPath + File.separator +"head" + File.separator + "img.jpg";
-//        if (file == null) {
-//            //若用户没有上传头像，则使用默认的头像
-//            System.out.println("imgUrl: empty");
-//            return defaultHead;
-//        }
-//        // 原始文件名
-//        String originalFileName = file.getOriginalFilename();
-//        // 获取图片后缀
-//        if(originalFileName.lastIndexOf(".") == -1) return defaultHead;
-//        String suffix = originalFileName.substring(originalFileName.lastIndexOf("."));
-//        // 生成图片存储的名称，UUID 避免相同图片名冲突，并加上图片后缀
-//        String fileName = UUID.randomUUID().toString() + suffix;
-//        // 图片存储目录及图片名称
-//        String url_path = "head" + File.separator + fileName;
-//        //图片保存路径
-//        String savePath = staticPath + File.separator + url_path;
-//        System.out.println("图片保存地址："+savePath);
-//
-//        File saveFile = new File(savePath);
-//        if (!saveFile.exists()){
-//            saveFile.mkdirs();
-//        }
-//        try {
-//            file.transferTo(saveFile);  //将临时存储的文件移动到真实存储路径下
-//            return savePath;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return defaultHead;
-//    }
-//
+package org.newhome.controller;
+
+
+import com.google.code.kaptcha.impl.DefaultKaptcha;
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.multipart.MultipartFile;
+import org.newhome.service.IUserService;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+
+/**
+ * <p>
+ * 前端控制器
+ * </p>
+ *
+ * @author panyan
+ * @since 2022-08-05
+ */
+@Api(tags = "用户")
+@RestController
+@RequestMapping("/user")
+public class UserController {
+    @Autowired
+    IUserService iUserService;
+
+    @Autowired
+    private DefaultKaptcha defaultKaptcha;
+
+    @Resource
+    private HttpServletResponse response;
+
+    @Resource
+    private HttpServletRequest request;
+
+    public static final String staticPath = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
+    private String saveHeadImg(MultipartFile file) {
+        String defaultHead = staticPath + File.separator +"head" + File.separator + "img.jpg";
+        if (file == null) {
+            //若用户没有上传头像，则使用默认的头像
+            System.out.println("imgUrl: empty");
+            return defaultHead;
+        }
+        // 原始文件名
+        String originalFileName = file.getOriginalFilename();
+        // 获取图片后缀
+        if(originalFileName.lastIndexOf(".") == -1) return defaultHead;
+        String suffix = originalFileName.substring(originalFileName.lastIndexOf("."));
+        // 生成图片存储的名称，UUID 避免相同图片名冲突，并加上图片后缀
+        String fileName = UUID.randomUUID().toString() + suffix;
+        // 图片存储目录及图片名称
+        String url_path = "head" + File.separator + fileName;
+        //图片保存路径
+        String savePath = staticPath + File.separator + url_path;
+        System.out.println("图片保存地址："+savePath);
+
+        File saveFile = new File(savePath);
+        if (!saveFile.exists()){
+            saveFile.mkdirs();
+        }
+        try {
+            file.transferTo(saveFile);  //将临时存储的文件移动到真实存储路径下
+            return savePath;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return defaultHead;
+    }
+
 //    @CrossOrigin
 //    @ApiOperation("用户注册")
 //    @PostMapping("register")
@@ -345,4 +328,4 @@
 //        }
 //        return result;
 //    }
-//}
+}

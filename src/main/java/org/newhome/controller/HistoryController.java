@@ -1,63 +1,35 @@
-//package org.newhome.controller;
-//
-//
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiOperation;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.util.StringUtils;
-//import org.springframework.web.bind.annotation.*;
-//
-//import org.newhome.annotation.FilterAnnotation;
-//import org.newhome.config.Constant;
-//import org.newhome.config.FilterType;
-//import org.newhome.info.*;
-//import org.newhome.req.*;
-//import org.newhome.res.AddHistoryRes;
-//import org.newhome.res.FindHistoryRes;
-//import org.newhome.service.*;
-//import org.newhome.util.ResultBean;
-//
-//import javax.annotation.Resource;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
-//import java.util.*;
-//
-///**
-// * <p>
-// *  前端控制器
-// * </p>
-// *
-// * @author panyan
-// * @since 2022-08-05
-// */
-//@Api(tags = "历史记录")
-//@RestController
-//@RequestMapping("/history")
-//public class HistoryController {
-//    @Autowired
-//    IHistoryService iHistoryService;
-//
-//    @Autowired
-//    IAlgorithmService iAlgorithmService;
-//
-//    @Autowired
-//    IDatasetService iDatasetService;
-//
-//    @Autowired
-//    ICrackService iCrackService;
-//
-//    @Autowired
-//    IPictureDataService iPictureDataService;
-//
-//    @Resource
-//    private HttpServletResponse response;
-//
-//    @Resource
-//    private HttpServletRequest request;
-//
+package org.newhome.controller;
+
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.newhome.service.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * <p>
+ *  前端控制器
+ * </p>
+ *
+ * @author panyan
+ * @since 2022-08-05
+ */
+@Api(tags = "历史记录")
+@RestController
+@RequestMapping("/history")
+public class HistoryController {
+    @Autowired
+    IHistoryService iHistoryService;
+
+    @Resource
+    private HttpServletResponse response;
+
+    @Resource
+    private HttpServletRequest request;
+
 //    @CrossOrigin
 //    @ApiOperation("添加历史记录")
 //    @PostMapping("add")
@@ -360,97 +332,97 @@
 //
 //        return result;
 //    }
+
 //
-////
-////    @CrossOrigin
-////    @ApiOperation("下载历史记录")
-////    @PostMapping("/downloadModel")
-////    public ResultBean<ModelRes> download(@RequestBody DownloadModelReq req) {
-////        ResultBean<ModelRes> result = new ResultBean<>();
-////        ModelRes modelRes =  new ModelRes();
-////        modelRes.setModelInfo(iModelService.findModelByName(req.getUsername(), req.getModel()));
-////        if(modelRes.getModelInfo() == null) {
-////            result.setCode(ResultBean.FAIL);
-////            result.setData(null);
-////            result.setMsg("该条历史记录不存在！");
-////        }
-////        else {
-////            //文件本地位置
-////            String filePath = modelRes.getModelInfo().getModelPath();
-////            int pos = filePath.lastIndexOf(".");
-////            if(pos == -1){
-////                result.setCode(ResultBean.FAIL);
-////                result.setData(null);
-////                result.setMsg("历史记录存储地址错误！");
-////            }
-////            else{
-//////        String filePath ="F:\\java\\Dam-Backend\\src\\main\\resources\\static\\model\\test.txt";
-////                // 文件名称
-////                String fileName = filePath.substring(pos);
-////                File file = new File(filePath);
-////                FileUtil.downloadFile(file, request, response, fileName);
-////                result.setMsg("下载成功");
-////                result.setData(modelRes);
-////            }
-////        }
-////        return result;
-////    }
-////
-////    @CrossOrigin
-////    @ApiOperation("下载多个历史记录")
-////    @PostMapping(value = "/downZip")
-////    public ResultBean<ModelRes> downloadZipStream(@RequestBody DownloadModelReq req) {
-////        ResultBean<ModelRes> result = new ResultBean<>();
-////        ModelRes modelRes =  new ModelRes();
-////        modelRes.setModelInfo(iModelService.findModelByName(req.getUsername(), req.getModel()));
-////        if(modelRes.getModelInfo() == null) {
-////            result.setCode(ResultBean.FAIL);
-////            result.setData(null);
-////            result.setMsg("该条历史记录不存在！");
-////            return result;
-////        }
-////        //文件本地位置
-////        String basePath = modelRes.getModelInfo().getModelPath();
-////        List<Map<String, String>> mapList = new ArrayList<>();
-////        mapList = getFiles(basePath);
-////        System.out.println(mapList);
-////        FileUtil.zipDirFileToFile(mapList, request, response);
-////        result.setMsg("下载成功");
-////        result.setData(modelRes);
-////        return result;
-////    }
-////
-////    public static List<Map<String, String>> getFiles(String path) {
-////        List<Map<String, String>> mapList = new ArrayList<>();
-////        File file = new File(path);
-////        // 如果这个路径是文件夹
-////        if (file.isDirectory()) {
-////            // 获取路径下的所有文件
-////            File[] files = file.listFiles();
-////            for (int i = 0; i < files.length; i++) {
-////                // 如果还是文件夹 递归获取里面的文件 文件夹
-////                if (files[i].isDirectory()) {
-////                    System.out.println("目录：" + files[i].getPath());
-////                    mapList.addAll(getFiles(files[i].getPath()));
-////
-////                } else {
-////                    Map<String, String> map = new HashMap<>();
-////                    String fileName = files[i].getName();
-////                    map.put("path", path+File.separator+fileName);
-////                    map.put("name", fileName);
-////                    mapList.add(map);
-////                    System.out.println("文件：" + files[i].getName()); // files[i].getPath());
-////                }
-////            }
-////
-////        } else {
-////            Map<String, String> map = new HashMap<>();
-////            map.put("path",  file.getPath());
-////            map.put("name", file.getName());
-////            mapList.add(map);
-////            System.out.println("文件：" + file.getPath());
-////
-////        }
-////        return mapList;
-////    }
-//}
+//    @CrossOrigin
+//    @ApiOperation("下载历史记录")
+//    @PostMapping("/downloadModel")
+//    public ResultBean<ModelRes> download(@RequestBody DownloadModelReq req) {
+//        ResultBean<ModelRes> result = new ResultBean<>();
+//        ModelRes modelRes =  new ModelRes();
+//        modelRes.setModelInfo(iModelService.findModelByName(req.getUsername(), req.getModel()));
+//        if(modelRes.getModelInfo() == null) {
+//            result.setCode(ResultBean.FAIL);
+//            result.setData(null);
+//            result.setMsg("该条历史记录不存在！");
+//        }
+//        else {
+//            //文件本地位置
+//            String filePath = modelRes.getModelInfo().getModelPath();
+//            int pos = filePath.lastIndexOf(".");
+//            if(pos == -1){
+//                result.setCode(ResultBean.FAIL);
+//                result.setData(null);
+//                result.setMsg("历史记录存储地址错误！");
+//            }
+//            else{
+////        String filePath ="F:\\java\\Dam-Backend\\src\\main\\resources\\static\\model\\test.txt";
+//                // 文件名称
+//                String fileName = filePath.substring(pos);
+//                File file = new File(filePath);
+//                FileUtil.downloadFile(file, request, response, fileName);
+//                result.setMsg("下载成功");
+//                result.setData(modelRes);
+//            }
+//        }
+//        return result;
+//    }
+//
+//    @CrossOrigin
+//    @ApiOperation("下载多个历史记录")
+//    @PostMapping(value = "/downZip")
+//    public ResultBean<ModelRes> downloadZipStream(@RequestBody DownloadModelReq req) {
+//        ResultBean<ModelRes> result = new ResultBean<>();
+//        ModelRes modelRes =  new ModelRes();
+//        modelRes.setModelInfo(iModelService.findModelByName(req.getUsername(), req.getModel()));
+//        if(modelRes.getModelInfo() == null) {
+//            result.setCode(ResultBean.FAIL);
+//            result.setData(null);
+//            result.setMsg("该条历史记录不存在！");
+//            return result;
+//        }
+//        //文件本地位置
+//        String basePath = modelRes.getModelInfo().getModelPath();
+//        List<Map<String, String>> mapList = new ArrayList<>();
+//        mapList = getFiles(basePath);
+//        System.out.println(mapList);
+//        FileUtil.zipDirFileToFile(mapList, request, response);
+//        result.setMsg("下载成功");
+//        result.setData(modelRes);
+//        return result;
+//    }
+//
+//    public static List<Map<String, String>> getFiles(String path) {
+//        List<Map<String, String>> mapList = new ArrayList<>();
+//        File file = new File(path);
+//        // 如果这个路径是文件夹
+//        if (file.isDirectory()) {
+//            // 获取路径下的所有文件
+//            File[] files = file.listFiles();
+//            for (int i = 0; i < files.length; i++) {
+//                // 如果还是文件夹 递归获取里面的文件 文件夹
+//                if (files[i].isDirectory()) {
+//                    System.out.println("目录：" + files[i].getPath());
+//                    mapList.addAll(getFiles(files[i].getPath()));
+//
+//                } else {
+//                    Map<String, String> map = new HashMap<>();
+//                    String fileName = files[i].getName();
+//                    map.put("path", path+File.separator+fileName);
+//                    map.put("name", fileName);
+//                    mapList.add(map);
+//                    System.out.println("文件：" + files[i].getName()); // files[i].getPath());
+//                }
+//            }
+//
+//        } else {
+//            Map<String, String> map = new HashMap<>();
+//            map.put("path",  file.getPath());
+//            map.put("name", file.getName());
+//            mapList.add(map);
+//            System.out.println("文件：" + file.getPath());
+//
+//        }
+//        return mapList;
+//    }
+}
