@@ -1,18 +1,18 @@
 package org.newhome.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import org.newhome.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【user】的数据库操作Mapper
+* @createDate 2023-10-27 15:53:13
+* @Entity org.newhome.entity.User
+*/
 public interface UserMapper extends BaseMapper<User> {
-    public User findByEmail(@Param("email") String email);
 
 }
+
+
+
+

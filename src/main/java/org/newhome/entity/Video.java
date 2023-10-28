@@ -1,46 +1,71 @@
 package org.newhome.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
- * <p>
  * 
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
+ * @TableName video
  */
+@TableName(value ="video")
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class Video implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @TableId(value = "video_id", type = IdType.AUTO)
+    /**
+     * 
+     */
+    @TableId(type = IdType.AUTO)
     private Integer videoId;
 
+    /**
+     * 
+     */
     private String videoName;
 
+    /**
+     * 
+     */
     private Integer userId;
 
-    private LocalDateTime createTime;
+    /**
+     * 
+     */
+    private Date createTime;
 
+    /**
+     * 
+     */
     private String pageshot;
 
-    private Long likenum;
+    /**
+     * 
+     */
+    private Long likeNum;
 
+    /**
+     * 
+     */
     private Long starNum;
 
+    /**
+     * 
+     */
     private Long shareNum;
 
+    /**
+     * 
+     */
     private String videoPath;
 
+    /**
+     * 
+     */
     private String introduction;
 
-
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 }

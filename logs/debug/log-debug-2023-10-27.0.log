@@ -1,0 +1,450 @@
+2023-10-27 17:53:42.787 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 17:53:42.818 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: null
+2023-10-27 17:53:42.834 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 17:54:11.871 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 17:54:11.871 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: null
+2023-10-27 17:54:11.871 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 17:54:11.909 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, headshot ) VALUES ( ?, ?, ?, ? )
+2023-10-27 17:54:11.916 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 1112(String), 0d2ae84d05253dac430118f38683b20b(String), 4904386615263070(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 17:54:12.070 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 17:54:22.611 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 17:54:22.611 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: null
+2023-10-27 17:54:22.614 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:17:39.146 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:17:39.170 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:17:39.198 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:19:32.925 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:19:32.925 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:19:32.934 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:19:32.938 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:19:32.939 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 111(String), 62f4a16f0e593e751d85e002690ebcf9(String), 2515453327124985(String), 111@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:19:33.135 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:19:48.303 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:19:48.304 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:19:48.319 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:20:29.637 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:20:29.637 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:20:29.646 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:20:31.489 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:20:31.489 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:20:31.498 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:20:37.666 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:20:37.666 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:20:37.674 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:20:37.675 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:20:37.676 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), dada1571e77bc342d35bbffe088ec776(String), 8822035255411240(String), 222@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:20:37.886 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:21:08.346 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:21:08.346 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:21:08.362 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:21:14.165 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:21:14.165 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:21:14.174 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:21:14.175 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:21:14.176 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), 03f849a2c0ecd5c4c262231a347a5dac(String), 7120811698631615(String), 333@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:21:14.410 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:21:41.649 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:21:41.671 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:21:41.687 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:21:41.697 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:21:41.698 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), 5371be4cf5ca0c3f22dbbd5b30ccd6fa(String), 4547973136499593(String), 222@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:21:41.895 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:22:33.284 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:22:33.306 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:22:33.334 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:22:38.099 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:22:38.100 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:22:38.108 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:22:38.114 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:22:38.115 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), f4e9af67641e947795df366159aefc0f(String), 4615334872661173(String), 333@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:22:38.262 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:23:23.324 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:23:23.324 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:23:23.341 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:24:12.726 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:24:12.745 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:24:12.775 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:24:19.199 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:24:19.200 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:24:19.212 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:24:19.218 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:24:19.224 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 111(String), b6358755a5c0aa01034c9870f842a467(String), 9751215961349160(String), 444@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:24:19.421 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:26:13.063 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:26:13.074 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:26:13.094 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:26:18.930 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:26:18.931 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 555@qq.com(String)
+2023-10-27 20:26:18.942 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:26:18.946 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:26:18.946 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 111(String), 2a93f39020f6d31d33f81a191b048cb1(String), 3398256678066042(String), 555@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:26:19.169 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:27:28.679 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:27:28.700 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 666@qq.com(String)
+2023-10-27 20:27:28.721 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:27:28.734 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:27:28.741 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), ad2e610b92310324ffc423ce69d6ce7a(String), 9065679994246197(String), 666@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:27:28.950 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:29:30.505 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:29:30.537 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 666@qq.com(String)
+2023-10-27 20:29:30.573 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:29:35.147 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:29:35.148 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 777@qq.com(String)
+2023-10-27 20:29:35.166 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:29:35.171 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:29:35.172 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), 57fe656a1af61df8f7df42468fe6b7a5(String), 1312256847400950(String), 777@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:29:35.351 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:32:20.879 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:32:20.892 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 777@qq.com(String)
+2023-10-27 20:32:20.910 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:32:27.295 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:32:27.296 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 888@qq.com(String)
+2023-10-27 20:32:27.303 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:32:27.307 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:32:27.307 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), 27c05633c1f3265dc79dfa294070bc49(String), 9868617697816338(String), 888@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:32:27.544 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:35:23.679 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:35:23.789 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 999@qq.com(String)
+2023-10-27 20:35:23.946 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:35:23.962 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:35:23.977 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: (String), 6ae3908b071c5fd8d16440b74e403dac(String), 1066802345242613(String), 999@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:35:24.134 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:41:12.047 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:41:12.060 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:41:12.080 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:41:19.864 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:41:19.864 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:41:19.873 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:41:24.824 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:41:24.825 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:41:24.833 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:42:37.338 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:42:37.339 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:42:37.347 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:43:38.097 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:43:38.098 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:43:38.106 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:43:38.111 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 20:43:38.112 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 222@qq.com(String), 111@qq.com(String)
+2023-10-27 20:43:38.280 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 20:43:45.333 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:43:45.334 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:43:45.346 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:43:59.330 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:43:59.330 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:43:59.337 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:43:59.339 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 20:43:59.339 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 333@qq.com(String), 222@qq.com(String)
+2023-10-27 20:43:59.500 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 20:50:50.020 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:50:50.038 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:50:50.061 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:51:00.447 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:00.448 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:51:00.462 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:51:06.358 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:06.359 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:51:06.367 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:51:10.180 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:10.181 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:51:10.188 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:51:36.848 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:36.849 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 20:51:36.856 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:51:47.462 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:47.462 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:51:47.471 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:51:54.002 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:51:54.002 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:51:54.011 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:51:54.018 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 20:51:54.019 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 444@qq.com(String), 333@qq.com(String)
+2023-10-27 20:51:54.227 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 20:52:00.990 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:52:00.991 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:52:01.001 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:52:07.130 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:52:07.130 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 20:52:07.138 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:52:11.558 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:52:11.559 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:52:11.568 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:57:13.093 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:13.110 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:57:13.133 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:57:31.428 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:31.428 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:57:31.439 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:57:31.444 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 20:57:31.445 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 222(String), 444@qq.com(String)
+2023-10-27 20:57:31.595 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 20:57:37.414 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:37.415 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:57:37.423 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:57:43.859 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:43.860 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 555@qq.com(String)
+2023-10-27 20:57:43.868 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:57:54.667 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:54.668 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:57:54.676 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:57:59.536 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:57:59.536 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:57:59.545 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:58:08.211 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:58:08.212 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:58:08.220 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:58:11.785 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:58:11.786 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:58:11.794 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:58:15.593 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:58:15.594 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 444@qq.com(String)
+2023-10-27 20:58:15.602 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:58:50.425 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:58:50.426 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:58:50.435 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 20:58:50.439 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 20:58:50.440 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 111(String), 3110b26e61173bb1e18119b7d838f414(String), 9770616712248148(String), 111@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 20:58:50.632 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 20:58:55.614 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:58:55.614 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:58:55.623 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:59:18.628 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:59:18.629 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:59:18.638 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:59:51.460 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:59:51.460 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:59:51.470 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 20:59:51.472 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 20:59:51.472 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 222@qq.com(String), 111@qq.com(String)
+2023-10-27 20:59:51.691 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 20:59:55.120 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 20:59:55.120 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 20:59:55.128 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:00:02.375 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:02.375 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:00:02.387 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:00:06.680 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:06.680 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:00:06.689 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:00:06.690 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 21:00:06.690 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111@qq.com(String), 222@qq.com(String)
+2023-10-27 21:00:06.878 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:00:11.223 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:11.224 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:00:11.232 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:00:15.825 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:15.825 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:00:15.833 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:00:23.085 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:23.085 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:00:23.095 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:00:29.074 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:29.074 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:00:29.083 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:00:34.869 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:34.869 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:00:34.877 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:00:34.884 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 21:00:34.885 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 222(String), 111@qq.com(String)
+2023-10-27 21:00:35.045 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:00:40.778 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:00:40.779 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:00:40.787 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:02:17.959 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:02:17.959 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:02:17.975 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:02:21.468 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:02:21.468 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:02:21.476 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:02:22.395 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:02:22.396 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:02:22.405 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:02:22.769 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:02:22.769 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:02:22.777 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:02:23.147 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:02:23.148 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:02:23.157 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:04:57.168 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:04:57.190 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:04:57.207 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:04:57.215 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 21:04:57.216 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 111(String), 4ed30f16b0e519d5bef1f32f3450a163(String), 8509441564555834(String), 111@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 21:04:57.461 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 21:05:05.668 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:05:05.669 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:05:05.678 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:05:12.493 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:05:12.494 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:05:12.506 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:05:18.593 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:05:18.594 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:05:18.604 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:05:18.609 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 21:05:18.610 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: bb2b28442be64627f5e23924fff91c88(String), 111@qq.com(String)
+2023-10-27 21:05:18.831 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:05:40.478 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:05:40.478 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:05:40.487 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:05:43.540 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:05:43.540 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:05:43.550 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:06:36.635 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:06:36.635 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:06:36.644 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:06:43.402 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:06:43.402 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:06:43.413 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:06:43.414 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO user ( username, password, salt, email, headshot ) VALUES ( ?, ?, ?, ?, ? )
+2023-10-27 21:06:43.415 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - ==> Parameters: 222(String), 5089e16d5a39144813712c18368ed5aa(String), 3250592412102118(String), 222@qq.com(String), /D:/IDEAProjects/videoPlayerBackEnd/target/classes/static\head\img.jpg(String)
+2023-10-27 21:06:43.578 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.insert - <==    Updates: 1
+2023-10-27 21:06:45.531 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:06:45.531 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:06:45.540 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:07:45.396 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:07:45.397 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:07:45.405 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:07:45.408 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:07:45.408 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), (String), 111@qq.com(String)
+2023-10-27 21:07:45.578 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:08:35.414 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:08:35.414 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:08:35.423 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:08:35.425 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:08:35.425 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 111(String), 111@qq.com(String)
+2023-10-27 21:08:35.589 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:08:44.776 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:08:44.776 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:08:44.790 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:08:44.790 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:08:44.790 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 111(String), 222@qq.com(String)
+2023-10-27 21:08:44.926 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:08:53.649 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:08:53.650 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:08:53.657 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:09:06.187 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:09:06.187 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:09:06.195 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:09:12.671 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:09:12.672 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:09:12.680 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:09:12.682 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:09:12.683 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 111(String), 111@qq.com(String)
+2023-10-27 21:09:12.699 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:18:35.134 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:18:35.156 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:18:35.188 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:18:35.203 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:18:35.205 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 111(String), 111@qq.com(String)
+2023-10-27 21:18:35.223 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:18:40.900 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:18:40.901 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:18:40.909 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:18:40.912 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:18:40.914 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 222(String), 111@qq.com(String)
+2023-10-27 21:18:41.103 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:19:03.179 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:19:03.179 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:19:03.179 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:21:36.900 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:21:36.910 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:21:36.934 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:21:44.711 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:21:44.711 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:21:44.731 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:21:44.739 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:21:44.740 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 111(String), (String), 333(String), 111@qq.com(String)
+2023-10-27 21:21:44.941 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:21:51.733 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:21:51.733 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:21:51.745 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:21:51.747 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET username=?,headshot=?,introduction=? WHERE (email = ?)
+2023-10-27 21:21:51.747 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 333(String), (String), 333(String), 111@qq.com(String)
+2023-10-27 21:21:51.840 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:22:21.047 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:21.047 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:22:21.057 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:22:35.265 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:35.265 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:22:35.281 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:22:39.061 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:39.061 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:22:39.074 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:22:47.564 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:47.565 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:22:47.575 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:22:50.440 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:50.440 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:22:50.456 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:22:55.116 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:22:55.117 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:22:55.140 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:00.325 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:00.325 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:23:00.340 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:06.079 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:06.079 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:23:06.090 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:09.162 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:09.163 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:09.174 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:12.550 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:12.551 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:23:12.559 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:23:24.811 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:24.812 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:24.820 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:29.343 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:29.343 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:29.352 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:29.355 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 21:23:29.355 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 333@qq.com(String), 222@qq.com(String)
+2023-10-27 21:23:29.625 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:23:32.184 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:32.184 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:32.192 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-27 21:23:37.230 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:37.231 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 333@qq.com(String)
+2023-10-27 21:23:37.239 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:37.241 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET email=? WHERE (email = ?)
+2023-10-27 21:23:37.241 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 222@qq.com(String), 333@qq.com(String)
+2023-10-27 21:23:37.411 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:23:44.321 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:44.321 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:44.331 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:23:53.503 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:23:53.503 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:23:53.523 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:24:14.118 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:24:14.118 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:24:14.130 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:24:14.138 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 21:24:14.138 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: c24e61eadb14200fcfeaf8f3cbe63c9b(String), 222@qq.com(String)
+2023-10-27 21:24:14.289 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:24:20.695 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:24:20.695 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:24:20.703 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:24:20.706 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 21:24:20.706 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 5089e16d5a39144813712c18368ed5aa(String), 222@qq.com(String)
+2023-10-27 21:24:20.830 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:24:27.179 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:24:27.180 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:24:27.188 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:24:27.190 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.update - ==>  Preparing: UPDATE user SET password=? WHERE (email = ?)
+2023-10-27 21:24:27.190 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.update - ==> Parameters: 4ed30f16b0e519d5bef1f32f3450a163(String), 111@qq.com(String)
+2023-10-27 21:24:27.354 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.update - <==    Updates: 1
+2023-10-27 21:24:32.144 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:24:32.144 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 222@qq.com(String)
+2023-10-27 21:24:32.267 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:24:37.878 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (email = ?)
+2023-10-27 21:24:37.878 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 111@qq.com(String)
+2023-10-27 21:24:37.887 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-27 21:36:33.379 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectList - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (username LIKE ? AND introduction LIKE ?)
+2023-10-27 21:36:33.400 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectList - ==> Parameters: %111%(String), %111%(String)
+2023-10-27 21:36:33.424 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.UserMapper.selectList - <==      Total: 1
+2023-10-27 21:37:14.752 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectList - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (username LIKE ? AND introduction LIKE ?)
+2023-10-27 21:37:14.752 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectList - ==> Parameters: %333%(String), %333%(String)
+2023-10-27 21:37:14.761 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.UserMapper.selectList - <==      Total: 1
+2023-10-27 21:37:17.503 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectList - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user
+2023-10-27 21:37:17.504 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectList - ==> Parameters: 
+2023-10-27 21:37:17.514 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.UserMapper.selectList - <==      Total: 2

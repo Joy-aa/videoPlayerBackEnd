@@ -6,12 +6,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.newhome.annotation.FilterAnnotation;
 import org.newhome.config.FilterType;
-import org.newhome.info.UserInfo;
-import org.newhome.req.LoginReq;
-import org.newhome.req.RegisterReq;
+import org.newhome.entity.User;
+import org.newhome.req.*;
 import org.newhome.res.CaptchaRes;
 import org.newhome.res.LoginRes;
 import org.newhome.res.RegisterRes;
+import org.newhome.service.UserService;
 import org.newhome.util.CookieUtil;
 import org.newhome.util.MD5Util;
 import org.newhome.util.ResultBean;
@@ -22,16 +22,17 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.newhome.service.IUserService;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -52,7 +53,7 @@ import static org.newhome.util.MD5Util.formPassToDBPass;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    IUserService iUserService;
+    UserService userService;
 
     @Autowired
     private DefaultKaptcha defaultKaptcha;
@@ -106,33 +107,43 @@ public class UserController {
         ResultBean<RegisterRes> result = new ResultBean<>();
         //验证验证码
         String captcha = (String) request.getSession().getAttribute("captcha");
-        if (!StringUtils.hasText(registerReq.getCode())|| !captcha.equals(registerReq.getCode())){
+        if(registerReq.getUsername().isEmpty()) {
+            result.setMsg("注册失败！用户名为空");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else if(registerReq.getPassword().isEmpty()) {
+            result.setMsg("注册失败！密码为空");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else if(registerReq.getEmail().isEmpty()) {
+            result.setMsg("注册失败！邮箱为空");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else if (registerReq.getCode().isEmpty() || !captcha.equals(registerReq.getCode())){
             result.setMsg("验证码错误！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
             return result;
         }
-        if(!StringUtils.hasText(registerReq.getUsername())) {
-            result.setMsg("注册失败！用户名为空");
-            result.setCode(ResultBean.FAIL);
-            result.setData(null);
-        }
         else {
             RegisterRes registerRes = new RegisterRes();
-            registerRes.setUserInfo(iUserService.findByEmail(registerReq.getEmail()));
-            if(registerRes.getUserInfo() != null) {
-                result.setMsg("注册失败！用户名已存在");
+            registerRes.setUser(userService.findByEmail(registerReq.getEmail()));
+            if(registerRes.getUser() != null) {
+                result.setMsg("注册失败！邮箱已存在");
                 result.setCode(ResultBean.FAIL);
                 result.setData(null);
             }
             else{
-                UserInfo userInfo = new UserInfo();
-                userInfo.setHeadshot(this.saveHeadImg(file));
-                userInfo.setUsername(registerReq.getUsername());
-                userInfo.setSalt(MD5Util.getSalt());
-                userInfo.setPassword(formPassToDBPass(registerReq.getPassword(), userInfo.getSalt()));
-                userInfo.setEmail(registerReq.getEmail());
-                registerRes.setUserInfo(iUserService.addUser(userInfo));
+                User user = new User();
+                user.setHeadshot(this.saveHeadImg(file));
+                user.setUsername(registerReq.getUsername());
+                user.setSalt(MD5Util.getSalt());
+                user.setPassword(formPassToDBPass(registerReq.getPassword(), user.getSalt()));
+                user.setEmail(registerReq.getEmail());
+                registerRes.setUser(userService.addUser(user));
                 result.setMsg("注册成功！");
                 result.setData(registerRes);
             }
@@ -207,21 +218,21 @@ public class UserController {
 //        }
         //验证账号密码
         LoginRes loginRes = new LoginRes();
-        loginRes.setUserInfo(iUserService.findByEmail(req.getEmail()));
+        loginRes.setUser(userService.findByEmail(req.getEmail()));
         System.out.println(loginRes);
-        if (loginRes.getUserInfo()!=null){
-            String salt = loginRes.getUserInfo().getSalt();
-            if(loginRes.getUserInfo().getPassword().equals(formPassToDBPass(req.getPassword(), salt))){
+        if (loginRes.getUser()!=null){
+            String salt = loginRes.getUser().getSalt();
+            if(loginRes.getUser().getPassword().equals(formPassToDBPass(req.getPassword(), salt))){
                 result.setMsg("登陆成功");
                 //生成cookie
                 String userTicket = UUIDUtil.uuid();
-                request.getSession().setAttribute(userTicket, loginRes.getUserInfo());
+                request.getSession().setAttribute(userTicket, loginRes.getUser());
                 request.getSession().setMaxInactiveInterval(4*60*60);
                 CookieUtil.setCookie(request, response, "userTicket", userTicket);
                 result.setData(loginRes);
             } else {
                 result.setCode(ResultBean.FAIL);
-                result.setMsg("用户名或密码错误");
+                result.setMsg("密码错误");
                 result.setData(null);
             }
         } else {
@@ -231,81 +242,155 @@ public class UserController {
         }
         return result;
     }
-//
-//    @CrossOrigin
-//    //登出功能
-//    @ApiOperation("用户退出")
-//    @GetMapping("logout")
-//    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.login)
-//    public ResultBean<LoginRes> unLogin( @CookieValue("userTicket")String ticket){
-//        ResultBean<LoginRes> result = new ResultBean<>();
-//        HttpSession httpSession = request.getSession();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        httpSession.removeAttribute(ticket);
-//        LoginRes loginRes = new LoginRes();
-//        loginRes.setUserInfo(userInfo);
-//        result.setData(loginRes);
-//        result.setMsg("logout success!");
-//        return result;
-//    }
-//
-//    //    根据用户名查询个人信息
-//    @CrossOrigin
-//    @ApiOperation("查询指定用户")
-//    @PostMapping("find")
-//    @FilterAnnotation(url="/user/find",type = FilterType.auth)
-//    public ResultBean<UserRes> find(@RequestBody UserReq userReq) {
-//        UserRes userRes = new UserRes();
-//        userRes.setUserInfo(iUserService.findByUsername(userReq.getUsername()));
-//        ResultBean<UserRes> result = new ResultBean<>();
-//        if(userRes.getUserInfo()!=null) {
-//            String salt = userRes.getUserInfo().getSalt();
-//            if(userRes.getUserInfo().getPassword().equals(formPassToDBPass(userReq.getPassword(), salt))){
-//                result.setMsg("查询成功");
-//                userRes.getUserInfo().setPassword(null);//获取信息不必返回密码
-//                result.setData(userRes);
-//            }
-//        }
-//        else {
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("用户不存在");
-//            result.setData(null);
-//        }
-//        return result;
-//    }
-//
-//    //修改个人密码
-//    @CrossOrigin
-//    @ApiOperation("修改密码")
-//    @PostMapping("updatepwd")
-//    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.login)
-//    public ResultBean<UpdatepwdRes> updatepwd(UpdatepwdReq updatepwdReq, @CookieValue("userTicket")String ticket) {
-//        UpdatepwdRes updatepwdRes = new UpdatepwdRes();
-//        ResultBean<UpdatepwdRes> result = new ResultBean<>();
-//        HttpSession httpSession = request.getSession();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        updatepwdRes.setUserInfo(iUserService.findByUsername(updatepwdReq.getUsername()));
-//        if(updatepwdRes.getUserInfo() != null) {
-//                    if(userInfo.getPassword().equals(updatepwdRes.getUserInfo().getPassword())){
-//                        String newPwd = formPassToDBPass(updatepwdReq.getNewPassword(), userInfo.getSalt());
-//                        iUserService.updateUserPassword(updatepwdReq.getUsername(), newPwd);
-//                        updatepwdRes.getUserInfo().setPassword(newPwd);
-//                        result.setMsg("修改密码成功！");
-//                        result.setData(updatepwdRes);
-//                    }
-//                    else{
-//                        result.setMsg("用户访问错误，请跳转login页面");
-//                        result.setCode(ResultBean.NO_PERMISSION);
-//                        result.setData(null);
-//                    }
-//        }
-//        else{
-//                    result.setMsg("修改密码失败！用户不存在");
-//                    result.setCode(ResultBean.FAIL);
-//                    result.setData(null);
-//        }
-//        return  result;
-//    }
+
+    @CrossOrigin
+    //登出功能
+    @ApiOperation("用户退出")
+    @GetMapping("logout")
+    @FilterAnnotation(url = "/user/logout", type = FilterType.anno)
+    public ResultBean<LoginRes> logout( @CookieValue("userTicket")String ticket){
+        ResultBean<LoginRes> result = new ResultBean<>();
+        HttpSession httpSession = request.getSession();
+        User userInfo = (User)httpSession.getAttribute(ticket);
+        httpSession.removeAttribute(ticket);
+        LoginRes loginRes = new LoginRes();
+        loginRes.setUser(userInfo);
+        result.setData(loginRes);
+        result.setMsg("logout success!");
+        return result;
+    }
+
+    //修改个人密码
+    @CrossOrigin
+    @ApiOperation("修改密码")
+    @PostMapping("updatepwd")
+    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.anno)
+    public ResultBean<LoginRes> updatepwd(UpdatepwdReq updatepwdReq, @CookieValue("userTicket")String ticket) {
+        ResultBean<LoginRes> result = new ResultBean<>();
+        LoginRes loginRes = new LoginRes();
+        loginRes.setUser(userService.findByEmail(updatepwdReq.getEmail()));
+        System.out.println(loginRes);
+        if (loginRes.getUser()!=null){
+            String salt = loginRes.getUser().getSalt();
+            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updatepwdReq.getPassword(), salt))){
+//                result.setMsg("登陆成功");
+//                //生成cookie
+//                String userTicket = UUIDUtil.uuid();
+//                request.getSession().setAttribute(userTicket, loginRes.getUser());
+//                request.getSession().setMaxInactiveInterval(4*60*60);
+//                CookieUtil.setCookie(request, response, "userTicket", userTicket);
+//                result.setData(loginRes);
+                String newPwd = formPassToDBPass(updatepwdReq.getNewPassword(), loginRes.getUser().getSalt());
+                userService.updateUserPassword(updatepwdReq.getEmail(), newPwd);
+                loginRes.getUser().setEmail(updatepwdReq.getNewPassword());
+                result.setMsg("修改密码成功！");
+                result.setData(loginRes);
+            } else {
+                result.setCode(ResultBean.FAIL);
+                result.setMsg("密码错误");
+                result.setData(null);
+            }
+        } else {
+            result.setMsg("用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        return result;
+    }
+
+    //修改邮箱
+    @CrossOrigin
+    @ApiOperation("修改邮箱")
+    @PostMapping("updateemail")
+    @FilterAnnotation(url = "/user/updateemail", type = FilterType.anno)
+    public ResultBean<LoginRes> updateemail(UpdateemailReq updateemailReq, @CookieValue("userTicket")String ticket) {
+        ResultBean<LoginRes> result = new ResultBean<>();
+        LoginRes loginRes = new LoginRes();
+        loginRes.setUser(userService.findByEmail(updateemailReq.getEmail()));
+        System.out.println(loginRes);
+        if (loginRes.getUser()!=null){
+            String salt = loginRes.getUser().getSalt();
+            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updateemailReq.getPassword(), salt))){
+//                result.setMsg("登陆成功");
+//                //生成cookie
+//                String userTicket = UUIDUtil.uuid();
+//                request.getSession().setAttribute(userTicket, loginRes.getUser());
+//                request.getSession().setMaxInactiveInterval(4*60*60);
+//                CookieUtil.setCookie(request, response, "userTicket", userTicket);
+//                result.setData(loginRes);
+                userService.updateUserEmail(updateemailReq.getEmail(), updateemailReq.getNewEmail());
+                loginRes.getUser().setEmail(updateemailReq.getNewEmail());
+                result.setMsg("修改邮箱成功！");
+                result.setData(loginRes);
+            } else {
+                result.setCode(ResultBean.FAIL);
+                result.setMsg("密码错误");
+                result.setData(null);
+            }
+        } else {
+            result.setMsg("用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        return result;
+    }
+
+    //修改个人信息
+    @CrossOrigin
+    @ApiOperation("修改个人信息")
+    @PostMapping("updateuser")
+    @FilterAnnotation(url = "/user/updateuser", type = FilterType.anno)
+    public ResultBean<User> updateuser(UpdateuserReq updateuserReq) {
+        ResultBean<User> result = new ResultBean<>();
+        User olduser = userService.findByEmail(updateuserReq.getEmail());
+
+        if(olduser != null) {
+            User newuser = new User();
+            newuser.setEmail(updateuserReq.getEmail());
+            if (updateuserReq.getUsername().isEmpty())
+                newuser.setUsername(olduser.getUsername());
+            else
+                newuser.setUsername(updateuserReq.getUsername());
+            if (updateuserReq.getHeadshot().isEmpty())
+                newuser.setHeadshot(olduser.getHeadshot());
+            else
+                newuser.setHeadshot(updateuserReq.getHeadshot());
+            if (updateuserReq.getIntroduction().isEmpty())
+                newuser.setIntroduction(olduser.getIntroduction());
+            else
+                newuser.setIntroduction(updateuserReq.getIntroduction());
+
+            int res = userService.updateUser(newuser);
+            if(res != -1){
+                result.setMsg("修改个人信息成功！");
+                result.setData(newuser);
+            }
+            else{
+                result.setMsg("用户访问错误，请跳转login页面");
+                result.setCode(ResultBean.NO_PERMISSION);
+                result.setData(null);
+            }
+        }
+        else{
+            result.setMsg("修改个人信息失败！用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        return result;
+    }
+
+    // 根据指定信息查询个人信息
+    @CrossOrigin
+    @ApiOperation("查询用户")
+    @GetMapping("findUsers")
+    @FilterAnnotation(url="/user/findUsers",type = FilterType.anno)
+    public ResultBean<List<User>> findUsers(String content) {
+        List<User> userList = userService.findUsers(content);
+        ResultBean<List<User>> result = new ResultBean<>();
+        result.setMsg("查询成功");
+        result.setData(userList);
+        return result;
+    }
 //
 //
 //    //修改手机号

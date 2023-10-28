@@ -4,13 +4,16 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class UpdatepwdReq {
+public class UpdateuserReq {
     @NonNull
     private String email;
 
     @NonNull
-    private String password;
+    private String username;
 
     @NonNull
-    private String newPassword;
+    private String headshot;
+
+    @NonNull
+    private String introduction;
 }

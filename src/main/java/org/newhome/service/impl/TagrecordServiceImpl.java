@@ -1,20 +1,22 @@
 package org.newhome.service.impl;
 
-import org.newhome.entity.Tagrecord;
-import org.newhome.mapper.TagrecordMapper;
-import org.newhome.service.ITagrecordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.newhome.entity.Tagrecord;
+import org.newhome.service.TagrecordService;
+import org.newhome.mapper.TagrecordMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- *  服务实现类
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【tagrecord】的数据库操作Service实现
+* @createDate 2023-10-27 15:57:35
+*/
 @Service
-public class TagrecordServiceImpl extends ServiceImpl<TagrecordMapper, Tagrecord> implements ITagrecordService {
+public class TagrecordServiceImpl extends ServiceImpl<TagrecordMapper, Tagrecord>
+    implements TagrecordService{
 
 }
+
+
+
+

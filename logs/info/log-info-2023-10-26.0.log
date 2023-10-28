@@ -1,0 +1,186 @@
+2023-10-26 22:34:00.031 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 25508 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 22:34:00.031 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to default profiles: default
+2023-10-26 22:34:00.067 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 22:34:00.067 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 22:34:00.830 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-10-26 22:34:00.830 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-10-26 22:34:00.830 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 22:34:00.830 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-10-26 22:34:00.893 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 22:34:00.893 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 826 ms
+2023-10-26 22:34:00.940 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-10-26 22:34:00.956 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-26 22:36:54.700 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 58608 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 22:36:54.711 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to default profiles: default
+2023-10-26 22:36:54.740 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 22:36:54.741 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 22:36:55.424 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2023-10-26 22:36:55.424 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2023-10-26 22:36:55.424 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 22:36:55.424 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-10-26 22:36:55.488 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 22:36:55.488 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 746 ms
+2023-10-26 22:36:56.037 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 22:36:56.084 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-26 22:36:56.112 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 22:36:56.181 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2023-10-26 22:36:56.226 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2023-10-26 22:36:56.243 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2023-10-26 22:36:56.244 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 22:36:56.247 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 22:36:56.251 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-10-26 22:36:56.358 [restartedMain] INFO  org.newhome.VideoApplication - Started VideoApplication in 1.93 seconds (JVM running for 2.415)
+2023-10-26 22:37:06.608 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2023-10-26 22:37:06.608 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-26 22:47:09.506 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 63544 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 22:47:09.509 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to default profiles: default
+2023-10-26 22:47:09.543 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 22:47:09.543 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 22:47:10.385 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2023-10-26 22:47:10.393 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2023-10-26 22:47:10.394 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 22:47:10.394 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-10-26 22:47:10.464 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 22:47:10.464 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 917 ms
+2023-10-26 22:47:11.073 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 22:47:11.108 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2023-10-26 22:47:11.136 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 22:47:11.183 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2023-10-26 22:47:11.231 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2023-10-26 22:47:11.246 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2023-10-26 22:47:11.246 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 22:47:11.246 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 22:47:11.262 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-10-26 22:47:11.356 [restartedMain] INFO  org.newhome.VideoApplication - Started VideoApplication in 2.16 seconds (JVM running for 2.713)
+2023-10-26 22:47:46.820 [http-nio-8888-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-26 22:47:46.820 [http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-10-26 22:47:46.829 [http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2023-10-26 23:20:55.282 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2023-10-26 23:20:55.282 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-26 23:22:24.391 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 51164 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 23:22:24.391 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to 1 default profile: "default"
+2023-10-26 23:22:24.431 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 23:22:24.431 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 23:22:25.226 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2023-10-26 23:22:25.226 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:22:25.226 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 23:22:25.226 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-10-26 23:22:25.296 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 23:22:25.296 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 864 ms
+2023-10-26 23:22:25.861 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 23:22:25.923 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 23:22:26.018 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:22:26.034 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2023-10-26 23:22:26.034 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 23:22:26.034 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 23:22:26.065 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:22:26.065 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-10-26 23:22:26.070 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:22:26.070 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:22:26.070 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-26 23:24:43.303 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 47280 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 23:24:43.303 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to 1 default profile: "default"
+2023-10-26 23:24:43.328 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 23:24:43.328 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 23:24:44.019 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2023-10-26 23:24:44.022 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:24:44.022 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 23:24:44.022 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-10-26 23:24:44.066 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 23:24:44.066 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 738 ms
+2023-10-26 23:24:44.614 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 23:24:44.656 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 23:24:44.755 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:24:44.770 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2023-10-26 23:24:44.770 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 23:24:44.770 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 23:24:44.786 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:24:44.786 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-10-26 23:24:44.786 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:24:44.786 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8888"]
+2023-10-26 23:24:44.786 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-26 23:30:08.343 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 51436 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 23:30:08.343 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to 1 default profile: "default"
+2023-10-26 23:30:08.378 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 23:30:08.378 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 23:30:09.112 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-10-26 23:30:09.112 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:09.112 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 23:30:09.112 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-10-26 23:30:09.159 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 23:30:09.159 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 781 ms
+2023-10-26 23:30:09.190 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-10-26 23:30:09.504 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-10-26 23:30:09.504 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://10.214.211.209/videodb'
+2023-10-26 23:30:10.094 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 23:30:10.177 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 23:30:10.303 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:10.318 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-26 23:30:10.318 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 23:30:10.319 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 23:30:10.319 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-10-26 23:30:10.319 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-10-26 23:30:10.358 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:10.359 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-10-26 23:30:10.362 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:10.363 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:10.367 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-26 23:30:47.430 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 52852 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 23:30:47.430 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to 1 default profile: "default"
+2023-10-26 23:30:47.461 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 23:30:47.461 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 23:30:48.217 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-10-26 23:30:48.224 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:48.224 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 23:30:48.226 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-10-26 23:30:48.276 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 23:30:48.276 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 815 ms
+2023-10-26 23:30:48.313 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-10-26 23:30:48.586 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-10-26 23:30:48.586 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://10.214.211.209/videodb'
+2023-10-26 23:30:49.096 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 23:30:49.159 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 23:30:49.254 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:49.269 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-26 23:30:49.269 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 23:30:49.269 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 23:30:49.285 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-10-26 23:30:49.364 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-10-26 23:30:49.379 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:49.379 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-10-26 23:30:49.379 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:49.379 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:30:49.379 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-10-26 23:33:13.637 [restartedMain] INFO  org.newhome.VideoApplication - Starting VideoApplication using Java 18.0.2 on LAPTOP-0JLFBLKR with PID 60628 (D:\IDEAProjects\videoPlayerBackEnd\target\classes started by Yuxin Wang in D:\IDEAProjects\videoPlayerBackEnd)
+2023-10-26 23:33:13.637 [restartedMain] INFO  org.newhome.VideoApplication - No active profile set, falling back to default profiles: default
+2023-10-26 23:33:13.661 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 23:33:13.661 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 23:33:14.404 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-10-26 23:33:14.411 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:33:14.411 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-26 23:33:14.411 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.48]
+2023-10-26 23:33:14.468 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-26 23:33:14.468 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2023-10-26 23:33:14.484 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-10-26 23:33:14.750 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-10-26 23:33:14.751 [restartedMain] INFO  o.s.b.autoconfigure.h2.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://10.214.211.209/videodb'
+2023-10-26 23:33:15.269 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2023-10-26 23:33:15.331 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-26 23:33:15.448 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-10-26 23:33:15.457 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-26 23:33:15.457 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2023-10-26 23:33:15.473 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-10-26 23:33:15.473 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-10-26 23:33:15.567 [restartedMain] INFO  org.newhome.VideoApplication - Started VideoApplication in 2.21 seconds (JVM running for 2.679)
+2023-10-26 23:34:32.657 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-10-26 23:34:32.673 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
