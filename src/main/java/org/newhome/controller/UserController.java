@@ -247,8 +247,8 @@ public class UserController {
     //登出功能
     @ApiOperation("用户退出")
     @GetMapping("logout")
-    @FilterAnnotation(url = "/user/logout", type = FilterType.anno)
-    public ResultBean<LoginRes> logout( @CookieValue("userTicket")String ticket){
+    @FilterAnnotation(url = "/user/logout", type = FilterType.login)
+    public ResultBean<LoginRes> logout(@CookieValue("userTicket")String ticket){
         ResultBean<LoginRes> result = new ResultBean<>();
         HttpSession httpSession = request.getSession();
         User userInfo = (User)httpSession.getAttribute(ticket);
@@ -264,7 +264,7 @@ public class UserController {
     @CrossOrigin
     @ApiOperation("修改密码")
     @PostMapping("updatepwd")
-    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.anno)
+    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.login)
     public ResultBean<LoginRes> updatepwd(UpdatepwdReq updatepwdReq, @CookieValue("userTicket")String ticket) {
         ResultBean<LoginRes> result = new ResultBean<>();
         LoginRes loginRes = new LoginRes();
@@ -302,7 +302,7 @@ public class UserController {
     @CrossOrigin
     @ApiOperation("修改邮箱")
     @PostMapping("updateemail")
-    @FilterAnnotation(url = "/user/updateemail", type = FilterType.anno)
+    @FilterAnnotation(url = "/user/updateemail", type = FilterType.login)
     public ResultBean<LoginRes> updateemail(UpdateemailReq updateemailReq, @CookieValue("userTicket")String ticket) {
         ResultBean<LoginRes> result = new ResultBean<>();
         LoginRes loginRes = new LoginRes();
@@ -339,7 +339,7 @@ public class UserController {
     @CrossOrigin
     @ApiOperation("修改个人信息")
     @PostMapping("updateuser")
-    @FilterAnnotation(url = "/user/updateuser", type = FilterType.anno)
+    @FilterAnnotation(url = "/user/updateuser", type = FilterType.login)
     public ResultBean<User> updateuser(UpdateuserReq updateuserReq) {
         ResultBean<User> result = new ResultBean<>();
         User olduser = userService.findByEmail(updateuserReq.getEmail());
@@ -383,7 +383,7 @@ public class UserController {
     @CrossOrigin
     @ApiOperation("查询用户")
     @GetMapping("findUsers")
-    @FilterAnnotation(url="/user/findUsers",type = FilterType.anno)
+    @FilterAnnotation(url="/user/findUsers",type = FilterType.login)
     public ResultBean<List<User>> findUsers(String content) {
         List<User> userList = userService.findUsers(content);
         ResultBean<List<User>> result = new ResultBean<>();
