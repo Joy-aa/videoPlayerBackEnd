@@ -63,6 +63,7 @@ public class UserController {
     @Resource
     private HttpServletRequest request;
 
+
     public static final String staticPath = Objects.requireNonNull(Objects.requireNonNull(ClassUtils.getDefaultClassLoader()).getResource("static")).getPath();
     private String saveHeadImg(MultipartFile file) {
         String defaultHead = staticPath + File.separator +"head" + File.separator + "img.jpg";
