@@ -23,7 +23,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
-    public void deleteVideo(Integer videoid) {
+    public void deleteVideo(Integer videoId) {
 
     }
 
@@ -35,6 +35,11 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     @Override
     public void findVideos(Video video) {
 
+    }
+
+    @Override
+    public Video findById(int videoId) {
+        return null;
     }
 }
 

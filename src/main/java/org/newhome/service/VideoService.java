@@ -19,4 +19,6 @@ public interface VideoService extends IService<Video> {
     void deleteVideos(List<Integer> videoIdList);
 
     void findVideos(Video video);
+
+    Video findById(int videoId);
 }

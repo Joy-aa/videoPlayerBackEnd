@@ -247,3 +247,33 @@
 2023-10-28 15:30:28.562 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - ==>  Preparing: SELECT relation_id,user1_id,user2_id,kind FROM relation WHERE (user1_id = ? AND kind = ?)
 2023-10-28 15:30:28.562 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - ==> Parameters: 14(Integer), 0(Integer)
 2023-10-28 15:30:28.570 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - <==      Total: 0
+2023-10-28 21:59:37.250 [http-nio-8888-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 21:59:37.313 [http-nio-8888-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:59:37.374 [http-nio-8888-exec-2] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-28 22:00:45.849 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 22:00:45.867 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:00:45.893 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-28 22:00:53.449 [http-nio-8888-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 22:00:53.450 [http-nio-8888-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:00:53.460 [http-nio-8888-exec-7] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-28 22:01:17.513 [http-nio-8888-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 22:01:17.515 [http-nio-8888-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:01:17.529 [http-nio-8888-exec-5] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 0
+2023-10-28 22:01:28.412 [http-nio-8888-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 22:01:28.415 [http-nio-8888-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 14(Integer)
+2023-10-28 22:01:28.431 [http-nio-8888-exec-9] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-28 22:01:40.397 [http-nio-8888-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==>  Preparing: SELECT user_id,username,password,salt,email,headshot,introduction FROM user WHERE (user_id = ?)
+2023-10-28 22:01:40.398 [http-nio-8888-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - ==> Parameters: 14(Integer)
+2023-10-28 22:01:40.411 [http-nio-8888-exec-10] DEBUG org.newhome.mapper.UserMapper.selectOne - <==      Total: 1
+2023-10-28 22:34:12.990 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.selectById - ==>  Preparing: SELECT star_id,user_id,videoid FROM star WHERE star_id=?
+2023-10-28 22:34:13.031 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.selectById - ==> Parameters: 1(Integer)
+2023-10-28 22:34:13.081 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.selectById - <==      Total: 1
+2023-10-28 22:34:13.156 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.delete - ==>  Preparing: DELETE FROM star WHERE (star_id = ?)
+2023-10-28 22:34:13.160 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.delete - ==> Parameters: 1(Integer)
+2023-10-28 22:34:13.450 [http-nio-8888-exec-4] DEBUG org.newhome.mapper.StarMapper.delete - <==    Updates: 1
+2023-10-28 22:34:55.489 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - ==>  Preparing: SELECT star_id,user_id,videoid FROM star WHERE star_id=?
+2023-10-28 22:34:55.489 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - ==> Parameters: 1(Integer)
+2023-10-28 22:34:55.499 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - <==      Total: 0
+2023-10-28 22:35:08.537 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - ==>  Preparing: SELECT star_id,user_id,videoid FROM star WHERE star_id=?
+2023-10-28 22:35:08.538 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - ==> Parameters: 1(Integer)
+2023-10-28 22:35:08.566 [http-nio-8888-exec-1] DEBUG org.newhome.mapper.StarMapper.selectById - <==      Total: 0
