@@ -4,13 +4,15 @@ import org.newhome.entity.Star;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【star】的数据库操作Mapper
+* @createDate 2023-10-27 15:58:16
+* @Entity org.newhome.entity.Star
+*/
 public interface StarMapper extends BaseMapper<Star> {
 
 }
+
+
+
+

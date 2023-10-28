@@ -1,20 +1,22 @@
 package org.newhome.service.impl;
 
-import org.newhome.entity.Comment;
-import org.newhome.mapper.CommentMapper;
-import org.newhome.service.ICommentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.newhome.entity.Comment;
+import org.newhome.service.CommentService;
+import org.newhome.mapper.CommentMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- *  服务实现类
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【comment】的数据库操作Service实现
+* @createDate 2023-10-27 15:58:38
+*/
 @Service
-public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> implements ICommentService {
+public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment>
+    implements CommentService{
 
 }
+
+
+
+

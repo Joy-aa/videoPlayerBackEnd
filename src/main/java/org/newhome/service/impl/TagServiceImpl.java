@@ -1,20 +1,22 @@
 package org.newhome.service.impl;
 
-import org.newhome.entity.Tag;
-import org.newhome.mapper.TagMapper;
-import org.newhome.service.ITagService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.newhome.entity.Tag;
+import org.newhome.service.TagService;
+import org.newhome.mapper.TagMapper;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- *  服务实现类
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【tag】的数据库操作Service实现
+* @createDate 2023-10-27 15:58:06
+*/
 @Service
-public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements ITagService {
+public class TagServiceImpl extends ServiceImpl<TagMapper, Tag>
+    implements TagService{
 
 }
+
+
+
+

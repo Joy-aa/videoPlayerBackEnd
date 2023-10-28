@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/history")
 public class HistoryController {
     @Autowired
-    IHistoryService iHistoryService;
+    HistoryService historyService;
 
     @Resource
     private HttpServletResponse response;

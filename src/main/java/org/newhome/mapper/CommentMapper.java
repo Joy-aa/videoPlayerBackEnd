@@ -4,13 +4,15 @@ import org.newhome.entity.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【comment】的数据库操作Mapper
+* @createDate 2023-10-27 15:58:38
+* @Entity org.newhome.entity.Comment
+*/
 public interface CommentMapper extends BaseMapper<Comment> {
 
 }
+
+
+
+

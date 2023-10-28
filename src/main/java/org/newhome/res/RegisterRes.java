@@ -1,9 +1,9 @@
 package org.newhome.res;
 
 import lombok.Data;
-import org.newhome.info.UserInfo;
+import org.newhome.entity.User;
 
 @Data
 public class RegisterRes {
-    private UserInfo userInfo;
+    private User user;
 }

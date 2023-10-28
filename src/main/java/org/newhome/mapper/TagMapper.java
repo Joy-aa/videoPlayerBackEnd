@@ -4,13 +4,15 @@ import org.newhome.entity.Tag;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
- * @author joy_aa
- * @since 2023-10-25
- */
+* @author Yuxin Wang
+* @description 针对表【tag】的数据库操作Mapper
+* @createDate 2023-10-27 15:58:06
+* @Entity org.newhome.entity.Tag
+*/
 public interface TagMapper extends BaseMapper<Tag> {
 
 }
+
+
+
+
