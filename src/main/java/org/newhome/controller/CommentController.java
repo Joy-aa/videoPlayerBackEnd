@@ -12,16 +12,21 @@ import org.newhome.req.AddCommentReq;
 import org.newhome.req.DeleteCommentReq;
 import org.newhome.req.GetCommentReq;
 import org.newhome.res.CommentRes;
+import org.newhome.res.CommentsRes;
 import org.newhome.service.CommentService;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -88,9 +93,27 @@ public class CommentController {
     @ApiOperation("展示评论")
     @PostMapping("showAll")
     @FilterAnnotation(url="/comment/showAll",type = FilterType.auth)
-    public ResultBean<CommentRes> showComments(GetCommentReq req) {
-        ResultBean<CommentRes> result = new ResultBean<>();
-
+    public ResultBean<CommentsRes> showComments(GetCommentReq req) {
+        ResultBean<CommentsRes> result = new ResultBean<>();
+        Video video  = videoService.findById(req.getVideoId());
+        if(video == null) {
+            result.setMsg("视频不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        CommentsRes commentsRes = new CommentsRes();
+        List<Comment> comments = commentService.getComments(req.getVideoId());
+        if(!CollectionUtils.isEmpty(comments)) {
+            commentsRes.setComments(comments);
+            result.setMsg("获取多条评论");
+            result.setData(commentsRes);
+        }
+        else{
+            result.setData(null);
+            result.setMsg("该条视频没有评论");
+            result.setCode(ResultBean.FAIL);
+        }
         return result;
     }
 
@@ -100,7 +123,57 @@ public class CommentController {
     @FilterAnnotation(url="/comment/like",type = FilterType.auth)
     public ResultBean<CommentRes> likeComment(DeleteCommentReq req) {
         ResultBean<CommentRes> result = new ResultBean<>();
+        CommentRes commentRes = new CommentRes();
+        Comment comment = commentService.getComment(req.getCommentId());
+        if(comment == null) {
+            result.setMsg("评论不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else{
+            comment.setLikeNum(comment.getLikeNum()+1);
+            int flag = commentService.updateLikeNum(comment);
+            commentRes.setComment(comment);
+            if(flag != 0) {
+                result.setMsg("评论点赞数目已增加");
+                result.setData(commentRes);
+            }
+            else{
+                result.setMsg("评论不存在！");
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
+        }
+        return result;
+    }
 
+    @CrossOrigin
+    @ApiOperation("取消点赞评论")
+    @PostMapping("dislike")
+    @FilterAnnotation(url="/comment/dislike",type = FilterType.auth)
+    public ResultBean<CommentRes> dislikeComment(DeleteCommentReq req) {
+        ResultBean<CommentRes> result = new ResultBean<>();
+        CommentRes commentRes = new CommentRes();
+        Comment comment = commentService.getComment(req.getCommentId());
+        if(comment == null) {
+            result.setMsg("评论不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else{
+            comment.setLikeNum(comment.getLikeNum()-1);
+            int flag = commentService.updateLikeNum(comment);
+            commentRes.setComment(comment);
+            if(flag != 0) {
+                result.setMsg("评论点赞数目已增加");
+                result.setData(commentRes);
+            }
+            else{
+                result.setMsg("评论不存在！");
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
+        }
         return result;
     }
 
@@ -110,7 +183,25 @@ public class CommentController {
     @FilterAnnotation(url="/comment/delete",type = FilterType.auth)
     public ResultBean<CommentRes> deleteComment(DeleteCommentReq req) {
         ResultBean<CommentRes> result = new ResultBean<>();
-
+        CommentRes commentRes = new CommentRes();
+        Comment comment = commentService.getComment(req.getCommentId());
+        if(comment == null) {
+            result.setMsg("评论不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        int flag = commentService.deleteComment(req.getCommentId());
+        commentRes.setComment(comment);
+        if(flag != 0) {
+            result.setMsg("评论已删除");
+            result.setData(commentRes);
+        }
+        else{
+            result.setMsg("评论删除失败！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
         return result;
     }
 
