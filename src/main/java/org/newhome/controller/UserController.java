@@ -223,7 +223,7 @@ public class UserController {
         if (loginRes.getUser()!=null){
             String salt = loginRes.getUser().getSalt();
             if(loginRes.getUser().getPassword().equals(formPassToDBPass(req.getPassword(), salt))){
-                result.setMsg("登陆成功");
+                result.setMsg("登录成功");
                 //生成cookie
                 String userTicket = UUIDUtil.uuid();
                 request.getSession().setAttribute(userTicket, loginRes.getUser());
@@ -237,7 +237,7 @@ public class UserController {
             }
         } else {
             result.setMsg("用户不存在");
-            result.setCode(ResultBean.FAIL);
+            result.setCode(ResultBean.NO_PERMISSION);
             result.setData(null);
         }
         return result;
@@ -263,26 +263,26 @@ public class UserController {
     //修改个人密码
     @CrossOrigin
     @ApiOperation("修改密码")
-    @PostMapping("updatepwd")
-    @FilterAnnotation(url = "/user/updatepwd", type = FilterType.login)
-    public ResultBean<LoginRes> updatepwd(UpdatepwdReq updatepwdReq, @CookieValue("userTicket")String ticket) {
+    @PostMapping("updatePwd")
+    @FilterAnnotation(url = "/user/updatePwd", type = FilterType.login)
+    public ResultBean<LoginRes> updatePwd(UpdatePwdReq updatePwdReq, @CookieValue("userTicket")String ticket) {
         ResultBean<LoginRes> result = new ResultBean<>();
         LoginRes loginRes = new LoginRes();
-        loginRes.setUser(userService.findByEmail(updatepwdReq.getEmail()));
+        loginRes.setUser(userService.findByEmail(updatePwdReq.getEmail()));
         System.out.println(loginRes);
         if (loginRes.getUser()!=null){
             String salt = loginRes.getUser().getSalt();
-            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updatepwdReq.getPassword(), salt))){
-//                result.setMsg("登陆成功");
+            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updatePwdReq.getPassword(), salt))){
+//                result.setMsg("登录成功");
 //                //生成cookie
 //                String userTicket = UUIDUtil.uuid();
 //                request.getSession().setAttribute(userTicket, loginRes.getUser());
 //                request.getSession().setMaxInactiveInterval(4*60*60);
 //                CookieUtil.setCookie(request, response, "userTicket", userTicket);
 //                result.setData(loginRes);
-                String newPwd = formPassToDBPass(updatepwdReq.getNewPassword(), loginRes.getUser().getSalt());
-                userService.updateUserPassword(updatepwdReq.getEmail(), newPwd);
-                loginRes.getUser().setEmail(updatepwdReq.getNewPassword());
+                String newPwd = formPassToDBPass(updatePwdReq.getNewPassword(), loginRes.getUser().getSalt());
+                userService.updateUserPassword(updatePwdReq.getEmail(), newPwd);
+                loginRes.getUser().setEmail(updatePwdReq.getNewPassword());
                 result.setMsg("修改密码成功！");
                 result.setData(loginRes);
             } else {
@@ -292,7 +292,7 @@ public class UserController {
             }
         } else {
             result.setMsg("用户不存在");
-            result.setCode(ResultBean.FAIL);
+            result.setCode(ResultBean.NO_PERMISSION);
             result.setData(null);
         }
         return result;
@@ -301,25 +301,25 @@ public class UserController {
     //修改邮箱
     @CrossOrigin
     @ApiOperation("修改邮箱")
-    @PostMapping("updateemail")
-    @FilterAnnotation(url = "/user/updateemail", type = FilterType.login)
-    public ResultBean<LoginRes> updateemail(UpdateemailReq updateemailReq, @CookieValue("userTicket")String ticket) {
+    @PostMapping("updateEmail")
+    @FilterAnnotation(url = "/user/updateEmail", type = FilterType.login)
+    public ResultBean<LoginRes> updateEmail(UpdateEmailReq updateEmailReq, @CookieValue("userTicket")String ticket) {
         ResultBean<LoginRes> result = new ResultBean<>();
         LoginRes loginRes = new LoginRes();
-        loginRes.setUser(userService.findByEmail(updateemailReq.getEmail()));
+        loginRes.setUser(userService.findByEmail(updateEmailReq.getEmail()));
         System.out.println(loginRes);
         if (loginRes.getUser()!=null){
             String salt = loginRes.getUser().getSalt();
-            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updateemailReq.getPassword(), salt))){
-//                result.setMsg("登陆成功");
+            if(loginRes.getUser().getPassword().equals(formPassToDBPass(updateEmailReq.getPassword(), salt))){
+//                result.setMsg("登录成功");
 //                //生成cookie
 //                String userTicket = UUIDUtil.uuid();
 //                request.getSession().setAttribute(userTicket, loginRes.getUser());
 //                request.getSession().setMaxInactiveInterval(4*60*60);
 //                CookieUtil.setCookie(request, response, "userTicket", userTicket);
 //                result.setData(loginRes);
-                userService.updateUserEmail(updateemailReq.getEmail(), updateemailReq.getNewEmail());
-                loginRes.getUser().setEmail(updateemailReq.getNewEmail());
+                userService.updateUserEmail(updateEmailReq.getEmail(), updateEmailReq.getNewEmail());
+                loginRes.getUser().setEmail(updateEmailReq.getNewEmail());
                 result.setMsg("修改邮箱成功！");
                 result.setData(loginRes);
             } else {
@@ -329,7 +329,7 @@ public class UserController {
             }
         } else {
             result.setMsg("用户不存在");
-            result.setCode(ResultBean.FAIL);
+            result.setCode(ResultBean.NO_PERMISSION);
             result.setData(null);
         }
         return result;
@@ -338,27 +338,27 @@ public class UserController {
     //修改个人信息
     @CrossOrigin
     @ApiOperation("修改个人信息")
-    @PostMapping("updateuser")
-    @FilterAnnotation(url = "/user/updateuser", type = FilterType.login)
-    public ResultBean<User> updateuser(UpdateuserReq updateuserReq) {
+    @PostMapping("updateUser")
+    @FilterAnnotation(url = "/user/updateUser", type = FilterType.login)
+    public ResultBean<User> updateUser(UpdateUserReq updateUserReq) {
         ResultBean<User> result = new ResultBean<>();
-        User olduser = userService.findByEmail(updateuserReq.getEmail());
+        User olduser = userService.findByEmail(updateUserReq.getEmail());
 
         if(olduser != null) {
             User newuser = new User();
-            newuser.setEmail(updateuserReq.getEmail());
-            if (updateuserReq.getUsername().isEmpty())
+            newuser.setEmail(updateUserReq.getEmail());
+            if (updateUserReq.getUsername().isEmpty())
                 newuser.setUsername(olduser.getUsername());
             else
-                newuser.setUsername(updateuserReq.getUsername());
-            if (updateuserReq.getHeadshot().isEmpty())
+                newuser.setUsername(updateUserReq.getUsername());
+            if (updateUserReq.getHeadshot().isEmpty())
                 newuser.setHeadshot(olduser.getHeadshot());
             else
-                newuser.setHeadshot(updateuserReq.getHeadshot());
-            if (updateuserReq.getIntroduction().isEmpty())
+                newuser.setHeadshot(updateUserReq.getHeadshot());
+            if (updateUserReq.getIntroduction().isEmpty())
                 newuser.setIntroduction(olduser.getIntroduction());
             else
-                newuser.setIntroduction(updateuserReq.getIntroduction());
+                newuser.setIntroduction(updateUserReq.getIntroduction());
 
             int res = userService.updateUser(newuser);
             if(res != -1){
@@ -366,14 +366,14 @@ public class UserController {
                 result.setData(newuser);
             }
             else{
-                result.setMsg("用户访问错误，请跳转login页面");
-                result.setCode(ResultBean.NO_PERMISSION);
+                result.setMsg("修改个人信息失败，请重新操作");
+                result.setCode(ResultBean.FAIL);
                 result.setData(null);
             }
         }
         else{
             result.setMsg("修改个人信息失败！用户不存在");
-            result.setCode(ResultBean.FAIL);
+            result.setCode(ResultBean.NO_PERMISSION);
             result.setData(null);
         }
         return result;

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class UpdatepwdReq {
+public class UpdateEmailReq {
     @NonNull
     private String email;
 
@@ -12,5 +12,5 @@ public class UpdatepwdReq {
     private String password;
 
     @NonNull
-    private String newPassword;
+    private String newEmail;
 }

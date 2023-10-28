@@ -4,13 +4,16 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class UpdateemailReq {
+public class UpdateUserReq {
     @NonNull
     private String email;
 
     @NonNull
-    private String password;
+    private String username;
 
     @NonNull
-    private String newEmail;
+    private String headshot;
+
+    @NonNull
+    private String introduction;
 }

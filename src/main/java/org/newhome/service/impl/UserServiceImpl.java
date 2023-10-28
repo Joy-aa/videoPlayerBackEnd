@@ -26,7 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Override
     public User addUser(User user) {
-        int num = userMapper.insert(user.change());
+        int num = userMapper.insert(user);
         if(num > 0)
             return user;
         else
@@ -64,16 +64,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     @Override
+    public User findById(Integer userid1) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>();
+        wrapper.eq(User::getUserId, userid1);
+        User user = userMapper.selectOne(wrapper);
+        return user;
+    }
+
+    @Override
     public User findByEmail(String email) {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>();
         wrapper.eq(User::getEmail, email);
         User user = userMapper.selectOne(wrapper);
-
-        if (user!=null){
-            return user.change();
-        }else{
-            return null;
-        }
+        return user;
     }
 
     @Override

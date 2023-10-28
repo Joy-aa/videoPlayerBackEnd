@@ -54,9 +54,4 @@ public class User implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
-    public User change(){
-        User user = new User();
-        MyBeanUtils.copyProperties(this, user);
-        return user;
-    }
 }

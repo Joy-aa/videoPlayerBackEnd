@@ -11,16 +11,17 @@ import java.util.List;
 * @createDate 2023-10-27 15:53:13
 */
 public interface UserService extends IService<User> {
-    public User addUser(User userInfo);
+    User addUser(User userInfo);
 
-    public void updateUserEmail(String email, String newEmail);
+    void updateUserEmail(String email, String newEmail);
 
-    public void updateUserPassword(String email, String newPwd);
+    void updateUserPassword(String email, String newPwd);
 
-    public int updateUser(User user);
+    int updateUser(User user);
 
-    public User findByEmail(String email);
+    User findById(Integer userid1);
 
-    public List<User> findUsers(String content);
+    User findByEmail(String email);
 
+    List<User> findUsers(String content);
 }
