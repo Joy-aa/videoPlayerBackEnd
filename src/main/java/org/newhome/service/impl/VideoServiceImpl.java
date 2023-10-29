@@ -34,16 +34,12 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
-<<<<<<< HEAD
     public int deleteVideo(Video video) {
         LambdaQueryWrapper<Video> wrapper = new LambdaQueryWrapper<Video>();
         wrapper.eq(Video::getVideoId,video.getVideoId());
         int num = videoMapper.delete(wrapper);
         return num;
-=======
-    public void deleteVideo(Integer videoId) {
 
->>>>>>> 7929055deb260703bfa633e4ab34859897dd44a5
     }
 
     @Override
@@ -61,7 +57,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
-<<<<<<< HEAD
+
     public Video findVideobyId(Integer videoid){
         LambdaQueryWrapper<Video> wrapper = new LambdaQueryWrapper<Video>();
         wrapper.eq(Video::getVideoId, videoid);
@@ -98,10 +94,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
         lambdaUpdateWrapper.eq(Video::getVideoId,video.getVideoId())
                 .set(Video::getIntroduction,newIntroduction);
         videoMapper.update(null, lambdaUpdateWrapper);
-=======
-    public Video findById(int videoId) {
-        return null;
->>>>>>> 7929055deb260703bfa633e4ab34859897dd44a5
+
     }
 }
 

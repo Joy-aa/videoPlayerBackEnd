@@ -329,3 +329,9 @@
 2023-10-29 18:00:35.795 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
 2023-10-29 18:00:35.796 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 10(Integer)
 2023-10-29 18:00:35.808 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-29 20:45:22.579 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectList - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_name LIKE ? OR introduction LIKE ?)
+2023-10-29 20:45:22.600 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectList - ==> Parameters: %111%(String), %111%(String)
+2023-10-29 20:45:22.623 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectList - <==      Total: 0
+2023-10-29 20:45:29.815 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectList - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_name LIKE ? OR introduction LIKE ?)
+2023-10-29 20:45:29.816 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectList - ==> Parameters: %史记%(String), %史记%(String)
+2023-10-29 20:45:29.825 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectList - <==      Total: 1

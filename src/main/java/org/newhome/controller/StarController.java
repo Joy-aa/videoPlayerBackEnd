@@ -68,7 +68,7 @@ public class StarController {
             result.setData(null);
             return result;
         }
-        Video video  = videoService.findById(addStarReq.getVideoId());
+        Video video  = videoService.findVideobyId(addStarReq.getVideoId());
         if(video == null) {
             result.setMsg("视频不存在！");
             result.setCode(ResultBean.FAIL);

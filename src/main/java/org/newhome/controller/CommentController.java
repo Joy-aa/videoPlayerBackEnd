@@ -62,7 +62,7 @@ public class CommentController {
             result.setData(null);
             return result;
         }
-        Video video  = videoService.findById(req.getVideoId());
+        Video video  = videoService.findVideobyId(req.getVideoId());
         if(video == null) {
             result.setMsg("视频不存在！");
             result.setCode(ResultBean.FAIL);
@@ -95,7 +95,7 @@ public class CommentController {
     @FilterAnnotation(url="/comment/showAll",type = FilterType.auth)
     public ResultBean<CommentsRes> showComments(GetCommentReq req) {
         ResultBean<CommentsRes> result = new ResultBean<>();
-        Video video  = videoService.findById(req.getVideoId());
+        Video video  = videoService.findVideobyId(req.getVideoId());
         if(video == null) {
             result.setMsg("视频不存在！");
             result.setCode(ResultBean.FAIL);

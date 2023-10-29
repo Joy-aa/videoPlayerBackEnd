@@ -21,7 +21,7 @@ public interface VideoService extends IService<Video> {
 
     void findVideos(Video video);
 
-<<<<<<< HEAD
+
     Video findVideobyId(Integer videoid);
 
     //根据用户id查找视频
@@ -34,7 +34,6 @@ public interface VideoService extends IService<Video> {
 
     void updateVideoIntroduction(Video video,String newIntroduction);
 
-=======
-    Video findById(int videoId);
->>>>>>> 7929055deb260703bfa633e4ab34859897dd44a5
+
+
 }

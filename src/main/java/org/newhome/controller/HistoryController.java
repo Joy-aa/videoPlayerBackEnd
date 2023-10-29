@@ -66,7 +66,7 @@ public class HistoryController {
             result.setData(null);
             return result;
         }
-        Video video  = videoService.findById(historyReq.getVideoId());
+        Video video  = videoService.findVideobyId(historyReq.getVideoId());
         if(video == null) {
             result.setMsg("视频不存在！");
             result.setCode(ResultBean.FAIL);

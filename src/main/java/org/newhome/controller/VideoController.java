@@ -38,6 +38,7 @@ import java.util.List;
 @RequestMapping("/video")
 @Slf4j
 @Api(value = "视频管理")
+
 @ApiSupport(author = "wyx")
 public class VideoController {
     @Autowired
