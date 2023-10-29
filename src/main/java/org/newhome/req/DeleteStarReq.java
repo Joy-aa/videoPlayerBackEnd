@@ -3,8 +3,8 @@ package org.newhome.req;
 import lombok.Data;
 
 @Data
-public class DeleteCrackReq {
+public class DeleteStarReq {
 
-    private int crackId;
+    private int starId;
 
 }

@@ -29,7 +29,7 @@ public class History implements Serializable {
     /**
      * 
      */
-    private Integer vedioId;
+    private Integer videoId;
 
     /**
      * 
