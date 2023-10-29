@@ -23,7 +23,7 @@ public class Tagrecord implements Serializable {
     /**
      * 
      */
-    private Integer userId;
+    private Integer tagId;
 
     /**
      * 

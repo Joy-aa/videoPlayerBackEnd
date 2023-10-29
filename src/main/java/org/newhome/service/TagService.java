@@ -18,11 +18,12 @@ public interface TagService extends IService<Tag> {
 
     Tag findTagById(Integer tagId);
 
+    Tag findTagByName(String tagName);
     List<Tag> getAllTag();
 
 //    List<Tag> findTagByIdList(List<Integer> tagIdList);
 
-//    Tag findTagByName(String tagName);
+
 //
 //    int deleteTag(String tagName);
 

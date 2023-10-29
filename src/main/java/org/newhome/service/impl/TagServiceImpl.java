@@ -35,6 +35,14 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
         return tag;
 
     }
+    @Override
+    public Tag findTagByName(String tagName){
+        LambdaQueryWrapper<Tag> wrapper = new LambdaQueryWrapper<Tag>();
+        wrapper.eq(Tag::getTagName, tagName);
+        Tag tag = tagMapper.selectOne(wrapper);
+        return tag;
+    }
+
 
     @Override
     public List<Tag> getAllTag(){

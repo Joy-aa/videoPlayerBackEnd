@@ -66,6 +66,24 @@ public class TagController {
         return result;
     }
     @CrossOrigin
+    @ApiOperation("按照TagName查找")
+    @GetMapping(value = "findtagbyname")
+    public ResultBean<Tag> findTagByName(String  tagname){
+        ResultBean<Tag> result = new ResultBean<>();
+        Tag tag = tagService.findTagByName(tagname);
+        if(tag != null){
+            result.setMsg("Tag查询成功");
+            result.setCode(ResultBean.SUCCESS);
+            result.setData(tag);
+        }
+        else{
+            result.setMsg("查询不到对应Tag");
+            result.setCode(ResultBean.FAIL);
+            result.setData(tag);
+        }
+        return result;
+    }
+    @CrossOrigin
     @ApiOperation("查找所有Tag")
     @GetMapping(value = "getalltag")
     public ResultBean<List<Tag>> getAllTag(){
