@@ -78,7 +78,7 @@ public class CommentController {
         comment.setLikeNum(0L);
         commentRes.setComment(comment);
         if(commentService.addComment(comment) != 0) {
-            result.setMsg("插入浏览记录成功");
+            result.setMsg("插入评论成功");
             result.setData(commentRes);
         }
         else{
@@ -161,11 +161,13 @@ public class CommentController {
             result.setData(null);
         }
         else{
-            comment.setLikeNum(comment.getLikeNum()-1);
+            if(comment.getLikeNum() > 0) {
+                comment.setLikeNum(comment.getLikeNum()-1);
+            }
             int flag = commentService.updateLikeNum(comment);
             commentRes.setComment(comment);
             if(flag != 0) {
-                result.setMsg("评论点赞数目已增加");
+                result.setMsg("评论点赞数目已减少");
                 result.setData(commentRes);
             }
             else{

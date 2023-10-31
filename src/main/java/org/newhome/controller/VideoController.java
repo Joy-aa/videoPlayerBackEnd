@@ -37,7 +37,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/video")
 @Slf4j
-@Api(value = "视频管理")
+@Api(tags = "视频管理")
 
 @ApiSupport(author = "wyx")
 public class VideoController {

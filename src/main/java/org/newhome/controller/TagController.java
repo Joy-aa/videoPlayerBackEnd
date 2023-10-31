@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tag")
-@Api(value = "Tag管理")
+@Api(tags = "Tag管理")
 @ApiSupport(author = "cxy")
 public class TagController {
     @Autowired

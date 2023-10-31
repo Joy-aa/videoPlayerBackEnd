@@ -8,6 +8,8 @@ import org.newhome.mapper.StarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
 * @author Yuxin Wang
 * @description 针对表【star】的数据库操作Service实现
@@ -36,6 +38,28 @@ public class StarServiceImpl extends ServiceImpl<StarMapper, Star>
         LambdaQueryWrapper<Star> wrapper = new LambdaQueryWrapper<Star>();
         wrapper.eq(Star::getStarId, starId);
         return starMapper.delete(wrapper);
+    }
+
+    @Override
+    public int deleteAll(int userId) {
+        LambdaQueryWrapper<Star> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Star::getUserId, userId);
+        return starMapper.delete(wrapper);
+    }
+
+    @Override
+    public List<Star> getAll(int userId) {
+        LambdaQueryWrapper<Star> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Star::getUserId, userId);
+        return starMapper.selectList(wrapper);
+    }
+
+    @Override
+    public Star getOne(int userId, int videoId) {
+        LambdaQueryWrapper<Star> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Star::getUserId, userId)
+                .eq(Star::getVideoid, videoId);
+        return starMapper.selectOne(wrapper);
     }
 }
 

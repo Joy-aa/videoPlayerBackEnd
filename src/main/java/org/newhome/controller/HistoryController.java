@@ -57,7 +57,7 @@ public class HistoryController {
     @ApiOperation("添加历史记录")
     @PostMapping("add")
     @FilterAnnotation(url = "/history/add", type = FilterType.auth)
-    public ResultBean<HistoryRes> addHistory (@RequestBody AddHistoryReq historyReq){
+    public ResultBean<HistoryRes> addHistory (AddHistoryReq historyReq){
         ResultBean<HistoryRes> result = new ResultBean<>();
         User user = userService.findById(historyReq.getUserId());
         if(user == null) {
@@ -73,17 +73,19 @@ public class HistoryController {
             result.setData(null);
             return result;
         }
-        History history = new History();
-        HistoryRes addHistoryRes = new HistoryRes();
-        List<History> histories = historyService.getHistories(historyReq.getUserId());
-        if(CollectionUtils.isEmpty(histories)) {
-            if(histories.size() == 100) {
-                int lastHistoryId = histories.get(histories.size() - 1).getHistoryId();
-                historyService.deleteHistory(lastHistoryId);
+        History history = historyService.getOne(historyReq.getUserId(), historyReq.getVideoId());
+        if(history == null) {
+            HistoryRes addHistoryRes = new HistoryRes();
+            List<History> histories = historyService.getHistories(historyReq.getUserId());
+            if(CollectionUtils.isEmpty(histories)) {
+                if (histories.size() == 100) {
+                    int lastHistoryId = histories.get(histories.size() - 1).getHistoryId();
+                    historyService.deleteHistory(lastHistoryId);
+                }
             }
             history.setVideoId(historyReq.getVideoId());
-            history.setUserId(history.getUserId());
-            history.setWatchTime(history.getWatchTime());
+            history.setUserId(historyReq.getUserId());
+            history.setWatchTime(historyReq.getWatchTime());
             int flag = historyService.addHistory(history);
             addHistoryRes.setHistory(history);
             if(flag != 0) {
@@ -93,6 +95,21 @@ public class HistoryController {
             else {
                 result.setData(null);
                 result.setMsg("插入浏览记录失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        else{
+            history.setWatchTime(historyReq.getWatchTime());
+            int flag = historyService.updateTime(history);
+            HistoryRes res = new HistoryRes();
+            res.setHistory(history);
+            if(flag != 0) {
+                result.setMsg("修改浏览记录时间成功");
+                result.setData(res);
+            }
+            else {
+                result.setData(null);
+                result.setMsg("修改浏览记录时间失败");
                 result.setCode(ResultBean.FAIL);
             }
         }
@@ -144,7 +161,7 @@ public class HistoryController {
             int flag = historyService.deleteHistory(req.getHistoryId());
             historyRes.setHistory(history);
             if(flag != 0){
-                result.setMsg("删除历史记录成功");
+                result.setMsg("成功删除一条历史记录");
                 result.setData(historyRes);
             }
             else{
@@ -178,12 +195,12 @@ public class HistoryController {
                     num ++;
             }
             if(num != 0){
-                result.setMsg("删除多条历史记录成功");
+                result.setMsg("成功删除"+histories.size()+"条历史记录成功");
                 result.setData(historyRes);
             }
             else{
                 result.setCode(ResultBean.FAIL);
-                result.setMsg("删除历史记录失败");
+                result.setMsg("删除0条历史记录");
                 result.setData(null);
             }
         }

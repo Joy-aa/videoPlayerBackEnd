@@ -1,6 +1,7 @@
 package org.newhome.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.newhome.entity.History;
 import org.newhome.service.HistoryService;
@@ -30,6 +31,14 @@ public class HistoryServiceImpl extends ServiceImpl<HistoryMapper, History>
     }
 
     @Override
+    public History getOne(int userId, int videoId) {
+        LambdaQueryWrapper<History> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(History::getUserId, userId)
+                .eq(History::getVideoId, videoId);
+        return historyMapper.selectOne(wrapper);
+    }
+
+    @Override
     public int addHistory(History history) {
         return historyMapper.insert(history);
     }
@@ -39,6 +48,14 @@ public class HistoryServiceImpl extends ServiceImpl<HistoryMapper, History>
         LambdaQueryWrapper<History> wrapper = new LambdaQueryWrapper<History>();
         wrapper.eq(History::getHistoryId, historyId);
         return historyMapper.delete(wrapper);
+    }
+
+    @Override
+    public int updateTime(History history) {
+        LambdaUpdateWrapper<History> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(History::getHistoryId, history.getHistoryId())
+                .set(History::getWatchTime, history.getWatchTime());
+        return historyMapper.update(null, wrapper);
     }
 
 //    @Override

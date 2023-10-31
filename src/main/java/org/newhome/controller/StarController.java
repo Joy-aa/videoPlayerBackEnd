@@ -11,12 +11,15 @@ import org.newhome.entity.User;
 import org.newhome.entity.Video;
 import org.newhome.req.AddStarReq;
 import org.newhome.req.DeleteStarReq;
+import org.newhome.req.DeleteAllStarReq;
 import org.newhome.res.StarRes;
+import org.newhome.res.StarsRes;
 import org.newhome.service.StarService;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -75,13 +80,20 @@ public class StarController {
             result.setData(null);
             return result;
         }
-        StarRes starRes = new StarRes();
-        Star star = new Star();
-        star.setUserId(addStarReq.getUserId());
-        star.setVideoid(addStarReq.getVideoId());
-        starRes.setStar(starService.addStar(star));
-        result.setData(starRes);
-        result.setMsg("添加一条收藏记录");
+        Star star = starService.getOne(addStarReq.getUserId(), addStarReq.getVideoId());
+        if(star == null) {
+            StarRes starRes = new StarRes();
+            star.setUserId(addStarReq.getUserId());
+            star.setVideoid(addStarReq.getVideoId());
+            starRes.setStar(starService.addStar(star));
+            result.setData(starRes);
+            result.setMsg("添加一条收藏记录");
+        }
+        else {
+            result.setMsg("视频已收藏！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
         return result;
     }
 
@@ -112,4 +124,55 @@ public class StarController {
         return result;
     }
 
+    @CrossOrigin
+    @ApiOperation("删除用户收藏记录")
+    @PostMapping("deleteAll")
+    @FilterAnnotation(url="/star/deleteAll", type = FilterType.auth)
+    public ResultBean<StarRes> deleteAll(DeleteAllStarReq req) {
+        ResultBean<StarRes> result = new ResultBean<>();
+        User user = userService.findById(req.getUserId());
+        if(user == null) {
+            result.setMsg("该用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            if(starService.deleteAll(req.getUserId()) != 0) {
+                result.setData(null);
+                result.setMsg("删除收藏记录成功");
+            }
+            else{
+                result.setMsg("删除收藏记录失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        return result;
+    }
+
+    @CrossOrigin
+    @ApiOperation("获取用户收藏记录")
+    @PostMapping("getAll")
+    @FilterAnnotation(url="/star/getAll", type = FilterType.auth)
+    public ResultBean<StarsRes> getAll(DeleteAllStarReq req) {
+        ResultBean<StarsRes> result = new ResultBean<>();
+        User user = userService.findById(req.getUserId());
+        if(user == null) {
+            result.setMsg("该用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            StarsRes stars = new StarsRes();
+            stars.setStars(starService.getAll(req.getUserId()));
+            if(!CollectionUtils.isEmpty(stars.getStars())) {
+                result.setData(stars);
+                result.setMsg("获取收藏记录成功");
+            }
+            else{
+                result.setMsg("获取收藏记录失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        return result;
+    }
 }

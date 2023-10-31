@@ -1,6 +1,7 @@
 package org.newhome.controller;
 
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.newhome.entity.Relation;
 import org.newhome.entity.Tag;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tagrecord")
+@Api(tags = "视频与tag记录")
 public class TagrecordController {
     @Autowired
     TagrecordService tagrecordService;

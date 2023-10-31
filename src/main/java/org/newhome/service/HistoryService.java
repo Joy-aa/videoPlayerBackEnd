@@ -14,10 +14,12 @@ public interface HistoryService extends IService<History> {
 
     List<History> getHistories(int userId);
 
+    History getOne(int userId, int videoId);
+
     int addHistory(History history);
 
     int deleteHistory(int historyId);
 
-//    int deleteHistories(int userId);
+    int updateTime(History history);
 
 }
