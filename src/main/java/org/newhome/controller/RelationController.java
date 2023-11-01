@@ -143,6 +143,7 @@ public class RelationController {
                     result.setMsg("取消关注成功");
                 else
                     result.setMsg("取消拉黑成功");
+                result.setCode(ResultBean.SUCCESS);
                 result.setData(null);
             }
             else{
