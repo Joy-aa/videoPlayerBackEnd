@@ -206,7 +206,8 @@ public class UserController {
         String captcha = (String) request.getSession().getAttribute("captcha");
         System.out.println(captcha);
         if (!StringUtils.hasText(captcha) || !captcha.equals(req.getCode())){
-            result.setMsg("验证码错误，请重新获取验证码");
+            result.setMsg("验证码错误！");
+            System.out.println("验证码错误！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
             return result;
@@ -224,8 +225,9 @@ public class UserController {
         if (loginRes.getUser()!=null){
             String salt = loginRes.getUser().getSalt();
             if(loginRes.getUser().getPassword().equals(formPassToDBPass(req.getPassword(), salt))){
-                result.setMsg("登录成功");
+                result.setMsg("登录成功！");
                 //生成cookie
+                System.out.println("登录成功！");
                 String userTicket = UUIDUtil.uuid();
                 request.getSession().setAttribute(userTicket, loginRes.getUser());
                 request.getSession().setMaxInactiveInterval(4*60*60);
@@ -233,12 +235,14 @@ public class UserController {
                 result.setData(loginRes);
             } else {
                 result.setCode(ResultBean.FAIL);
-                result.setMsg("密码错误");
+                result.setMsg("密码错误！");
+                System.out.println("密码错误！");
                 result.setData(null);
             }
         } else {
-            result.setMsg("用户不存在");
+            result.setMsg("用户不存在！");
             result.setCode(ResultBean.NO_PERMISSION);
+            System.out.println("用户不存在！");
             result.setData(null);
         }
         return result;
