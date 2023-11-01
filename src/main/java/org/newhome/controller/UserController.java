@@ -123,7 +123,7 @@ public class UserController {
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
-        else if (registerReq.getCode().isEmpty() || !captcha.equals(registerReq.getCode())){
+        else if (registerReq.getCode().isEmpty() || !registerReq.getCode().equals(captcha)){
             result.setMsg("验证码错误！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
