@@ -1,13 +1,30 @@
 package org.newhome.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.newhome.annotation.FilterAnnotation;
+import org.newhome.config.FilterType;
+import org.newhome.entity.History;
+import org.newhome.entity.User;
+import org.newhome.entity.Video;
+import org.newhome.req.AddHistoryReq;
+import org.newhome.req.DeleteHistoriesReq;
+import org.newhome.req.DeleteHistoryReq;
+import org.newhome.req.GetHistoryReq;
+import org.newhome.res.HistoriesRes;
+import org.newhome.res.HistoryRes;
+import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.newhome.service.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -24,314 +41,171 @@ public class HistoryController {
     @Autowired
     HistoryService historyService;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    VideoService videoService;
+
     @Resource
     private HttpServletResponse response;
 
     @Resource
     private HttpServletRequest request;
 
-//    @CrossOrigin
-//    @ApiOperation("添加历史记录")
-//    @PostMapping("add")
-//    @FilterAnnotation(url = "/history/add", type = FilterType.anno)
-//    public ResultBean<AddHistoryRes> addHistory (@RequestBody AddHistoryReq historyReq){
-//        ResultBean<AddHistoryRes> result = new ResultBean<>();
-//        if(!StringUtils.hasText(historyReq.getHistoryName())){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("输入历史记录名称不合法！");
-//            result.setData(null);
-//            return result;
-//        }
-//        AddHistoryRes addHistoryRes = new AddHistoryRes();
-//        addHistoryRes.setHistoryInfo(iHistoryService.findHistoryByName(historyReq.getUsername(),historyReq.getHistoryName()));
-//        if(addHistoryRes.getHistoryInfo()==null){
-//            HistoryInfo historyInfo = new HistoryInfo();
-//            historyInfo.setHistoryName(historyReq.getHistoryName());
-//            historyInfo.setUsername(historyReq.getUsername());
-//            AlgorithmInfo algorithmInfo = iAlgorithmService.findAlgoByName(historyReq.getAlgorithm());
-//            if(algorithmInfo == null){
-//                result.setCode(ResultBean.FAIL);
-//                result.setMsg("算法不存在");
-//                result.setData(null);
-//                return result;
-//            }
-//            historyInfo.setAlgoId(algorithmInfo.getAlgoId());
-//            historyInfo.setAlgoName(algorithmInfo.getAlgoName());
-//            historyInfo.setUsername(historyReq.getUsername());
-//            DatasetInfo datasetInfo = iDatasetService.getDatasetInfo(historyReq.getDatasetId());
-//            if(datasetInfo == null){
-//                result.setCode(ResultBean.FAIL);
-//                result.setMsg("数据集不存在");
-//                result.setData(null);
-//                return result;
-//            }
-//            if(datasetInfo.getDatasetIspublic() != 1){
-//                result.setCode(ResultBean.NO_PERMISSION);
-//                result.setMsg("非公开数据集");
-//                result.setData(null);
-//                return result;
-//            }
-//            historyInfo.setDatasetId(datasetInfo.getDatasetId());
-//            historyInfo.setDatasetName(datasetInfo.getDatasetName());
-//            historyInfo.setModelPath(Constant.HOST + ":" + Constant.PORT + "/3dmodel/car.glb");
-//            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//            Date date = new Date();
-//            String day = df.format(date);
-//            historyInfo.setDateTime(day);
-//            //modelpath应该是用户传入的参数，callAlgotithm之后保存文件，这里暂时不处理
-//            int num = iHistoryService.addHistory(historyInfo);
-//            addHistoryRes.setHistoryInfo(historyInfo);
-//            if(num > 0){
-//                result.setMsg("历史记录插入成功！");
-//                result.setData(addHistoryRes);
-//            }
-//            else{
-//                result.setMsg("历史记录插入失败");
-//                result.setCode(ResultBean.FAIL);
-//                result.setData(null);
-//            }
-//        }
-//        else{
-//            result.setData(null);
-//            result.setMsg("同一用户下历史记录名称重复，请重新命名！");
-//            result.setCode(ResultBean.FAIL);
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("展示所有历史记录")
-//    @PostMapping("findAll")
-//    @FilterAnnotation(url = "/history/findAll", type = FilterType.login)
-//    public ResultBean<FindHistoryRes> findHistoryByUser(@RequestBody FindHistoriesByUserReq req, @CookieValue("userTicket")String ticket) {
-//        HttpSession httpSession = request.getSession();
-//        ResultBean<FindHistoryRes> result = new ResultBean<>();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        if(userInfo == null || !StringUtils.hasText(ticket)) {
-//            result.setMsg("用户未登录，请跳转login页面");
-//            result.setCode(ResultBean.NO_PERMISSION);
-//            result.setData(null);
-//            return result;
-//        }
-//        if(userInfo.getAuthority() > 0 && !req.getUsername().equals(userInfo.getUsername())){//非管理员无权限查看别的用户的历史记录
-//            result.setMsg("无权限查看该用户历史记录！");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//            return result;
-//        }
-//        FindHistoryRes histories = new FindHistoryRes();
-//        histories.setHistoryInfos(iHistoryService.findHistoriesByUser(req.getUsername()));
-//        if(histories.getHistoryInfos() != null) {
-//            result.setMsg("查询成功！共"+histories.getHistoryInfos().size()+"条记录");
-//            result.setData(histories);
-//        }
-//        else {
-//            result.setMsg("查询失败！共0条记录");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("根据算法查询历史记录")
-//    @PostMapping("findByaAlgo")
-//    @FilterAnnotation(url = "/findByAlgo", type = FilterType.login)
-//    public ResultBean<FindHistoryRes> findHistoryByUserAndAlgo(@RequestBody FindHistoryByUserAndAlgoReq req, @CookieValue("userTicket")String ticket){
-//        ResultBean<FindHistoryRes> result = new ResultBean<>();
-//        HttpSession httpSession = request.getSession();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        if(userInfo == null || !StringUtils.hasText(ticket)) {
-//            result.setMsg("用户未登录，请跳转login页面");
-//            result.setCode(ResultBean.NO_PERMISSION);
-//            result.setData(null);
-//            return result;
-//        }
-//        if(userInfo.getAuthority() > 0 && !req.getUsername().equals(userInfo.getUsername())){//非管理员无权限查看别的用户的历史记录
-//            result.setMsg("无权限查看该用户历史记录！");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//            return result;
-//        }
-//        FindHistoryRes histories = new FindHistoryRes();
-//        AlgorithmInfo algorithmInfo = iAlgorithmService.findAlgoByName(req.getAlgorithm());
-//        if(algorithmInfo == null){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("算法不存在");
-//            result.setData(null);
-//            return result;
-//        }
-//        histories.setHistoryInfos(iHistoryService.findHistoriesByUserAndAlgo(req.getUsername(), algorithmInfo.getAlgoId()));
-//        if(histories.getHistoryInfos() != null) {
-//            result.setMsg("查询成功！共"+histories.getHistoryInfos().size()+"条记录");
-//            result.setData(histories);
-//        }
-//        else {
-//            result.setMsg("查询失败！共0条记录");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("根据数据集查询历史记录")
-//    @PostMapping("findByDataset")
-//    @FilterAnnotation(url = "/history/findByDataset", type = FilterType.login)
-//    public ResultBean<FindHistoryRes> findHistoryByUserAndDataset(@RequestBody FindHistoryByUserAndDatasetReq req, @CookieValue("userTicket")String ticket){
-//        ResultBean<FindHistoryRes> result = new ResultBean<>();
-//        HttpSession httpSession = request.getSession();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        if(userInfo == null || !StringUtils.hasText(ticket)) {
-//            result.setMsg("用户未登录，请跳转login页面");
-//            result.setCode(ResultBean.NO_PERMISSION);
-//            result.setData(null);
-//            return result;
-//        }
-//        if(userInfo.getAuthority() > 0 && !req.getUsername().equals(userInfo.getUsername())){//非管理员无权限查看别的用户的历史记录
-//            result.setMsg("无权限查看该用户历史记录！");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//            return result;
-//        }
-//        DatasetInfo datasetInfo = iDatasetService.getDatasetInfo(req.getDatasetId());
-//        if(datasetInfo == null){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("数据集不存在");
-//            result.setData(null);
-//            return result;
-//        }
-//        FindHistoryRes histories = new FindHistoryRes();
-//        histories.setHistoryInfos(iHistoryService.findHistoriesByUserAndDataset(req.getUsername(), datasetInfo.getDatasetId()));
-//        if(histories.getHistoryInfos() != null) {
-//            result.setMsg("查询成功！共"+histories.getHistoryInfos().size()+"条记录");
-//            result.setData(histories);
-//        }
-//        else {
-//            result.setMsg("查询失败！共0条记录");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("根据算法和数据集查询历史记录")
-//    @PostMapping("findByALgoAndDataset")
-//    @FilterAnnotation(url = "/history/findByAlgoAndDataset", type = FilterType.login)
-//    public ResultBean<FindHistoryRes> findHistoryByUserAndAlgoAndDataset(@RequestBody FindHistoryByUserAndAlgoAndDataset req, @CookieValue("userTicket")String ticket){
-//        ResultBean<FindHistoryRes> result = new ResultBean<>();
-//        HttpSession httpSession = request.getSession();
-//        UserInfo userInfo = (UserInfo)httpSession.getAttribute(ticket);
-//        if(userInfo == null || !StringUtils.hasText(ticket)) {
-//            result.setMsg("用户未登录，请跳转login页面");
-//            result.setCode(ResultBean.NO_PERMISSION);
-//            result.setData(null);
-//            return result;
-//        }
-//        if(userInfo.getAuthority() > 0 && !req.getUsername().equals(userInfo.getUsername())){//非管理员无权限查看别的用户的历史记录
-//            result.setMsg("无权限查看该用户历史记录！");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//            return result;
-//        }
-//        AlgorithmInfo algorithmInfo = iAlgorithmService.findAlgoByName(req.getAlgorithm());
-//        if(algorithmInfo == null){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("算法不存在");
-//            result.setData(null);
-//            return result;
-//        }
-//        DatasetInfo datasetInfo = iDatasetService.getDatasetInfo(req.getDatasetId());
-//        if(datasetInfo == null){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("数据集不存在");
-//            result.setData(null);
-//            return result;
-//        }
-//        FindHistoryRes histories = new FindHistoryRes();
-//        histories.setHistoryInfos(iHistoryService.findHistoriesByUserAndAlgoAndDataset(req.getUsername(), algorithmInfo.getAlgoId(), datasetInfo.getDatasetId()));
-//        if(histories.getHistoryInfos() != null) {
-//            result.setMsg("查询成功！共"+histories.getHistoryInfos().size()+"条记录");
-//            result.setData(histories);
-//        }
-//        else {
-//            result.setMsg("查询失败！共0条记录");
-//            result.setCode(ResultBean.FAIL);
-//            result.setData(null);
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("删除历史记录")
-//    @PostMapping("delete")
-//    @FilterAnnotation(url = "/history/delete", type = FilterType.login)
-//    public ResultBean<AddHistoryRes> deleteHistory(@RequestBody DeleteHistoryReq req){
-//        ResultBean<AddHistoryRes> result = new ResultBean<>();
-//        AddHistoryRes addHistoryRes = new AddHistoryRes();
-//        addHistoryRes.setHistoryInfo(iHistoryService.findHistoryByName(req.getUsername(),req.getHistoryName()));
-//        if(addHistoryRes.getHistoryInfo() == null){
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("该条历史记录不存在");
-//            result.setData(null);
-//        }
-//        else{
-//            boolean flag = iHistoryService.deleteHistory(req.getUsername(), req.getHistoryName());
-//            List<PictureDataInfo> pictureDataInfos = iPictureDataService.getPictures(addHistoryRes.getHistoryInfo().getDatasetId());
-//            for(PictureDataInfo pictureDataInfo: pictureDataInfos){
-//                flag &= iCrackService.deleteCrackByPictureId(pictureDataInfo.getPictureId());
-//            }
-//            if(flag){
-//                result.setMsg("删除历史记录成功");
-//                result.setData(addHistoryRes);
-//            }
-//            else{
-//                result.setCode(ResultBean.FAIL);
-//                result.setMsg("删除历史记录失败");
-//                result.setData(null);
-//            }
-//        }
-//        return result;
-//    }
-//
-//    @CrossOrigin
-//    @ApiOperation("更新历史记录名称")
-//    @PostMapping("update")
-//    @FilterAnnotation(url = "/history/update", type = FilterType.login)
-//    public ResultBean<AddHistoryRes> updateHistory(@RequestBody UpdateHistoryReq req){
-//        ResultBean<AddHistoryRes> result = new ResultBean<>();
-//        AddHistoryRes res = new AddHistoryRes();
-//        HistoryInfo historyInfo = iHistoryService.findHistoryByName(req.getUsername(), req.getHistoryName());
-//        if(historyInfo == null) {
-//            result.setMsg("历史记录不存在");
-//            result.setData(null);
-//            result.setCode(ResultBean.FAIL);
-//            return result;
-//        }
-//        res.setHistoryInfo(iHistoryService.findHistoryByName(req.getUsername(), req.getNewName()));
-//        if(res.getHistoryInfo() == null) {
-//            boolean flag = iHistoryService.updateHistory(historyInfo.getHistoryId(), req.getNewName());
-//            if(flag){
-//                historyInfo.setHistoryName(req.getNewName());
-//                res.setHistoryInfo(historyInfo);
-//                result.setData(res);
-//                result.setMsg("修改历史记录名称成功");
-//            }
-//            else{
-//                result.setMsg("修改失败");
-//                result.setData(null);
-//                result.setCode(ResultBean.FAIL);
-//            }
-//        }
-//        else{
-//            result.setMsg("同一用户下历史记录名称重复！");
-//            result.setData(null);
-//            result.setCode(ResultBean.FAIL);
-//        }
-//
-//        return result;
-//    }
+    @CrossOrigin
+    @ApiOperation("添加历史记录")
+    @PostMapping("add")
+    @FilterAnnotation(url = "/history/add", type = FilterType.auth)
+    public ResultBean<HistoryRes> addHistory (AddHistoryReq historyReq){
+        ResultBean<HistoryRes> result = new ResultBean<>();
+        User user = userService.findById(historyReq.getUserId());
+        if(user == null) {
+            result.setMsg("用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        Video video  = videoService.findVideobyId(historyReq.getVideoId());
+        if(video == null) {
+            result.setMsg("视频不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        History history = historyService.getOne(historyReq.getUserId(), historyReq.getVideoId());
+        if(history == null) {
+            HistoryRes addHistoryRes = new HistoryRes();
+            List<History> histories = historyService.getHistories(historyReq.getUserId());
+            if(CollectionUtils.isEmpty(histories)) {
+                if (histories.size() == 100) {
+                    int lastHistoryId = histories.get(histories.size() - 1).getHistoryId();
+                    historyService.deleteHistory(lastHistoryId);
+                }
+            }
+            history.setVideoId(historyReq.getVideoId());
+            history.setUserId(historyReq.getUserId());
+            history.setWatchTime(historyReq.getWatchTime());
+            int flag = historyService.addHistory(history);
+            addHistoryRes.setHistory(history);
+            if(flag != 0) {
+                result.setMsg("插入浏览记录成功");
+                result.setData(addHistoryRes);
+            }
+            else {
+                result.setData(null);
+                result.setMsg("插入浏览记录失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        else{
+            history.setWatchTime(historyReq.getWatchTime());
+            int flag = historyService.updateTime(history);
+            HistoryRes res = new HistoryRes();
+            res.setHistory(history);
+            if(flag != 0) {
+                result.setMsg("修改浏览记录时间成功");
+                result.setData(res);
+            }
+            else {
+                result.setData(null);
+                result.setMsg("修改浏览记录时间失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        return result;
+    }
+
+    @CrossOrigin
+    @ApiOperation("展示所有浏览记录")
+    @PostMapping("findAll")
+    @FilterAnnotation(url = "/history/findAll", type = FilterType.auth)
+    public ResultBean<HistoriesRes> findHistories(@RequestBody GetHistoryReq req) {
+        ResultBean<HistoriesRes> result = new ResultBean<>();
+        HistoriesRes historiesRes = new HistoriesRes();
+        User user = userService.findById(req.getUserId());
+        if(user == null) {
+            result.setMsg("用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        List<History> histories = historyService.getHistories(req.getUserId());
+        if(CollectionUtils.isEmpty(histories)) {
+            result.setMsg("查询失败！共0条记录");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            historiesRes.setHistories(histories);
+            result.setData(historiesRes);
+            result.setMsg("查询成功！共" + histories.size() + "条记录");
+        }
+        return result;
+    }
+
+    @CrossOrigin
+    @ApiOperation("删除单条浏览记录")
+    @PostMapping("delete")
+    @FilterAnnotation(url = "/history/delete", type = FilterType.login)
+    public ResultBean<HistoryRes> deleteHistory(@RequestBody DeleteHistoryReq req){
+        ResultBean<HistoryRes> result = new ResultBean<>();
+        HistoryRes historyRes = new HistoryRes();
+        History history = historyService.getById(req.getHistoryId());
+        if(history == null){
+            result.setCode(ResultBean.FAIL);
+            result.setMsg("该条浏览记录不存在");
+            result.setData(null);
+        }
+        else{
+            int flag = historyService.deleteHistory(req.getHistoryId());
+            historyRes.setHistory(history);
+            if(flag != 0){
+                result.setMsg("成功删除一条历史记录");
+                result.setData(historyRes);
+            }
+            else{
+                result.setCode(ResultBean.FAIL);
+                result.setMsg("删除历史记录失败");
+                result.setData(null);
+            }
+        }
+        return result;
+    }
+
+    @CrossOrigin
+    @ApiOperation("删除多条浏览记录")
+    @PostMapping("deleteAll")
+    @FilterAnnotation(url = "/history/deleteAll", type = FilterType.login)
+    public ResultBean<HistoryRes> deleteHistories(@RequestBody DeleteHistoriesReq req){
+        ResultBean<HistoryRes> result = new ResultBean<>();
+        HistoryRes historyRes = new HistoryRes();
+        User user = userService.findById(req.getUserId());
+        if(user == null) {
+            result.setMsg("用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        else{
+            List<History> histories = historyService.getHistories(req.getUserId());
+            int num = 0;
+            for(History history:histories) {
+                if(historyService.deleteHistory(history.getHistoryId()) != 0)
+                    num ++;
+            }
+            if(num != 0){
+                result.setMsg("成功删除"+histories.size()+"条历史记录成功");
+                result.setData(historyRes);
+            }
+            else{
+                result.setCode(ResultBean.FAIL);
+                result.setMsg("删除0条历史记录");
+                result.setData(null);
+            }
+        }
+        return result;
+    }
 
 //
 //    @CrossOrigin

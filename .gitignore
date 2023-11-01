@@ -9,4 +9,4 @@ target/
 #.gitignore
 #pom.xml
 src/main/resources/application.yml
-vipadambackendlog/
+logs/

@@ -1,5 +1,6 @@
 package org.newhome.service;
 
+import org.newhome.entity.User;
 import org.newhome.entity.Video;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,11 +13,27 @@ import java.util.List;
 */
 public interface VideoService extends IService<Video> {
 
-    void uploadVideo(Video video);
+    int uploadVideo(Video video);
 
-    void deleteVideo(Integer videoid);
+    int deleteVideo(Video video);
 
-    void deleteVideos(List<Integer> videoIdList);
+    int deleteVideos(List<Integer> videoList);
 
     void findVideos(Video video);
+
+
+    Video findVideobyId(Integer videoid);
+
+    //根据用户id查找视频
+    List<Video> findVideoByUser(User user);
+
+    //根据标题和简介模糊查找视频
+    List<Video> findVideoByName(String content);
+
+    void  updateVideoName(Video video,String newName);
+
+    void updateVideoIntroduction(Video video,String newIntroduction);
+
+
+
 }

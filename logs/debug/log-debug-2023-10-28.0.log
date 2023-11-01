@@ -247,3 +247,147 @@
 2023-10-28 15:30:28.562 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - ==>  Preparing: SELECT relation_id,user1_id,user2_id,kind FROM relation WHERE (user1_id = ? AND kind = ?)
 2023-10-28 15:30:28.562 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - ==> Parameters: 14(Integer), 0(Integer)
 2023-10-28 15:30:28.570 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.RelationMapper.selectList - <==      Total: 0
+2023-10-28 19:05:56.439 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.insert - ==>  Preparing: INSERT INTO tag ( tag_name ) VALUES ( ? )
+2023-10-28 19:05:56.456 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.insert - ==> Parameters: (String)
+2023-10-28 19:05:56.638 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.insert - <==    Updates: 1
+2023-10-28 19:13:09.622 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.RelationMapper.selectList - ==>  Preparing: SELECT relation_id,user1_id,user2_id,kind FROM relation WHERE (user1_id = ? AND user2_id = ? AND kind = ?)
+2023-10-28 19:13:09.643 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.RelationMapper.selectList - ==> Parameters: 111(Integer), 333(Integer), 0(Integer)
+2023-10-28 19:13:09.667 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.RelationMapper.selectList - <==      Total: 0
+2023-10-28 19:19:19.021 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 19:19:19.041 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 19:19:19.063 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 19:22:05.709 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_name = ?)
+2023-10-28 19:22:05.710 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 体育(String)
+2023-10-28 19:22:05.716 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 19:22:14.623 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_name = ?)
+2023-10-28 19:22:14.624 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 学习(String)
+2023-10-28 19:22:14.631 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 19:22:16.893 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_name = ?)
+2023-10-28 19:22:16.893 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 学习(String)
+2023-10-28 19:22:16.901 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 19:22:20.716 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_name = ?)
+2023-10-28 19:22:20.717 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 学习(String)
+2023-10-28 19:22:20.724 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 19:36:28.637 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.insert - ==>  Preparing: INSERT INTO tag ( tag_name ) VALUES ( ? )
+2023-10-28 19:36:28.651 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.insert - ==> Parameters: 学习(String)
+2023-10-28 19:36:28.852 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.insert - <==    Updates: 1
+2023-10-28 19:36:55.146 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.insert - ==>  Preparing: INSERT INTO tag ( tag_name ) VALUES ( ? )
+2023-10-28 19:36:55.146 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.insert - ==> Parameters: 学习(String)
+2023-10-28 19:36:55.361 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.insert - <==    Updates: 1
+2023-10-28 19:52:52.107 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectList - ==>  Preparing: SELECT tag_id,tag_name FROM tag
+2023-10-28 19:52:52.121 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectList - ==> Parameters: 
+2023-10-28 19:52:52.143 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectList - <==      Total: 6
+2023-10-28 19:53:22.780 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 19:53:22.781 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 19:53:22.788 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 19:53:59.784 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 19:53:59.784 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 10(Integer)
+2023-10-28 19:53:59.792 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 20:18:48.278 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectList - ==>  Preparing: SELECT tag_id,tag_name FROM tag
+2023-10-28 20:18:48.290 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectList - ==> Parameters: 
+2023-10-28 20:18:48.309 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectList - <==      Total: 6
+2023-10-28 20:18:56.697 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 20:18:56.698 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 20:18:56.705 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 20:28:02.763 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectList - ==>  Preparing: SELECT tag_id,tag_name FROM tag
+2023-10-28 20:28:02.778 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectList - ==> Parameters: 
+2023-10-28 20:28:02.799 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectList - <==      Total: 6
+2023-10-28 20:28:15.029 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 20:28:15.030 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 25(Integer)
+2023-10-28 20:28:15.038 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 21:38:43.007 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 21:38:43.023 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:38:43.043 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 21:38:43.049 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 21:38:43.049 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 21:38:43.055 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 21:38:43.061 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagrecordMapper.insert - ==>  Preparing: INSERT INTO tagrecord ( tag_id, video_id ) VALUES ( ?, ? )
+2023-10-28 21:38:43.061 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagrecordMapper.insert - ==> Parameters: 2(Integer), 1(Integer)
+2023-10-28 21:38:43.237 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.TagrecordMapper.insert - <==    Updates: 1
+2023-10-28 21:43:30.639 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 21:43:30.640 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 10(Integer)
+2023-10-28 21:43:30.647 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 21:43:30.649 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 21:43:30.649 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 21:43:30.656 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 21:43:38.129 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 21:43:38.131 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:43:38.136 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 21:43:38.139 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 21:43:38.139 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 20(Integer)
+2023-10-28 21:43:38.146 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 21:58:44.501 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 21:58:44.519 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 10(Integer)
+2023-10-28 21:58:44.541 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 21:58:44.549 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 21:58:44.549 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:58:44.559 [http-nio-8080-exec-6] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 21:58:50.316 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 21:58:50.317 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:58:50.325 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 21:58:50.327 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 21:58:50.327 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 21:58:50.337 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 21:58:50.346 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==>  Preparing: DELETE FROM tagrecord WHERE (video_id = ? AND tag_id = ?)
+2023-10-28 21:58:50.346 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==> Parameters: 1(Integer), 1(Integer)
+2023-10-28 21:58:50.361 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.delete - <==    Updates: 0
+2023-10-28 22:00:50.907 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:00:50.907 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:00:50.915 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:00:50.921 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 22:00:50.922 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:00:50.930 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 22:00:50.936 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==>  Preparing: DELETE FROM tagrecord WHERE (video_id = ? AND tag_id = ?)
+2023-10-28 22:00:50.936 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==> Parameters: 1(Integer), 2(Integer)
+2023-10-28 22:00:51.124 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.TagrecordMapper.delete - <==    Updates: 1
+2023-10-28 22:00:55.108 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:00:55.109 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:00:55.116 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:00:55.117 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 22:00:55.119 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 4(Integer)
+2023-10-28 22:00:55.126 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 1
+2023-10-28 22:00:55.127 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==>  Preparing: DELETE FROM tagrecord WHERE (video_id = ? AND tag_id = ?)
+2023-10-28 22:00:55.128 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.delete - ==> Parameters: 1(Integer), 4(Integer)
+2023-10-28 22:00:55.140 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.delete - <==    Updates: 0
+2023-10-28 22:00:58.922 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:00:58.922 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:00:58.931 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:00:58.932 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.TagMapper.selectOne - ==>  Preparing: SELECT tag_id,tag_name FROM tag WHERE (tag_id = ?)
+2023-10-28 22:00:58.932 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.TagMapper.selectOne - ==> Parameters: 7(Integer)
+2023-10-28 22:00:58.940 [http-nio-8080-exec-8] DEBUG org.newhome.mapper.TagMapper.selectOne - <==      Total: 0
+2023-10-28 22:11:40.952 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:11:40.971 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:11:40.992 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:11:41.001 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==>  Preparing: SELECT record_id,tag_id,video_id FROM tagrecord WHERE (video_id = ?)
+2023-10-28 22:11:41.002 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==> Parameters: 1(Integer)
+2023-10-28 22:11:41.009 [http-nio-8080-exec-4] DEBUG org.newhome.mapper.TagrecordMapper.selectList - <==      Total: 3
+2023-10-28 22:12:05.274 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:12:05.274 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:12:05.281 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 22:12:19.756 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:12:19.757 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:12:19.765 [http-nio-8080-exec-7] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 22:12:36.546 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:12:36.546 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:12:36.554 [http-nio-8080-exec-9] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 22:12:51.499 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:12:51.500 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 1(Integer)
+2023-10-28 22:12:51.507 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:12:51.509 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==>  Preparing: SELECT record_id,tag_id,video_id FROM tagrecord WHERE (video_id = ?)
+2023-10-28 22:12:51.509 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==> Parameters: 1(Integer)
+2023-10-28 22:12:51.517 [http-nio-8080-exec-2] DEBUG org.newhome.mapper.TagrecordMapper.selectList - <==      Total: 3
+2023-10-28 22:12:58.636 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:12:58.637 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:12:58.644 [http-nio-8080-exec-3] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 22:13:56.174 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:13:56.186 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:13:56.204 [http-nio-8080-exec-5] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
+2023-10-28 22:15:06.644 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:15:06.645 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 2(Integer)
+2023-10-28 22:15:06.656 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 1
+2023-10-28 22:15:06.663 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==>  Preparing: SELECT record_id,tag_id,video_id FROM tagrecord WHERE (video_id = ?)
+2023-10-28 22:15:06.663 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagrecordMapper.selectList - ==> Parameters: 2(Integer)
+2023-10-28 22:15:06.672 [http-nio-8080-exec-10] DEBUG org.newhome.mapper.TagrecordMapper.selectList - <==      Total: 2
+2023-10-28 22:15:11.955 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==>  Preparing: SELECT video_id,video_name,user_id,create_time,pageshot,like_num,star_num,share_num,video_path,introduction FROM video WHERE (video_id = ?)
+2023-10-28 22:15:11.956 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.VideoMapper.selectOne - ==> Parameters: 3(Integer)
+2023-10-28 22:15:11.963 [http-nio-8080-exec-1] DEBUG org.newhome.mapper.VideoMapper.selectOne - <==      Total: 0
