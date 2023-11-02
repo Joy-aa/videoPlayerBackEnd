@@ -125,33 +125,19 @@ public class VideoController {
      **/
     @ApiOperation("查询视频")
     @GetMapping("findVideos")
-    public ResultBean<List<Video>> findVideos(Integer videoid, String videoname, Integer userid,
-                                                  String introduction, String createTime, Long likenum,
-                                                  Long starNum, Long shareNum) throws ParseException {
-        Video video = new Video();
-        video.setVideoId(videoid);
-        video.setVideoName(videoname);
-        video.setUserId(userid);
-        video.setIntroduction(introduction);
-        video.setLikeNum(likenum);
-        video.setStarNum(starNum);
-        video.setShareNum(shareNum);
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            Date newTime = format.parse(createTime);
-            video.setCreateTime(newTime); //Sun Feb 02 02:02:02 CST 2020
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public ResultBean<Video> findVideos(Integer videoId) throws ParseException {
+        ResultBean<Video> result = new ResultBean<>();
+        Video video = videoService.findVideobyId(videoId);
+        if(video == null) {
+            result.setMsg("视频不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
         }
-        videoService.findVideos(video);
-
-        ResultBean<List<Video>> result = new ResultBean<>();
         result.setMsg("成功");
-        result.setCode(ResultBean.SUCCESS);
-        result.setData(null);
+        result.setData(video);
         return result;
     }
+
     @ApiOperation("根据用户查询视频")
     @GetMapping("findVideoByUser")
     public ResultBean<List<Video>> findVideoByUser(Integer userid){
