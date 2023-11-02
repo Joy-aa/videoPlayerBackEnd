@@ -386,7 +386,7 @@ public class UserController {
 
     // 根据指定信息查询个人信息
     @CrossOrigin
-    @ApiOperation("查询用户")
+    @ApiOperation("根据用户名和简介模糊查询")
     @GetMapping("findUsers")
     @FilterAnnotation(url="/user/findUsers",type = FilterType.login)
     public ResultBean<List<User>> findUsers(String content) {

@@ -76,6 +76,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     public List<Video> findVideoByName(String content){
         LambdaQueryWrapper<Video> wrapper = new LambdaQueryWrapper<Video>();
         wrapper.like(content!=null,Video::getVideoName, content).or()
+                .or()
                 .like(content!=null,Video::getIntroduction, content);
         return videoMapper.selectList(wrapper);
     }

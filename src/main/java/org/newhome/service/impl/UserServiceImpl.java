@@ -83,6 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public List<User> findUsers(String content) {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>();
         wrapper.like(!ObjectUtils.isEmpty(content),User::getUsername,content)
+                .or()
                 .like(!ObjectUtils.isEmpty(content),User::getIntroduction,content);
         List<User> userList = userMapper.selectList(wrapper);
         return userList;
