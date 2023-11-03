@@ -10,6 +10,7 @@ import org.newhome.config.FilterType;
 import org.newhome.entity.Tagrecord;
 import org.newhome.entity.User;
 import org.newhome.entity.Video;
+import org.newhome.res.VideoRes;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
 import org.newhome.util.ResultBean;
@@ -160,12 +161,19 @@ public class VideoController {
     @ApiOperation("根据视频名和简介模糊查询")
     @GetMapping("findVideoByName")
 
-    public ResultBean<List<Video>> findVideoByName(String content){
-        ResultBean<List<Video>> result= new ResultBean<>();
+    public ResultBean<List<VideoRes>> findVideoByName(String content){
+        ResultBean<List<VideoRes>> result= new ResultBean<>();
         List<Video> videoList= videoService.findVideoByName(content);
+        List<VideoRes> videoResList = new ArrayList<>();
+        for (Video video: videoList) {
+            User user = userService.findById(video.getUserId());
+            VideoRes videoRes = new VideoRes(video);
+            videoRes.setUsername(user.getUsername());
+            videoResList.add(videoRes);
+        }
         result.setMsg("查询成功");
         result.setCode(ResultBean.SUCCESS);
-        result.setData(videoList);
+        result.setData(videoResList);
         return result;
     }
 

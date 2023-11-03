@@ -6,12 +6,17 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.newhome.annotation.FilterAnnotation;
 import org.newhome.config.FilterType;
+import org.newhome.entity.Relation;
 import org.newhome.entity.User;
+import org.newhome.entity.Video;
 import org.newhome.req.*;
 import org.newhome.res.CaptchaRes;
 import org.newhome.res.LoginRes;
 import org.newhome.res.RegisterRes;
+import org.newhome.res.UserRes;
+import org.newhome.service.RelationService;
 import org.newhome.service.UserService;
+import org.newhome.service.VideoService;
 import org.newhome.util.CookieUtil;
 import org.newhome.util.MD5Util;
 import org.newhome.util.ResultBean;
@@ -32,6 +37,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -54,6 +60,10 @@ import static org.newhome.util.MD5Util.formPassToDBPass;
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    RelationService relationService;
+    @Autowired
+    VideoService videoService;
 
     @Autowired
     private DefaultKaptcha defaultKaptcha;
@@ -206,7 +216,8 @@ public class UserController {
         String captcha = (String) request.getSession().getAttribute("captcha");
         System.out.println(captcha);
         if (!StringUtils.hasText(captcha) || !captcha.equals(req.getCode())){
-            result.setMsg("验证码错误，请重新获取验证码");
+            result.setMsg("验证码错误！");
+            System.out.println("验证码错误！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
             return result;
@@ -224,8 +235,9 @@ public class UserController {
         if (loginRes.getUser()!=null){
             String salt = loginRes.getUser().getSalt();
             if(loginRes.getUser().getPassword().equals(formPassToDBPass(req.getPassword(), salt))){
-                result.setMsg("登录成功");
+                result.setMsg("登录成功！");
                 //生成cookie
+                System.out.println("登录成功！");
                 String userTicket = UUIDUtil.uuid();
                 request.getSession().setAttribute(userTicket, loginRes.getUser());
                 request.getSession().setMaxInactiveInterval(4*60*60);
@@ -233,12 +245,14 @@ public class UserController {
                 result.setData(loginRes);
             } else {
                 result.setCode(ResultBean.FAIL);
-                result.setMsg("密码错误");
+                result.setMsg("密码错误！");
+                System.out.println("密码错误！");
                 result.setData(null);
             }
         } else {
-            result.setMsg("用户不存在");
+            result.setMsg("用户不存在！");
             result.setCode(ResultBean.NO_PERMISSION);
+            System.out.println("用户不存在！");
             result.setData(null);
         }
         return result;
@@ -382,14 +396,27 @@ public class UserController {
 
     // 根据指定信息查询个人信息
     @CrossOrigin
-    @ApiOperation("查询用户")
+    @ApiOperation("根据用户名和简介模糊查询")
     @GetMapping("findUsers")
     @FilterAnnotation(url="/user/findUsers",type = FilterType.login)
-    public ResultBean<List<User>> findUsers(String content) {
+    public ResultBean<List<UserRes>> findUsers(String content) {
         List<User> userList = userService.findUsers(content);
-        ResultBean<List<User>> result = new ResultBean<>();
+        List<UserRes> userResList = new ArrayList<>();
+        ResultBean<List<UserRes>> result = new ResultBean<>();
+        for (User user: userList) {
+            UserRes ur1 = new UserRes(user);
+            List<Video> videoList = videoService.findVideoByUser(user);
+            int num = 0;
+            for (Video video: videoList) {
+                num += video.getLikeNum();
+            }
+            ur1.setLikeNum(num);
+            List<Relation> fansList = relationService.findFans(ur1.getUserId(), 0);
+            ur1.setFanNum(fansList.size());
+            userResList.add(ur1);
+        }
         result.setMsg("查询成功");
-        result.setData(userList);
+        result.setData(userResList);
         return result;
     }
 

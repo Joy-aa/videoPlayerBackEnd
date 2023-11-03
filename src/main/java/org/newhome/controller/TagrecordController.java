@@ -3,16 +3,14 @@ package org.newhome.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.newhome.entity.Relation;
-import org.newhome.entity.Tag;
-import org.newhome.entity.Tagrecord;
-import org.newhome.entity.Video;
+import org.newhome.entity.*;
 import org.newhome.req.RelationReq;
 import org.newhome.service.*;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +31,8 @@ public class TagrecordController {
     VideoService videoService;
     @Autowired
     TagService tagService;
+    @Autowired
+    UserService userService;
 
     @CrossOrigin
     @ApiOperation("新增视频标签")
@@ -138,8 +138,8 @@ public class TagrecordController {
     @CrossOrigin
     @ApiOperation("查看标签所有视频")
     @GetMapping("findVideoByTag")
-    public ResultBean<List<Tagrecord>> findVideoByTag(Integer tagId) {
-        ResultBean<List<Tagrecord>> result = new ResultBean<>();
+    public ResultBean<List<Video>> findVideoByTag(Integer tagId) {
+        ResultBean<List<Video>> result = new ResultBean<>();
         Tag tag = tagService.findTagById(tagId);
         if(tag == null){
             result.setMsg("标签不存在，请重新确认");
@@ -147,10 +147,47 @@ public class TagrecordController {
             result.setData(null);
         }
         else{
+            List<Video> videoList = new ArrayList<>();
             List<Tagrecord> tagrecordList = tagrecordService.findVideoByTag(tag);
+            for (Tagrecord tagrecord1: tagrecordList) {
+                int vid = tagrecord1.getVideoId();
+                Video video = videoService.findVideobyId(vid);
+                videoList.add(video);
+            }
             result.setMsg("查询成功");
             result.setCode(ResultBean.SUCCESS);
-            result.setData(tagrecordList);
+            result.setData(videoList);
+        }
+        return result;
+
+    }
+
+    @CrossOrigin
+    @ApiOperation("查看标签所有视频对应的用户")
+    @GetMapping("findUserOfVideoByTag")
+    public ResultBean<List<String>> findUserOfVideoByTag(Integer tagId) {
+        ResultBean<List<String>> result = new ResultBean<>();
+        Tag tag = tagService.findTagById(tagId);
+        if(tag == null){
+            result.setMsg("标签不存在，请重新确认");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else{
+            List<Video> videoList = new ArrayList<>();
+            List<Tagrecord> tagrecordList = tagrecordService.findVideoByTag(tag);
+            List<String> userList = new ArrayList<>();
+            for (Tagrecord tagrecord1: tagrecordList) {
+                int vid = tagrecord1.getVideoId();
+                Video video = videoService.findVideobyId(vid);
+                videoList.add(video);
+                int uid = video.getUserId();
+                User user = userService.findById(uid);
+                userList.add(user.getUsername());
+            }
+            result.setMsg("查询成功");
+            result.setCode(ResultBean.SUCCESS);
+            result.setData(userList);
         }
         return result;
 

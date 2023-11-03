@@ -65,9 +65,9 @@ public class RelationController {
         else {
             // 如果拉黑了则不能关注，只能取消拉黑然后关注
             if (kind == 0) {
-                List<Relation> hateList = relationService.findRelations(relationReq.getUserid1(),
-                        relationReq.getUserid2(), 1);
-                if (hateList.size() > 0) {
+                Relation hate = relationService.findRelation(relationReq.getUserid1(),
+                        relationReq.getUserid2());
+                if (hate != null && hate.getKind() == 1) {
                     result.setMsg("用户在黑名单中，关注失败");
                     result.setCode(ResultBean.FAIL);
                     result.setData(null);
@@ -83,16 +83,15 @@ public class RelationController {
             }
             // 如果关注了之后想拉黑，需要把关注关系修改为拉黑关系
             else {
-                List<Relation> followList = relationService.findRelations(relationReq.getUserid1(),
-                        relationReq.getUserid2(), 0);
-                if (followList.size() > 0) {
+                Relation follow = relationService.findRelation(relationReq.getUserid1(),
+                        relationReq.getUserid2());
+                if (follow != null && follow.getKind() == 0) {
                     int res = relationService.modifyRelation(user1, user2, kind);
                     if (res != 0){
                         result.setMsg("拉黑成功");
                         result.setCode(ResultBean.SUCCESS);
-                        Relation relation = followList.get(0);
-                        relation.setKind(kind);
-                        result.setData(relation);
+                        follow.setKind(kind);
+                        result.setData(follow);
                     }
                 }
                 else {
@@ -160,12 +159,12 @@ public class RelationController {
 
     //查询关系
     @CrossOrigin
-    @ApiOperation("查询关系，关注/粉丝/黑名单")
-    @GetMapping("findRelations")
-    @FilterAnnotation(url="/relation/findRelations",type = FilterType.login)
-    public ResultBean<List<Relation>> findRelations(RelationReq relationReq) {
+    @ApiOperation("查询关系，我关注/拉黑了谁")
+    @GetMapping("findFollows")
+    @FilterAnnotation(url="/relation/findFollows",type = FilterType.login)
+    public ResultBean<List<Relation>> findFollows(RelationReq relationReq) {
         ResultBean<List<Relation>> result = new ResultBean<>();
-        if (relationReq.getUserid1() == null && relationReq.getUserid2() == null) {
+        if (relationReq.getUserid1() == null) {
             result.setMsg("用户不存在，请重新登录");
             result.setCode(ResultBean.NO_PERMISSION);
             result.setData(null);
@@ -175,13 +174,33 @@ public class RelationController {
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
-        else if (relationReq.getUserid2() != null && relationReq.getKind() == 1) {
-            result.setMsg("无法查询谁拉黑了自己");
+        else {
+            List<Relation> relationList = relationService.findFollows(relationReq.getUserid1(), relationReq.getKind());
+            result.setMsg("查询成功");
+            result.setCode(ResultBean.SUCCESS);
+            result.setData(relationList);
+        }
+        return result;
+    }
+
+    @CrossOrigin
+    @ApiOperation("查询关系，谁关注/拉黑了我")
+    @GetMapping("findFans")
+    @FilterAnnotation(url="/relation/findFans",type = FilterType.login)
+    public ResultBean<List<Relation>> findFans(RelationReq relationReq) {
+        ResultBean<List<Relation>> result = new ResultBean<>();
+        if (relationReq.getUserid2() == null) {
+            result.setMsg("用户不存在，请重新登录");
+            result.setCode(ResultBean.NO_PERMISSION);
+            result.setData(null);
+        }
+        else if (relationReq.getKind() == null || relationReq.getKind() != 0 && relationReq.getKind() != 1) {
+            result.setMsg("操作码错误");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
         else {
-            List<Relation> relationList = relationService.findRelations(relationReq.getUserid1(), relationReq.getUserid2(), relationReq.getKind());
+            List<Relation> relationList = relationService.findFollows(relationReq.getUserid2(), relationReq.getKind());
             result.setMsg("查询成功");
             result.setCode(ResultBean.SUCCESS);
             result.setData(relationList);
