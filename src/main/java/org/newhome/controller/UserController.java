@@ -392,6 +392,25 @@ public class UserController {
         result.setData(userList);
         return result;
     }
+
+    @CrossOrigin
+    @ApiOperation("根据id查询单个用户")
+    @GetMapping("findUser")
+    @FilterAnnotation(url="/user/findUser",type = FilterType.anno)
+    public ResultBean<User> findUser(Integer userId) {
+        ResultBean<User> result = new ResultBean<>();
+        User user = userService.findById(userId);
+        if(user == null) {
+            result.setMsg("用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            result.setData(user);
+            result.setMsg("查询成功");
+        }
+        return result;
+    }
 //
 //
 //    //修改手机号

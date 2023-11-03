@@ -132,6 +132,7 @@ public class VideoController {
             result.setMsg("视频不存在");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
+            return result;
         }
         result.setMsg("成功");
         result.setData(video);
