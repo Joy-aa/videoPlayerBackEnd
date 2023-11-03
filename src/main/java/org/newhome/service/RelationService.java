@@ -20,6 +20,10 @@ public interface RelationService extends IService<Relation> {
 
     int modifyRelation(User user1, User user2, Integer kind);
 
-    List<Relation> findRelations(Integer userid1, Integer userid2, Integer kind);
+    List<Relation> findFollows(Integer userid1, Integer kind);
+
+    List<Relation> findFans(Integer userid2, Integer kind);
+
+    Relation findRelation(Integer userid1, Integer userid2);
 
 }

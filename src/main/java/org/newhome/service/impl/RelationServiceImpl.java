@@ -68,13 +68,30 @@ public class RelationServiceImpl extends ServiceImpl<RelationMapper, Relation>
     }
 
     @Override
-    public List<Relation> findRelations(Integer userid1, Integer userid2, Integer kind) {
+    public List<Relation> findFollows(Integer userid1, Integer kind) {
         LambdaQueryWrapper<Relation> wrapper = new LambdaQueryWrapper<Relation>();
         wrapper.eq(!ObjectUtils.isEmpty(userid1),Relation::getUser1Id,userid1)
-                .eq(!ObjectUtils.isEmpty(userid2),Relation::getUser2Id,userid2)
                 .eq(!ObjectUtils.isEmpty(kind),Relation::getKind,kind);
         List<Relation> relationList = relationMapper.selectList(wrapper);
         return relationList;
+    }
+
+    @Override
+    public List<Relation> findFans(Integer userid2, Integer kind) {
+        LambdaQueryWrapper<Relation> wrapper = new LambdaQueryWrapper<Relation>();
+        wrapper.eq(!ObjectUtils.isEmpty(userid2),Relation::getUser2Id,userid2)
+                .eq(!ObjectUtils.isEmpty(kind),Relation::getKind,kind);
+        List<Relation> relationList = relationMapper.selectList(wrapper);
+        return relationList;
+    }
+
+    @Override
+    public Relation findRelation(Integer userid1, Integer userid2) {
+        LambdaQueryWrapper<Relation> wrapper = new LambdaQueryWrapper<Relation>();
+        wrapper.eq(!ObjectUtils.isEmpty(userid1),Relation::getUser1Id,userid1)
+                .eq(!ObjectUtils.isEmpty(userid2),Relation::getUser2Id,userid2);
+        Relation relation = relationMapper.selectOne(wrapper);
+        return relation;
     }
 }
 

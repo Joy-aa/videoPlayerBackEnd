@@ -6,12 +6,17 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.newhome.annotation.FilterAnnotation;
 import org.newhome.config.FilterType;
+import org.newhome.entity.Relation;
 import org.newhome.entity.User;
+import org.newhome.entity.Video;
 import org.newhome.req.*;
 import org.newhome.res.CaptchaRes;
 import org.newhome.res.LoginRes;
 import org.newhome.res.RegisterRes;
+import org.newhome.res.UserRes;
+import org.newhome.service.RelationService;
 import org.newhome.service.UserService;
+import org.newhome.service.VideoService;
 import org.newhome.util.CookieUtil;
 import org.newhome.util.MD5Util;
 import org.newhome.util.ResultBean;
@@ -32,6 +37,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -54,6 +60,10 @@ import static org.newhome.util.MD5Util.formPassToDBPass;
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    RelationService relationService;
+    @Autowired
+    VideoService videoService;
 
     @Autowired
     private DefaultKaptcha defaultKaptcha;
@@ -389,11 +399,24 @@ public class UserController {
     @ApiOperation("根据用户名和简介模糊查询")
     @GetMapping("findUsers")
     @FilterAnnotation(url="/user/findUsers",type = FilterType.login)
-    public ResultBean<List<User>> findUsers(String content) {
+    public ResultBean<List<UserRes>> findUsers(String content) {
         List<User> userList = userService.findUsers(content);
-        ResultBean<List<User>> result = new ResultBean<>();
+        List<UserRes> userResList = new ArrayList<>();
+        ResultBean<List<UserRes>> result = new ResultBean<>();
+        for (User user: userList) {
+            UserRes ur1 = new UserRes(user);
+            List<Video> videoList = videoService.findVideoByUser(user);
+            int num = 0;
+            for (Video video: videoList) {
+                num += video.getLikeNum();
+            }
+            ur1.setLikeNum(num);
+            List<Relation> fansList = relationService.findFans(ur1.getUserId(), 0);
+            ur1.setFanNum(fansList.size());
+            userResList.add(ur1);
+        }
         result.setMsg("查询成功");
-        result.setData(userList);
+        result.setData(userResList);
         return result;
     }
 //
