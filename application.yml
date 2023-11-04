@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.214.211.209:3306/videodb
+#    url: jdbc:mysql://localhost:3306/videodb
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 512MB
+server:
+  port: 8888
+  servlet:
+    context-path: /
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  type-aliases-package: org.newhome.entity
+
+logging:
+  level:
+    org.newhome.mapper: debug
+  config: classpath:logback-spring.xml

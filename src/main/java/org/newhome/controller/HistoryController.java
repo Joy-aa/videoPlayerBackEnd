@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.newhome.annotation.FilterAnnotation;
 import org.newhome.config.FilterType;
 import org.newhome.entity.History;
+import org.newhome.entity.Star;
 import org.newhome.entity.User;
 import org.newhome.entity.Video;
 import org.newhome.req.AddHistoryReq;
@@ -140,6 +141,39 @@ public class HistoryController {
             historiesRes.setHistories(histories);
             result.setData(historiesRes);
             result.setMsg("查询成功！共" + histories.size() + "条记录");
+        }
+        return result;
+    }
+    @CrossOrigin
+    @ApiOperation("获取用户历史观看的视频")
+    @GetMapping("getUserHistoryVideo")
+    @FilterAnnotation(url="/history/getUserHistoryVideo", type = FilterType.auth)
+    public ResultBean<List<Video>> getUserHistoryVideo(Integer userId ) {
+        ResultBean<List<Video>> result = new ResultBean<>();
+        User user = userService.findById(userId);
+        if(user == null) {
+            result.setMsg("该用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            List<Video> videoList = new ArrayList<>();
+            List<History> histories =historyService.getHistories(userId);
+            for(History history : histories){
+
+                Video video = videoService.findVideobyId(history.getVideoId());
+                if(video!=null){
+                    videoList.add(video);
+                }
+            }
+            if(!videoList.isEmpty()) {
+                result.setData(videoList);
+                result.setMsg("获取用户历史观看的视频成功");
+            }
+            else{
+                result.setMsg("获取用户历史观看的视频失败");
+                result.setCode(ResultBean.FAIL);
+            }
         }
         return result;
     }
