@@ -20,11 +20,7 @@ import org.newhome.service.VideoService;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -170,6 +166,38 @@ public class StarController {
             }
             else{
                 result.setMsg("获取收藏记录失败");
+                result.setCode(ResultBean.FAIL);
+            }
+        }
+        return result;
+    }
+    @CrossOrigin
+    @ApiOperation("获取用户收藏的视频")
+    @GetMapping("getUserStarVideo")
+    @FilterAnnotation(url="/star/getUserStarVideo", type = FilterType.auth)
+    public ResultBean<List<Video>> getUserStarVideo(Integer userId ) {
+        ResultBean<List<Video>> result = new ResultBean<>();
+        User user = userService.findById(userId);
+        if(user == null) {
+            result.setMsg("该用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            List<Video> videoList = new ArrayList<>();
+            List<Star> stars =starService.getAll(userId);
+            for(Star star : stars){
+                Video video = videoService.findVideobyId(star.getVideoid());
+                if(video!=null){
+                    videoList.add(video);
+                }
+            }
+            if(!videoList.isEmpty()) {
+                result.setData(videoList);
+                result.setMsg("获取用户收藏的视频成功");
+            }
+            else{
+                result.setMsg("获取用户收藏的视频失败");
                 result.setCode(ResultBean.FAIL);
             }
         }
