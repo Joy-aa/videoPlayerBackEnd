@@ -2,6 +2,7 @@ package org.newhome.controller;
 
 
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.qiniu.util.Auth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +47,21 @@ public class VideoController {
     VideoService videoService;
     @Autowired
     UserService userService;
+
+
+    @ApiOperation("上传视频的token")
+    @PostMapping("getVideoToken")
+    public String getVideoToken() {
+        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+        String bucket = "new-web-shortvideo";
+
+        Auth auth = Auth.create(accessKey, secretKey);
+        String upToken = auth.uploadToken(bucket);
+//        System.out.println(upToken);
+
+        return  upToken;
+    }
 
     /**
      * 上传视频
