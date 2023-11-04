@@ -79,6 +79,7 @@ public class StarController {
         Star star = starService.getOne(addStarReq.getUserId(), addStarReq.getVideoId());
         if(star == null) {
             StarRes starRes = new StarRes();
+            star = new Star();
             star.setUserId(addStarReq.getUserId());
             star.setVideoid(addStarReq.getVideoId());
             starRes.setStar(starService.addStar(star));
@@ -171,6 +172,41 @@ public class StarController {
         }
         return result;
     }
+
+    @CrossOrigin
+    @ApiOperation("用户是否已收藏该视频")
+    @PostMapping("isStar")
+    @FilterAnnotation(url="/star/isStar", type = FilterType.auth)
+    public ResultBean<StarRes> getAll(int userId, int videoId) {
+        ResultBean<StarRes> result = new ResultBean<>();
+        User user = userService.findById(userId);
+        if(user == null) {
+            result.setMsg("该用户不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        Video video = videoService.findVideobyId(videoId);
+        if(video == null) {
+            result.setMsg("该视频不存在！");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            StarRes starRes = new StarRes();
+            starRes.setStar(starService.getOne(userId, videoId));
+            if(starRes.getStar() == null) {
+                result.setMsg("该视频不存在！");
+                result.setCode(ResultBean.NO_PERMISSION);
+                result.setData(null);
+            }
+            else{
+                result.setMsg("获取收藏记录");
+                result.setData(starRes);
+            }
+        }
+        return result;
+    }
+
     @CrossOrigin
     @ApiOperation("获取用户收藏的视频")
     @GetMapping("getUserStarVideo")
