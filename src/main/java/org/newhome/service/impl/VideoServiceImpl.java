@@ -97,6 +97,30 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
         videoMapper.update(null, lambdaUpdateWrapper);
 
     }
+
+    @Override
+    public int addLikeNum(int videoId, Long likeNum) {
+        LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(Video::getVideoId, videoId)
+                .set(Video::getLikeNum, likeNum);
+        return videoMapper.update(null, lambdaUpdateWrapper);
+    }
+
+    @Override
+    public int addStarNum(int videoId, Long starNum) {
+        LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(Video::getVideoId, videoId)
+                .set(Video::getStarNum, starNum);
+        return videoMapper.update(null, lambdaUpdateWrapper);
+    }
+
+    @Override
+    public int addShareNum(int videoId, Long shareNum) {
+        LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(Video::getVideoId, videoId)
+                .set(Video::getShareNum, shareNum);
+        return videoMapper.update(null, lambdaUpdateWrapper);
+    }
 }
 
 
