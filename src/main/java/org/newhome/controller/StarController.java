@@ -177,7 +177,7 @@ public class StarController {
     @ApiOperation("用户是否已收藏该视频")
     @PostMapping("isStar")
     @FilterAnnotation(url="/star/isStar", type = FilterType.auth)
-    public ResultBean<StarRes> getAll(int userId, int videoId) {
+    public ResultBean<StarRes> getAll(Integer userId, Integer videoId) {
         ResultBean<StarRes> result = new ResultBean<>();
         User user = userService.findById(userId);
         if(user == null) {
@@ -195,7 +195,7 @@ public class StarController {
             StarRes starRes = new StarRes();
             starRes.setStar(starService.getOne(userId, videoId));
             if(starRes.getStar() == null) {
-                result.setMsg("该视频不存在！");
+                result.setMsg("不存在收藏记录！");
                 result.setCode(ResultBean.NO_PERMISSION);
                 result.setData(null);
             }

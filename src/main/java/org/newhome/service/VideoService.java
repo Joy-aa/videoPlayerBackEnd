@@ -36,7 +36,7 @@ public interface VideoService extends IService<Video> {
 
     int addLikeNum(int videoId, Long likeNum);
 
-    int addStarNum(int videoId, Long starNum);
+    int setStarNum(int videoId, Long starNum);
 
     int addShareNum(int videoId, Long shareNum);
 

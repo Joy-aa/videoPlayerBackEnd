@@ -213,7 +213,7 @@ public class VideoController {
     @CrossOrigin
     @ApiOperation("添加视频likenum")
     @PostMapping("addLikeNum")
-    public ResultBean<Video> addLikeNUm(Integer videoId) {
+    public ResultBean<Video> addLikeNum(Integer videoId) {
         ResultBean<Video> result = new ResultBean<>();
         Video video = videoService.findVideobyId(videoId);
         if (video == null) {
@@ -239,7 +239,7 @@ public class VideoController {
     @CrossOrigin
     @ApiOperation("添加视频starnum")
     @PostMapping("addStarNum")
-    public ResultBean<Video> addStarNUm(Integer videoId) {
+    public ResultBean<Video> addStarNum(Integer videoId) {
         ResultBean<Video> result = new ResultBean<>();
         Video video = videoService.findVideobyId(videoId);
         if (video == null) {
@@ -248,7 +248,7 @@ public class VideoController {
             result.setData(null);
         } else {
             video.setStarNum(video.getStarNum()+1);
-            int flag = videoService.addStarNum(videoId, video.getStarNum());
+            int flag = videoService.setStarNum(videoId, video.getStarNum());
             if(flag != 0) {
                 result.setMsg("添加收藏数目成功");
                 result.setData(video);
@@ -263,9 +263,35 @@ public class VideoController {
     }
 
     @CrossOrigin
+    @ApiOperation("减少视频starnum")
+    @PostMapping("subStarNum")
+    public ResultBean<Video> subStarNum(Integer videoId) {
+        ResultBean<Video> result = new ResultBean<>();
+        Video video = videoService.findVideobyId(videoId);
+        if (video == null) {
+            result.setMsg("视频不存在，请重新确认");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        } else {
+            video.setStarNum(video.getStarNum()-1);
+            int flag = videoService.setStarNum(videoId, video.getStarNum());
+            if(flag != 0) {
+                result.setMsg("减少收藏数目成功");
+                result.setData(video);
+            }
+            else {
+                result.setMsg("减少收藏数目失败");
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
+        }
+        return result;
+    }
+
+    @CrossOrigin
     @ApiOperation("添加视频sharenum")
     @PostMapping("addShareNum")
-    public ResultBean<Video> addShareNUm(Integer videoId) {
+    public ResultBean<Video> addShareNum(Integer videoId) {
         ResultBean<Video> result = new ResultBean<>();
         Video video = videoService.findVideobyId(videoId);
         if (video == null) {
@@ -276,11 +302,11 @@ public class VideoController {
             video.setShareNum(video.getShareNum()+1);
             int flag = videoService.addShareNum(videoId, video.getShareNum());
             if(flag != 0) {
-                result.setMsg("添加收藏数目成功");
+                result.setMsg("添加转发数目成功");
                 result.setData(video);
             }
             else {
-                result.setMsg("添加收藏数目失败");
+                result.setMsg("添加转发数目失败");
                 result.setCode(ResultBean.FAIL);
                 result.setData(null);
             }

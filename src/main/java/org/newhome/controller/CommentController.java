@@ -121,17 +121,17 @@ public class CommentController {
     @ApiOperation("点赞评论")
     @PostMapping("like")
     @FilterAnnotation(url="/comment/like",type = FilterType.auth)
-    public ResultBean<CommentRes> likeComment(DeleteCommentReq req) {
+    public ResultBean<CommentRes> likeComment(Integer commentId, Long likeNum) {
         ResultBean<CommentRes> result = new ResultBean<>();
         CommentRes commentRes = new CommentRes();
-        Comment comment = commentService.getComment(req.getCommentId());
+        Comment comment = commentService.getComment(commentId);
         if(comment == null) {
             result.setMsg("评论不存在！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
         else{
-            comment.setLikeNum(comment.getLikeNum()+1);
+            comment.setLikeNum(likeNum+1);
             int flag = commentService.updateLikeNum(comment);
             commentRes.setComment(comment);
             if(flag != 0) {
@@ -151,18 +151,18 @@ public class CommentController {
     @ApiOperation("取消点赞评论")
     @PostMapping("dislike")
     @FilterAnnotation(url="/comment/dislike",type = FilterType.auth)
-    public ResultBean<CommentRes> dislikeComment(DeleteCommentReq req) {
+    public ResultBean<CommentRes> dislikeComment(Integer commentId, Long likeNum) {
         ResultBean<CommentRes> result = new ResultBean<>();
         CommentRes commentRes = new CommentRes();
-        Comment comment = commentService.getComment(req.getCommentId());
+        Comment comment = commentService.getComment(commentId);
         if(comment == null) {
             result.setMsg("评论不存在！");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
         else{
-            if(comment.getLikeNum() > 0) {
-                comment.setLikeNum(comment.getLikeNum()-1);
+            if(likeNum > 0) {
+                comment.setLikeNum(likeNum-1);
             }
             int flag = commentService.updateLikeNum(comment);
             commentRes.setComment(comment);

@@ -107,7 +107,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
-    public int addStarNum(int videoId, Long starNum) {
+    public int setStarNum(int videoId, Long starNum) {
         LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
         lambdaUpdateWrapper.eq(Video::getVideoId, videoId)
                 .set(Video::getStarNum, starNum);
