@@ -18,6 +18,8 @@ import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,19 +62,40 @@ public class VideoController {
 
         return auth.uploadToken(bucket);
     }
+    @ApiOperation("下载视频的url")
+    @GetMapping("getDownLoadVideoUrl")
+    public String getDownLoadVideoUrl(String fileName) {
+        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+        String bucketDomain  = "http://s3604nf5a.hn-bkt.clouddn.com";
+        String finalUrl ="";
+        try {
+            String encodedFileName = URLEncoder.encode(fileName, "utf-8").replace("+", "%20");
+            String publicUrl = String.format("%s/%s", bucketDomain, encodedFileName);
+            Auth auth = Auth.create(accessKey, secretKey);
+            long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
+            finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
+            return finalUrl;
+        } catch (UnsupportedEncodingException e) {
+            // 处理编码异常
+            e.printStackTrace();
+        }
 
+        return  finalUrl;
+    }
     /**
      * 上传视频
      **/
     @ApiOperation("上传视频")
     @PostMapping("uploadVideo")
-    public ResultBean<Integer> uploadVideo(String videoname, Integer userid,String introduction) {
+    public ResultBean<Integer> uploadVideo(String videoName, Integer userId,String introduction) {
         ResultBean<Integer> result = new ResultBean<>();
         Video video = new Video();
-        video.setVideoName(videoname);
-        video.setUserId(userid);
+        video.setVideoName(videoName);
+        video.setUserId(userId);
         video.setIntroduction(introduction);
-
+        String fileName = videoName + ".mp4";
+        video.setVideoPath(getDownLoadVideoUrl(fileName));
         Date time = new Date();
         video.setCreateTime(time);
 

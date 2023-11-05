@@ -438,6 +438,27 @@ public class UserController {
         }
         return result;
     }
+    @CrossOrigin
+    @ApiOperation("根据id查询单个用户并更新头像链接")
+    @GetMapping("findUserUpdatHeadShot")
+    @FilterAnnotation(url="/user/findUserUpdatHeadShot",type = FilterType.anno)
+    public ResultBean<User> findUserUpdatHeadShot(Integer userId) {
+        VideoController vc = new VideoController();
+        ResultBean<User> result = new ResultBean<>();
+        User user = userService.findById(userId);
+        String headShotName = userId.toString() + ".jpg";
+        user.setHeadshot(vc.getDownLoadVideoUrl(headShotName));
+        if(user == null) {
+            result.setMsg("用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            result.setData(user);
+            result.setMsg("查询成功");
+        }
+        return result;
+    }
 //
 //
 //    //修改手机号
