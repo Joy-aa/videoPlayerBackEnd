@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://10.214.211.209:3306/videodb
-#    url: jdbc:mysql://localhost:3306/videodb
+#    url: jdbc:mysql://172.20.10.3:3306/videodb
     username: root
     password: 123456
   servlet:

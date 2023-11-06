@@ -21,4 +21,5 @@ public class UserRes {
     private String introduction;
     private Integer likeNum;
     private Integer fanNum;
+    private Integer follow;
 }
