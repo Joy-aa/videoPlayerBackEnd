@@ -30,6 +30,8 @@ public interface VideoService extends IService<Video> {
     //根据标题和简介模糊查找视频
     List<Video> findVideoByName(String content);
 
+    int updateVideoPageshot(Video video);
+
     void  updateVideoName(Video video,String newName);
 
     void updateVideoIntroduction(Video video,String newIntroduction);
