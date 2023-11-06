@@ -17,10 +17,7 @@ import org.newhome.res.UserRes;
 import org.newhome.service.RelationService;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
-import org.newhome.util.CookieUtil;
-import org.newhome.util.MD5Util;
-import org.newhome.util.ResultBean;
-import org.newhome.util.UUIDUtil;
+import org.newhome.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
@@ -464,7 +461,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @ApiOperation("根据id查询单个用户")
+    @ApiOperation("根据id查询单个用户（不更新头像）")
     @GetMapping("findUser")
     @FilterAnnotation(url="/user/findUser",type = FilterType.anno)
     public ResultBean<User> findUser(Integer userId) {
@@ -483,7 +480,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @ApiOperation("根据id查询单个用户并更新头像链接")
+    @ApiOperation("根据id查询单个用户（更新头像）")
     @GetMapping("findUserUpdatHeadShot")
     @FilterAnnotation(url="/user/findUserUpdatHeadShot",type = FilterType.anno)
     public ResultBean<User> findUserUpdatHeadShot(Integer userId) {
@@ -503,47 +500,19 @@ public class UserController {
         }
         return result;
     }
-//
-//
-//    //修改手机号
-//    @CrossOrigin
-//    @ApiOperation("修改手机号")
-//    @PostMapping("updatetel")
-//    @FilterAnnotation(url = "/user/updatetel", type = FilterType.login)
-//    public ResultBean<String> updatetel(@RequestBody UpdatetelReq updatetelReq){
-//        ResultBean<String> result = new ResultBean<>();
-//        boolean flag = iUserService.updateUserTel(updatetelReq.getUsername(), updatetelReq.getTelephone());
-//        if(flag){
-//            result.setMsg("更新号码成功！更新为："+updatetelReq.getTelephone());
-//        }
-//        else{
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("更新号码失败！");
-//        }
-//        return result;
-//    }
-//
-//    //修改权限
-//    @CrossOrigin
-//    @ApiOperation("修改权限")
-//    @PostMapping("updateidentify")
-//    @FilterAnnotation(url = "/user/updateidentify", type = FilterType.auth)
-//    public ResultBean<String> updateidentify(@RequestBody UpdateidentifyReq updateidentifyReq) {
-//        ResultBean<String> result = new ResultBean<>();
-//        if(updateidentifyReq.getIdentify() < 0) {
-//            result.setCode(ResultBean.FAIL);
-//            result.setMsg("更新权限角色失败：更新权限等级有误");
-//        }
-//        else{
-//            boolean flag = iUserService.updateUserIdentify(updateidentifyReq.getUsername(), updateidentifyReq.getIdentify());
-//            if(flag){
-//                result.setMsg("更新权限角色成功！更新为："+updateidentifyReq.getIdentify());
-//            }
-//            else{
-//                result.setCode(ResultBean.FAIL);
-//                result.setMsg("更新权限角色失败！");
-//            }
-//        }
-//        return result;
-//    }
+
+    @CrossOrigin
+    @ApiOperation("生成100个用户")
+    @GetMapping("generate")
+    public void userGenerate() {
+        for(int i = 101; i <= 200; i++) {
+            User user = new User();
+            user.setUsername(DataGenerator.getStringRandom(10));
+            user.setHeadshotname("headshot"+(i-100)+".jpg");
+            user.setSalt(MD5Util.getSalt());
+            user.setPassword(formPassToDBPass("123", user.getSalt()));
+            user.setEmail(i+"@qq.com");
+            userService.addUser(user);
+        }
+    }
 }
