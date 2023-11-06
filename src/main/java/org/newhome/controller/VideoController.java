@@ -1,5 +1,11 @@
 package org.newhome.controller;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.qiniu.storage.BucketManager;
@@ -18,11 +24,13 @@ import org.newhome.entity.Video;
 import org.newhome.res.VideoRes;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
+import org.newhome.util.DataGenerator;
+import org.newhome.util.MD5Util;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import java.io.UnsupportedEncodingException;
+
 import java.net.URLEncoder;
 
 import java.text.ParseException;
@@ -33,6 +41,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.newhome.util.MD5Util.formPassToDBPass;
 
 /**
  * <p>
@@ -128,7 +138,7 @@ public class VideoController {
         video.setShareNum(new Long(0));
         video.setStarNum(new Long(0));
         video.setLikeNum(new Long(0));
-        String fileName = videoName + ".mp4";
+        String fileName = introduction;
         video.setVideoPath(getDownLoadVideoUrl(fileName));
         Date time = new Date();
         video.setCreateTime(time);
@@ -388,6 +398,64 @@ public class VideoController {
             result.setData(null);
         }
         return result;
+    }
+
+
+
+
+    @CrossOrigin
+    @ApiOperation("添加视频到数据库")
+    @GetMapping("videoGenerate")
+    public ResultBean<List<String[]>> videoGenerate() {
+        ResultBean<List<String[]> > result = new ResultBean<>();
+
+        String csvFile = "C:\\Users\\cxy\\Documents\\WeChat Files\\wxid_gnsvikitmh3122\\FileStorage\\File\\2023-11\\newvideos(1).csv";
+        String line;
+        String csvSplitBy = ",";
+        Charset charset = StandardCharsets.UTF_8;
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), charset))) {
+            List<String[]> data = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                String[] row = line.split(csvSplitBy);
+                data.add(row);
+            }
+            result.setData(data);
+            // 处理读取到的数据
+            int i=0;
+            for (String[] row : data) {
+//                Video video = new Video();
+                if(i>0){
+                    String VideoName = row[0];
+                    if(VideoName.length()>20){
+                        VideoName = VideoName.substring(0,20);
+                    }
+                    Random random = new Random();
+                    int min = 16;
+                    int max = 124;
+                    int randomUserID = random.nextInt(max - min + 1) + min;
+                    String introduction = row[1]+".mp4";
+                    uploadVideo(VideoName,randomUserID,introduction);
+                }
+                i++;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.setData(null);
+
+        }
+        return result;
+//        for(int i = 101; i <= 200; i++) {
+//            User user = new User();
+//            user.setUsername(DataGenerator.getStringRandom(10));
+//            user.setHeadshotname("headshot"+(i-100)+".jpg");
+//            user.setSalt(MD5Util.getSalt());
+//            user.setPassword(formPassToDBPass("123", user.getSalt()));
+//            user.setEmail(i+"@qq.com");
+//            userService.addUser(user);
+//        }
     }
 
 }
