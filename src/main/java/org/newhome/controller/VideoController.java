@@ -125,6 +125,9 @@ public class VideoController {
         video.setVideoName(videoName);
         video.setUserId(userId);
         video.setIntroduction(introduction);
+        video.setShareNum(new Long(0));
+        video.setStarNum(new Long(0));
+        video.setLikeNum(new Long(0));
         String fileName = videoName + ".mp4";
         video.setVideoPath(getDownLoadVideoUrl(fileName));
         Date time = new Date();
