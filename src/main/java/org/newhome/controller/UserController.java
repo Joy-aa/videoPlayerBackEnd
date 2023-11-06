@@ -518,7 +518,7 @@ public class UserController {
         }
         else {
             String headShotName = user.getHeadshotname();
-            user.setHeadshot(QiNiuUtil.getHeadShotVideoUrl(headShotName));
+            user.setHeadshot(QiNiuUtil.getHeadShotUrl(headShotName));
             result.setData(user);
             result.setMsg("查询成功");
         }
@@ -538,5 +538,35 @@ public class UserController {
             user.setEmail(i+"@qq.com");
             userService.addUser(user);
         }
+    }
+    @CrossOrigin
+    @ApiOperation("查询用户关注粉丝和获赞数")
+    @GetMapping("findUserlikesstars")
+    @FilterAnnotation(url="/user/findUserikesstars",type = FilterType.login)
+    public ResultBean<List<Integer>> findUserlikesstars(Integer userId) {
+        ResultBean<List<Integer>> result = new ResultBean<>();
+        List<Integer> likesInfo = new ArrayList<>();
+        User user = userService.findById(userId);
+        if(user == null) {
+            result.setMsg("用户不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            int folllow = relationService.findFollows(userId,0).size();
+            int fans = relationService.findFollows(userId,0).size();
+            List<Video> videoList = videoService.findVideoByUser(user);
+            int likeNum = 0;
+            for (Video video: videoList) {
+                likeNum += video.getLikeNum();
+            }
+            likesInfo.add(folllow);
+            likesInfo.add(fans);
+            likesInfo.add(likeNum);
+            result.setMsg("查询成功");
+            result.setCode(ResultBean.SUCCESS);
+            result.setData(likesInfo);
+        }
+        return result;
     }
 }

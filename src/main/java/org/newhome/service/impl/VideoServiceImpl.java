@@ -82,6 +82,14 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
+    public int updateVideoPageshot(Video video) {
+        LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(Video::getVideoId, video.getVideoId())
+                .set(Video::getPageshot, video.getPageshot());
+        return videoMapper.update(null, lambdaUpdateWrapper);
+    }
+
+    @Override
     public void  updateVideoName(Video video,String newName){
         LambdaUpdateWrapper<Video> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
         lambdaUpdateWrapper.eq(Video::getVideoId,video.getVideoId())

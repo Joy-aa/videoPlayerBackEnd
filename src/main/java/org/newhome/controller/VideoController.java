@@ -1,6 +1,13 @@
 package org.newhome.controller;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
@@ -18,12 +25,14 @@ import org.newhome.entity.Video;
 import org.newhome.res.VideoRes;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
+import org.newhome.util.DataGenerator;
+import org.newhome.util.MD5Util;
 import org.newhome.util.QiNiuUtil;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import java.io.UnsupportedEncodingException;
+
 import java.net.URLEncoder;
 
 import java.text.ParseException;
@@ -34,6 +43,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.newhome.util.MD5Util.formPassToDBPass;
 
 /**
  * <p>
@@ -67,22 +78,39 @@ public class VideoController {
 
         return auth.uploadToken(bucket);
     }
+    @ApiOperation("上传头像的token")
+    @PostMapping("getHeadShotToken")
+    public String getHeadShotToken() {
+        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+        String bucket = "head-shot";
+
+        Auth auth = Auth.create(accessKey, secretKey);
+
+        return auth.uploadToken(bucket);
+    }
 
 
-//    @ApiOperation("下载视频的url")
-//    @GetMapping("getDownLoadVideoUrl")
-//    public String getDownLoadVideoUrl(String fileName) {
-//        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
-//        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
-//        String bucketDomain  = "http://s3604nf5a.hn-bkt.clouddn.com";
-//        String finalUrl ="";
-//
-//        String publicUrl = String.format("%s/%s", bucketDomain, fileName);
-//        Auth auth = Auth.create(accessKey, secretKey);
-//        long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
-//        finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
-//        return finalUrl;
-//    }
+
+    @ApiOperation("获取视频信息与封面")
+    @GetMapping("getVideoAndPage")
+    public ResultBean<Video> getVideoAndPage(Integer videoId) {
+        ResultBean<Video> result = new ResultBean<>();
+        Video video = videoService.findVideobyId(videoId);
+        if(video == null) {
+            result.setMsg("视频不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+        //成功
+        String pageFilename = video.getIntroduction().substring(0, video.getIntroduction().indexOf('.')) + ".jpg";
+        String pageshotUrl = QiNiuUtil.getDownLoadVideoUrl(pageFilename);
+        video.setPageshot(pageshotUrl);
+        result.setMsg("成功");
+        result.setData(video);
+        return result;
+    }
 
 
     @ApiOperation("删除七牛云文件")
@@ -130,8 +158,9 @@ public class VideoController {
         video.setShareNum(new Long(0));
         video.setStarNum(new Long(0));
         video.setLikeNum(new Long(0));
-        String fileName = videoName + ".mp4";
+        String fileName = introduction;
         video.setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
+
         Date time = new Date();
         video.setCreateTime(time);
 
@@ -197,7 +226,7 @@ public class VideoController {
     /**
      * 查询视频
      **/
-    @ApiOperation("查询视频")
+    @ApiOperation("根据id查询视频")
     @GetMapping("findVideos")
     public ResultBean<Video> findVideos(Integer videoId) throws ParseException {
         ResultBean<Video> result = new ResultBean<>();
@@ -388,6 +417,105 @@ public class VideoController {
             result.setMsg("简介修改成功");
             result.setCode(ResultBean.SUCCESS);
             result.setData(null);
+        }
+        return result;
+    }
+
+    @ApiOperation("为视频添加封面")
+    @GetMapping("addVideoPage")
+    public ResultBean<String> addVideoPage(Integer videoId) {
+        ResultBean<String> result = new ResultBean<>();
+        String bucket = "new-web-shortvideo";
+        Video video = videoService.findVideobyId(videoId);
+        if (video == null) {
+            result.setMsg("视频不存在，请重新确认");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        else {
+            int flag = QiNiuUtil.generateVideoPageShot(bucket, video.getIntroduction());
+            if(flag == 0) {
+                //成功
+                String pageFilename = video.getIntroduction().substring(0, video.getIntroduction().indexOf('.')) + ".jpg";
+                String pageshotUrl = QiNiuUtil.getDownLoadVideoUrl(pageFilename);
+                video.setPageshot(pageshotUrl);
+                if(videoService.updateVideoPageshot(video) != 0) {
+                    result.setMsg("视频添加封面成功！");
+                    result.setData(pageshotUrl);
+                }
+                else {
+                    result.setMsg("视频添加封面失败，请确认");
+                    result.setCode(ResultBean.FAIL);
+                    result.setData(null);
+                }
+            }
+            else {
+                //失败
+                result.setMsg("视频截帧失败，请确认");
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
+        }
+        return result;
+    }
+
+//    @CrossOrigin
+//    @ApiOperation("生成视频封面")
+//    @GetMapping("generatePage")
+//    public void userGenerate() {
+////        for(int i = 105; i <= 130; i++) {
+////            System.out.println(i);
+////            ResultBean<String> result = new ResultBean<>();
+////            result = addVideoPage(i);
+////            if(result.getCode() != 0) break;
+////        }
+//        addVideoPage(2);
+//    }
+
+
+
+    @CrossOrigin
+    @ApiOperation("添加视频到数据库")
+    @GetMapping("videoGenerate")
+    public ResultBean<List<String[]>> videoGenerate() {
+        ResultBean<List<String[]> > result = new ResultBean<>();
+
+        String csvFile = "C:\\Users\\cxy\\Documents\\WeChat Files\\wxid_gnsvikitmh3122\\FileStorage\\File\\2023-11\\newvideos(1).csv";
+        String line;
+        String csvSplitBy = ",";
+        Charset charset = StandardCharsets.UTF_8;
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), charset))) {
+            List<String[]> data = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                String[] row = line.split(csvSplitBy);
+                data.add(row);
+            }
+            result.setData(data);
+            // 处理读取到的数据
+            int i=0;
+            for (String[] row : data) {
+//                Video video = new Video();
+                if(i>0){
+                    String VideoName = row[0];
+                    if(VideoName.length()>20){
+                        VideoName = VideoName.substring(0,20);
+                    }
+                    Random random = new Random();
+                    int min = 16;
+                    int max = 124;
+                    int randomUserID = random.nextInt(max - min + 1) + min;
+                    String introduction = row[1]+".mp4";
+                    uploadVideo(VideoName,randomUserID,introduction);
+                }
+                i++;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.setData(null);
+
         }
         return result;
     }
