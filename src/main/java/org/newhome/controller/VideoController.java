@@ -75,6 +75,18 @@ public class VideoController {
 
         return auth.uploadToken(bucket);
     }
+    @ApiOperation("上传头像的token")
+    @PostMapping("getHeadShotToken")
+    public String getHeadShotToken() {
+        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+        String bucket = "head-shot";
+
+        Auth auth = Auth.create(accessKey, secretKey);
+
+        return auth.uploadToken(bucket);
+    }
+
 
 
 //    @ApiOperation("下载视频的url")
