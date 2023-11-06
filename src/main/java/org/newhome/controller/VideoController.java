@@ -18,6 +18,7 @@ import org.newhome.entity.Video;
 import org.newhome.res.VideoRes;
 import org.newhome.service.UserService;
 import org.newhome.service.VideoService;
+import org.newhome.util.QiNiuUtil;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -66,23 +67,24 @@ public class VideoController {
 
         return auth.uploadToken(bucket);
     }
-    @ApiOperation("下载视频的url")
-    @GetMapping("getDownLoadVideoUrl")
-    public String getDownLoadVideoUrl(String fileName) {
-        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
-        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
-        String bucketDomain  = "http://s3604nf5a.hn-bkt.clouddn.com";
-        String finalUrl ="";
-
-        String publicUrl = String.format("%s/%s", bucketDomain, fileName);
-        Auth auth = Auth.create(accessKey, secretKey);
-        long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
-        finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
-        return finalUrl;
 
 
+//    @ApiOperation("下载视频的url")
+//    @GetMapping("getDownLoadVideoUrl")
+//    public String getDownLoadVideoUrl(String fileName) {
+//        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+//        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+//        String bucketDomain  = "http://s3604nf5a.hn-bkt.clouddn.com";
+//        String finalUrl ="";
+//
+//        String publicUrl = String.format("%s/%s", bucketDomain, fileName);
+//        Auth auth = Auth.create(accessKey, secretKey);
+//        long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
+//        finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
+//        return finalUrl;
+//    }
 
-    }
+
     @ApiOperation("删除七牛云文件")
     @PostMapping("deleteQiniu")
     public ResultBean<Integer> deleteQiniu(String fileName) {
@@ -129,7 +131,7 @@ public class VideoController {
         video.setStarNum(new Long(0));
         video.setLikeNum(new Long(0));
         String fileName = videoName + ".mp4";
-        video.setVideoPath(getDownLoadVideoUrl(fileName));
+        video.setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
         Date time = new Date();
         video.setCreateTime(time);
 

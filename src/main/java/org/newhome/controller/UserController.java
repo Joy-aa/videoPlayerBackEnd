@@ -484,7 +484,6 @@ public class UserController {
     @GetMapping("findUserUpdatHeadShot")
     @FilterAnnotation(url="/user/findUserUpdatHeadShot",type = FilterType.anno)
     public ResultBean<User> findUserUpdatHeadShot(Integer userId) {
-        VideoController vc = new VideoController();
         ResultBean<User> result = new ResultBean<>();
         User user = userService.findById(userId);
         if(user == null) {
@@ -494,7 +493,7 @@ public class UserController {
         }
         else {
             String headShotName = user.getHeadshotname();
-            user.setHeadshot(vc.getDownLoadVideoUrl(headShotName));
+            user.setHeadshot(QiNiuUtil.getHeadShotVideoUrl(headShotName));
             result.setData(user);
             result.setMsg("查询成功");
         }
