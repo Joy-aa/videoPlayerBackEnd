@@ -62,6 +62,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         userMapper.update(null, lambdaUpdateWrapper);
         return 1;
     }
+    @Override
+    public int updateUserImg(User user) {
+        LambdaUpdateWrapper<User> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(User::getEmail, user.getEmail())
+                .set(User::getUsername, user.getUsername())
+                .set(User::getHeadshotname, user.getHeadshotname())
+                .set(User::getIntroduction, user.getIntroduction());
+
+        userMapper.update(null, lambdaUpdateWrapper);
+        return 1;
+    }
 
     @Override
     public User findById(Integer userid1) {

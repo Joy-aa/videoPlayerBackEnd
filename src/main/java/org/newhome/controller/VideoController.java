@@ -2,7 +2,11 @@ package org.newhome.controller;
 
 
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.qiniu.storage.BucketManager;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.Region;
 import com.qiniu.util.Auth;
+import com.qiniu.common.QiniuException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -69,19 +73,46 @@ public class VideoController {
         String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
         String bucketDomain  = "http://s3604nf5a.hn-bkt.clouddn.com";
         String finalUrl ="";
+
+        String publicUrl = String.format("%s/%s", bucketDomain, fileName);
+        Auth auth = Auth.create(accessKey, secretKey);
+        long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
+        finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
+        return finalUrl;
+
+
+
+    }
+    @ApiOperation("删除七牛云文件")
+    @PostMapping("deleteQiniu")
+    public ResultBean<Integer> deleteQiniu(String fileName) {
+        ResultBean<Integer> result = new ResultBean<>();
+        String accessKey = "cjph6i_nsZJwxelLwEqaj4dlknNKEI94oVpRuRQF";
+        String secretKey = "ulCAHAVVI62MuiwlL9yHg-FNrbtRw5dZqJb1SyiL";
+        String bucketName  = "new-web-shortvideo";
         try {
+            Configuration cfg = new Configuration(Region.region0());
             String encodedFileName = URLEncoder.encode(fileName, "utf-8").replace("+", "%20");
-            String publicUrl = String.format("%s/%s", bucketDomain, encodedFileName);
             Auth auth = Auth.create(accessKey, secretKey);
-            long expireInSeconds = 3600; // 1小时，可以自定义链接过期时间
-            finalUrl = auth.privateDownloadUrl(publicUrl, expireInSeconds);
-            return finalUrl;
+            BucketManager bucketManager = new BucketManager(auth, cfg);
+            try {
+                bucketManager.delete(bucketName, encodedFileName);
+            } catch (QiniuException ex) {
+                //如果遇到异常，说明删除失败
+                System.err.println(ex.code());
+                System.err.println(ex.response.toString());
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
         } catch (UnsupportedEncodingException e) {
             // 处理编码异常
             e.printStackTrace();
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
         }
-
-        return  finalUrl;
+        result.setCode(ResultBean.SUCCESS);
+        result.setData(null);
+        return result;
     }
     /**
      * 上传视频

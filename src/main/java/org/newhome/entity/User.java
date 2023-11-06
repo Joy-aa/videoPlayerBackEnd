@@ -51,6 +51,8 @@ public class User implements Serializable {
      */
     private String introduction;
 
+    private String headshotname;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

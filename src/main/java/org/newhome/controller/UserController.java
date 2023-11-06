@@ -393,6 +393,49 @@ public class UserController {
         }
         return result;
     }
+    @CrossOrigin
+    @ApiOperation("修改个人信息和头像")
+    @PostMapping("updateUserHeadShot")
+    @FilterAnnotation(url = "/user/updateUserHeadShot", type = FilterType.login)
+    public ResultBean<User> updateUserHeadShot(UpdateUserHeadShotReq updateUserheadshotReq) {
+        ResultBean<User> result = new ResultBean<>();
+        User olduser = userService.findByEmail(updateUserheadshotReq.getEmail());
+
+        if(olduser != null) {
+            User newuser = new User();
+            newuser.setEmail(updateUserheadshotReq.getEmail());
+            if (updateUserheadshotReq.getUsername().isEmpty())
+                newuser.setUsername(olduser.getUsername());
+            else
+                newuser.setUsername(updateUserheadshotReq.getUsername());
+            if (updateUserheadshotReq.getHeadshotname().isEmpty())
+                newuser.setHeadshotname(olduser.getHeadshotname());
+            else
+                newuser.setHeadshotname(updateUserheadshotReq.getHeadshotname());
+
+            if (updateUserheadshotReq.getIntroduction().isEmpty())
+                newuser.setIntroduction(olduser.getIntroduction());
+            else
+                newuser.setIntroduction(updateUserheadshotReq.getIntroduction());
+
+            int res = userService.updateUserImg(newuser);
+            if(res != -1){
+                result.setMsg("修改个人信息成功！");
+                result.setData(newuser);
+            }
+            else{
+                result.setMsg("修改个人信息失败，请重新操作");
+                result.setCode(ResultBean.FAIL);
+                result.setData(null);
+            }
+        }
+        else{
+            result.setMsg("修改个人信息失败！用户不存在");
+            result.setCode(ResultBean.NO_PERMISSION);
+            result.setData(null);
+        }
+        return result;
+    }
 
     // 根据指定信息查询个人信息
     @CrossOrigin
@@ -438,6 +481,7 @@ public class UserController {
         }
         return result;
     }
+
     @CrossOrigin
     @ApiOperation("根据id查询单个用户并更新头像链接")
     @GetMapping("findUserUpdatHeadShot")
@@ -446,14 +490,14 @@ public class UserController {
         VideoController vc = new VideoController();
         ResultBean<User> result = new ResultBean<>();
         User user = userService.findById(userId);
-        String headShotName = userId.toString() + ".jpg";
-        user.setHeadshot(vc.getDownLoadVideoUrl(headShotName));
         if(user == null) {
             result.setMsg("用户不存在");
             result.setCode(ResultBean.FAIL);
             result.setData(null);
         }
         else {
+            String headShotName = user.getHeadshotname();
+            user.setHeadshot(vc.getDownLoadVideoUrl(headShotName));
             result.setData(user);
             result.setMsg("查询成功");
         }

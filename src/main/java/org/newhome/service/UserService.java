@@ -19,6 +19,8 @@ public interface UserService extends IService<User> {
 
     int updateUser(User user);
 
+    int updateUserImg(User user);
+
     User findById(Integer userid1);
 
     User findByEmail(String email);
