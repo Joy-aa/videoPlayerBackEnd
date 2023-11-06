@@ -1,5 +1,11 @@
 package org.newhome.controller;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -26,7 +32,7 @@ import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import java.io.UnsupportedEncodingException;
+
 import java.net.URLEncoder;
 
 import java.text.ParseException;
@@ -140,8 +146,9 @@ public class VideoController {
         video.setShareNum(new Long(0));
         video.setStarNum(new Long(0));
         video.setLikeNum(new Long(0));
-        String fileName = videoName + ".mp4";
+        String fileName = introduction;
         video.setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
+
         Date time = new Date();
         video.setCreateTime(time);
 
@@ -452,5 +459,53 @@ public class VideoController {
 ////        }
 //        addVideoPage(2);
 //    }
+
+
+
+    @CrossOrigin
+    @ApiOperation("添加视频到数据库")
+    @GetMapping("videoGenerate")
+    public ResultBean<List<String[]>> videoGenerate() {
+        ResultBean<List<String[]> > result = new ResultBean<>();
+
+        String csvFile = "C:\\Users\\cxy\\Documents\\WeChat Files\\wxid_gnsvikitmh3122\\FileStorage\\File\\2023-11\\newvideos(1).csv";
+        String line;
+        String csvSplitBy = ",";
+        Charset charset = StandardCharsets.UTF_8;
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), charset))) {
+            List<String[]> data = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                String[] row = line.split(csvSplitBy);
+                data.add(row);
+            }
+            result.setData(data);
+            // 处理读取到的数据
+            int i=0;
+            for (String[] row : data) {
+//                Video video = new Video();
+                if(i>0){
+                    String VideoName = row[0];
+                    if(VideoName.length()>20){
+                        VideoName = VideoName.substring(0,20);
+                    }
+                    Random random = new Random();
+                    int min = 16;
+                    int max = 124;
+                    int randomUserID = random.nextInt(max - min + 1) + min;
+                    String introduction = row[1]+".mp4";
+                    uploadVideo(VideoName,randomUserID,introduction);
+                }
+                i++;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.setData(null);
+
+        }
+        return result;
+    }
 
 }
