@@ -119,8 +119,8 @@ public class VideoController {
      **/
     @ApiOperation("上传视频")
     @PostMapping("uploadVideo")
-    public ResultBean<Integer> uploadVideo(String videoName, Integer userId,String introduction) {
-        ResultBean<Integer> result = new ResultBean<>();
+    public ResultBean<Video> uploadVideo(String videoName, Integer userId,String introduction) {
+        ResultBean<Video> result = new ResultBean<>();
         Video video = new Video();
         video.setVideoName(videoName);
         video.setUserId(userId);
@@ -134,12 +134,12 @@ public class VideoController {
         if(res!=0){
             result.setMsg("视频上传成功");
             result.setCode(ResultBean.SUCCESS);
-            result.setData(null);
+            result.setData(video);
         }
         else{
             result.setMsg("视频上传失败");
             result.setCode(ResultBean.FAIL);
-            result.setData(null);
+            result.setData(video);
         }
 
         return result;
