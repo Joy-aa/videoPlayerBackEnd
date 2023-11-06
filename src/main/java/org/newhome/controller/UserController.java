@@ -493,7 +493,7 @@ public class UserController {
         }
         else {
             String headShotName = user.getHeadshotname();
-            user.setHeadshot(QiNiuUtil.getHeadShotVideoUrl(headShotName));
+            user.setHeadshot(QiNiuUtil.getHeadShotUrl(headShotName));
             result.setData(user);
             result.setMsg("查询成功");
         }
