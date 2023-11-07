@@ -237,6 +237,8 @@ public class VideoController {
             result.setData(null);
             return result;
         }
+        String fileName = video.getIntroduction();
+        video.setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
         result.setMsg("成功");
         result.setData(video);
         return result;
@@ -254,6 +256,10 @@ public class VideoController {
         }
         else{
             List<Video> videoList = videoService.findVideoByUser(user);
+            for(int i = 0; i < videoList.size(); i++) {
+                String fileName = videoList.get(i).getIntroduction();
+                videoList.get(i).setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
+            }
             result.setMsg("查询成功");
             result.setCode(ResultBean.SUCCESS);
             result.setData(videoList);
@@ -268,6 +274,8 @@ public class VideoController {
         List<Video> videoList= videoService.findVideoByName(content);
         List<VideoRes> videoResList = new ArrayList<>();
         for (Video video: videoList) {
+            String fileName = video.getIntroduction();
+            video.setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
             User user = userService.findById(video.getUserId());
             VideoRes videoRes = new VideoRes(video);
             videoRes.setUsername(user.getUsername());
