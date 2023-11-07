@@ -1,5 +1,5 @@
 如需访问英文版本README.md,
-请点击 https://github.com/Joy-aa/videoPlayerBackEnd/README.md
+请点击 https://github.com/Joy-aa/videoPlayerBackEnd/blob/main/README.md
 
 
 <div align="center">
