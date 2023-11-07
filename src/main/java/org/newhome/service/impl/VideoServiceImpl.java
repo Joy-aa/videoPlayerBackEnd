@@ -52,8 +52,10 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video>
     }
 
     @Override
-    public void findVideos(Video video) {
-
+    public List<Video> findVideos() {
+        LambdaQueryWrapper<Video> wrapper = new LambdaQueryWrapper<Video>();
+        List<Video> videoList = videoMapper.selectList(wrapper);
+        return videoList;
     }
 
     @Override
