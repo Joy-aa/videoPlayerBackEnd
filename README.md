@@ -49,6 +49,7 @@ you can click https://github.com/Joy-aa/videoPlayerBackEnd/blob/main/README_CN.m
   <li><a href="https://www.mysql.com/cn/">MySQL</a></li>
   <li><a href="https://maven.apache.org/">Apache Maven</a></li>
   <li><a href="https://doc.xiaominfo.com/docs/quick-start">knife4j</a></li>
+  <li><a href="https://www.qiniu.com/">Qiniu</a></li>
 
 </ul>
 
