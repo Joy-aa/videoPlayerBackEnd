@@ -76,6 +76,7 @@ public class HistoryController {
         }
         History history = historyService.getOne(historyReq.getUserId(), historyReq.getVideoId());
         if(history == null) {
+            history = new History();
             HistoryRes addHistoryRes = new HistoryRes();
             List<History> histories = historyService.getHistories(historyReq.getUserId());
             if(CollectionUtils.isEmpty(histories)) {

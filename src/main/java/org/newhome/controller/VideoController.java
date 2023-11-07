@@ -16,6 +16,7 @@ import com.qiniu.util.Auth;
 import com.qiniu.common.QiniuException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.newhome.annotation.FilterAnnotation;
 import org.newhome.config.FilterType;
@@ -78,6 +79,37 @@ public class VideoController {
 
         return auth.uploadToken(bucket);
     }
+
+    @ApiOperation("获取带水印的视频url")
+    @PostMapping("getWaterVideoUrl")
+    public ResultBean<String> getWaterMarkVideo(Integer videoId) {
+        String bucket = "new-web-shortvideo";
+        ResultBean<String> result = new ResultBean<>();
+
+        Video video = videoService.findVideobyId(videoId);
+        if(video == null) {
+            result.setMsg("视频不存在");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+            return result;
+        }
+
+        int flag = QiNiuUtil.generateWaterMarkVideo(bucket, video.getIntroduction());
+        if(flag == 0) {
+            //成功
+            String waterFilename = video.getIntroduction().substring(0, video.getIntroduction().indexOf('.')) + "_watermark.mp4";
+            String watershotUrl = QiNiuUtil.getDownLoadVideoUrl(waterFilename);
+            result.setMsg("视频添加水印成功！");
+            result.setData(watershotUrl);
+        }
+        else {
+            result.setMsg("视频添加水印失败");
+            result.setCode(ResultBean.FAIL);
+            result.setData(null);
+        }
+        return result;
+    }
+
     @ApiOperation("上传头像的token")
     @PostMapping("getHeadShotToken")
     public String getHeadShotToken() {

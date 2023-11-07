@@ -39,8 +39,6 @@ public class QiNiuUtil {
 
     //生成视频后进行视频截帧
     public static int generateVideoPageShot(String bucket, String key) {
-//        String newBucket = "http://s318q0lql.hn-bkt.clouddn.com";
-        //s318q0lql.hn-bkt.clouddn.com
 
         Auth auth = Auth.create(accessKey, secretKey);
 
@@ -90,6 +88,47 @@ public class QiNiuUtil {
         }
         return operationStatus.code;
     }
+
+    public static int generateWaterMarkVideo(String bucket, String key) {
+        Auth auth = Auth.create(accessKey, secretKey);
+
+        String filename = key.substring(0, key.indexOf('.')) + "_watermark.mp4";
+
+        String saveMp4Entry = String.format("%s:%s", bucket, filename);
+        String avthumbMp4Fop = String.format("avthumb/mp4/wmImage/aHR0cDovL3Rlc3QtMi5xaW5pdWRuLmNvbS9sb2dvLnBuZw==" +
+                "|saveas/%s", UrlSafeBase64.encodeToString(saveMp4Entry));
+        String persistentOpfs = StringUtils.join(new String[]{
+                avthumbMp4Fop
+        }, ";");
+
+        String persistentPipeline = "default.sys";
+        String persistentNotifyUrl = "http://api.example.com/qiniu/pfop/notify";
+        Configuration cfg = new Configuration(Region.huadong());
+        OperationManager operationManager = new OperationManager(auth, cfg);
+        OperationStatus operationStatus = new OperationStatus();
+        try {
+            String persistentId = operationManager.pfop(bucket, key, persistentOpfs, persistentPipeline, persistentNotifyUrl, true);
+            //可以根据该 persistentId 查询任务处理进度
+//            System.out.println(persistentId);
+
+            operationStatus = operationManager.prefop(bucket,persistentId);
+            while (operationStatus.code == 1 || operationStatus.code == 2)
+            {
+                //解析 operationStatus 的结果
+                operationStatus = operationManager.prefop(bucket, persistentId);
+//                System.out.println(operationStatus.code);
+                Thread.sleep(1000);
+            }
+        } catch (QiniuException e) {
+            System.err.println(e.response.toString());
+//            System.err.println(e.response.getInfo());
+//            System.err.println(e.getCause());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return operationStatus.code;
+    }
+
 
     public static void generateGoodVide(String key) {
         String bucket = "gaoqing-video";
@@ -141,10 +180,8 @@ public class QiNiuUtil {
     }
 
     public static void main(String[] args) {
-//        String bucket = "web-shortvideo";
+        String bucket = "gaoqing-video";
         String key  = "BV12B4y1R7Fs.mp4";
-        generateGoodVide(key);
+        generateWaterMarkVideo(bucket, key);
     }
-
-
 }
