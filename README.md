@@ -1,3 +1,7 @@
+For Chinese README.md,
+you can click https://github.com/Joy-aa/videoPlayerBackEnd/README_CN.md
+
+
 <div align="center">
 
   <h1>QNY-BackEnd</h1>
