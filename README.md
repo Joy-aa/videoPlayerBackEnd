@@ -1,3 +1,7 @@
+
+项目DEMO视频地址：
+[点击跳转到项目DEMO视频](https://emailncueducn-my.sharepoint.com/:f:/g/personal/5904118068_email_ncu_edu_cn/EqshfeoLXHhMoaIsOlkJUUIBQEmRyWRRMSKpgvh4CbYMdQ?e=JoLLxf)
+
 如需访问英文版本README.md,
 请点击 https://github.com/Joy-aa/videoPlayerBackEnd/blob/main/README_EN.md
 
