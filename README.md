@@ -67,9 +67,9 @@ you can click https://github.com/Joy-aa/videoPlayerBackEnd/blob/main/README_CN.m
       The search results will display relevant videos and relevant users.
 - Upload video
     * Upload your homemade short video.
-    * Add an introduction and label.
+    * Add a video name, introduction and label.
 - Personal information
-    * View and edit personal profile information.
+    * View and edit personal profile information: edit avatar, user name, and introduction.
     * View your uploaded videos, favorite videos and view history.
 - Video Page
     * Video playback: play, pause, progress bar drag and drop.
