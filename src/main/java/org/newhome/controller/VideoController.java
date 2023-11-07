@@ -290,7 +290,8 @@ public class VideoController {
             List<Video> videoList = videoService.findVideoByUser(user);
             for(int i = 0; i < videoList.size(); i++) {
                 String fileName = videoList.get(i).getIntroduction();
-                videoList.get(i).setVideoPath(QiNiuUtil.getDownLoadVideoUrl(fileName));
+                String pageName = fileName.substring(0, fileName.indexOf('.')) + ".jpg";
+                videoList.get(i).setPageshot(QiNiuUtil.getDownLoadVideoUrl(pageName));
             }
             result.setMsg("查询成功");
             result.setCode(ResultBean.SUCCESS);
