@@ -446,7 +446,7 @@ public class UserController {
         for (User user: userList) {
 
             String headShotName = user.getHeadshotname();
-            user.setHeadshot(QiNiuUtil.getHeadShotVideoUrl(headShotName));
+            user.setHeadshot(QiNiuUtil.getHeadShotUrl(headShotName));
             UserRes ur1 = new UserRes(user);
 
             List<Video> videoList = videoService.findVideoByUser(user);

@@ -180,6 +180,9 @@ public class TagrecordController {
             for (Tagrecord tagrecord1: tagrecordList) {
                 int vid = tagrecord1.getVideoId();
                 Video video = videoService.findVideobyId(vid);
+                if (video == null) {
+                    continue;
+                }
                 videoList.add(video);
                 int uid = video.getUserId();
                 User user = userService.findById(uid);
