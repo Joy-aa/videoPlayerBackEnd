@@ -8,6 +8,7 @@ import org.newhome.req.RelationReq;
 import org.newhome.service.*;
 import org.newhome.util.DataGenerator;
 import org.newhome.util.MD5Util;
+import org.newhome.util.QiNiuUtil;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -157,6 +158,9 @@ public class TagrecordController {
             for (Tagrecord tagrecord1: tagrecordList) {
                 int vid = tagrecord1.getVideoId();
                 Video video = videoService.findVideobyId(vid);
+                String pageFilename = video.getIntroduction().substring(0, video.getIntroduction().indexOf('.')) + ".jpg";
+                String pageshotUrl = QiNiuUtil.getDownLoadVideoUrl(pageFilename);
+                video.setPageshot(pageshotUrl);
                 videoList.add(video);
             }
             result.setMsg("查询成功");
