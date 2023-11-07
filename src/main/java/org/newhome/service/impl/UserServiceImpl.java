@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
 * @author Yuxin Wang
@@ -96,6 +95,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         wrapper.like(!ObjectUtils.isEmpty(content),User::getUsername,content)
                 .or()
                 .like(!ObjectUtils.isEmpty(content),User::getIntroduction,content);
+        List<User> userList = userMapper.selectList(wrapper);
+        return userList;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>();
         List<User> userList = userMapper.selectList(wrapper);
         return userList;
     }

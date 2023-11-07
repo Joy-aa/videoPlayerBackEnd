@@ -19,14 +19,20 @@ import org.newhome.service.VideoService;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
-
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * <p>
@@ -206,5 +212,79 @@ public class CommentController {
         }
         return result;
     }
+
+    @CrossOrigin
+    @ApiOperation("添加评论到数据库")
+    @GetMapping("commentGenerate")
+    public ResultBean<List<String[]>> commentGenerate() {
+        ResultBean<List<String[]> > result = new ResultBean<>();
+
+        String csvFile = "D:\\IDEAProjects\\videoPlayerBackEnd\\src\\main\\java\\org\\newhome\\controller\\comments1.csv";
+        String line;
+        String csvSplitBy = ",";
+        Charset charset = StandardCharsets.UTF_8;
+        List<User> userList = userService.getAllUsers();
+        List<Video> videoList = videoService.findVideos();
+
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), charset))) {
+            List<String[]> data = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                String[] row = line.split(csvSplitBy);
+                data.add(row);
+            }
+            result.setData(data);
+            Random random = new Random();
+
+            // 定义日期格式
+            String pattern = "yyyy/MM/dd HH:mm";
+            SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+
+            // 处理读取到的数据
+            int i=0;
+            for (String[] row : data) {
+                if(i>0) {
+                    Comment comment = new Comment();
+                    String content = row[0];
+                    comment.setContent(content);
+
+                    try {
+                        // 将时间字符串解析为 Date 对象
+                        if (row.length < 2) {
+                            comment.setCreateTime(new Date());
+                        } else {
+                            Date date = dateFormat.parse(row[1]);
+                            // 打印解析后的 Date 对象
+                            System.out.println("解析后的 Date 对象: " + date);
+                            comment.setCreateTime(date);
+                        }
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    int min = 0;
+                    int max = userList.size() - 1;
+                    int randomInRange = random.nextInt(max - min + 1) + min;
+                    comment.setUserId(userList.get(randomInRange).getUserId());
+
+                    max = videoList.size() - 1;
+                    randomInRange = random.nextInt(max - min + 1) + min;
+                    comment.setVideoId(videoList.get(randomInRange).getVideoId());
+
+                    max = 100;
+                    randomInRange = random.nextInt(max - min + 1) + min;
+                    comment.setLikeNum((long) randomInRange);
+                    commentService.addComment(comment);
+                }
+                i++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
 }

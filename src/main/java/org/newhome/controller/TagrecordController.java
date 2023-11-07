@@ -157,7 +157,11 @@ public class TagrecordController {
             List<Tagrecord> tagrecordList = tagrecordService.findVideoByTag(tag);
             for (Tagrecord tagrecord1: tagrecordList) {
                 int vid = tagrecord1.getVideoId();
+                System.out.println(vid);
                 Video video = videoService.findVideobyId(vid);
+                if (video == null) {
+                    continue;
+                }
                 String pageFilename = video.getIntroduction().substring(0, video.getIntroduction().indexOf('.')) + ".jpg";
                 String pageshotUrl = QiNiuUtil.getDownLoadVideoUrl(pageFilename);
                 video.setPageshot(pageshotUrl);
