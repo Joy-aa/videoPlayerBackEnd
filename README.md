@@ -18,11 +18,10 @@
 
 - [About the Project](#star2-about-the-project)
     * [Screenshots](#camera-screenshots)
-    * [Project Structure](#key-project-structure)
     * [Tech Stack](#space_invader-tech-stack)
     * [Features](#dart-features)
-- [Prerequisites](#bangbang-prerequisites)
 - [Getting Started](#toolbox-getting-started)
+- [Postrequisites](#bangbang-postrequisites)
 - [Contributing](#wave-contributing)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
@@ -95,8 +94,8 @@ Run project
   mvn spring-boot:run
 ```
 
-<!-- Prerequisites -->
-### :bangbang: Prerequisites
+<!-- Postrequisites -->
+### :bangbang: Postrequisites
 
 After running this project, you should ensure that you have cloned our frontend project locally.
 Please refer to https://github.com/Joy-aa/videoPlayerFrontEnd/README.md
