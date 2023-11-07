@@ -439,20 +439,45 @@ public class UserController {
     @ApiOperation("根据用户名和简介模糊查询")
     @GetMapping("findUsers")
     @FilterAnnotation(url="/user/findUsers",type = FilterType.login)
-    public ResultBean<List<UserRes>> findUsers(String content) {
+    public ResultBean<List<UserRes>> findUsers(Integer currentUserId, String content) {
         List<User> userList = userService.findUsers(content);
         List<UserRes> userResList = new ArrayList<>();
         ResultBean<List<UserRes>> result = new ResultBean<>();
         for (User user: userList) {
+
+            String headShotName = user.getHeadshotname();
+            user.setHeadshot(QiNiuUtil.getHeadShotUrl(headShotName));
             UserRes ur1 = new UserRes(user);
+
             List<Video> videoList = videoService.findVideoByUser(user);
             int num = 0;
             for (Video video: videoList) {
                 num += video.getLikeNum();
             }
             ur1.setLikeNum(num);
+
             List<Relation> fansList = relationService.findFans(ur1.getUserId(), 0);
             ur1.setFanNum(fansList.size());
+//          是自己
+            if (currentUserId == user.getUserId()) {
+                ur1.setFollow(2);
+            }
+            else {
+                Relation relation = relationService.findRelation(currentUserId, user.getUserId());
+                //            没关注
+                if (relation == null) {
+                    ur1.setFollow(0);
+                }
+                //            关注了
+                if (relation != null && relation.getKind() == 0) {
+                    ur1.setFollow(1);
+                }
+                //            拉黑了
+                if (relation != null && relation.getKind() == 1) {
+                    continue;
+                }
+            }
+
             userResList.add(ur1);
         }
         result.setMsg("查询成功");
