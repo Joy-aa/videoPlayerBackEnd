@@ -85,6 +85,14 @@ you can click https://github.com/Joy-aa/videoPlayerBackEnd/blob/main/README.md
     * View Like, Comments, Share, Star of videos.
     * Like, Comments, Share, Star the video.
     * Like comments of videos.
+ 
+- Module division
+
+    * Wang Yuxin: login and registration function, video home classification function, video play function, search function, follow/remove user function.
+
+    *  Wang Jia: Database design, video frame capture function, video like, comment, collection, forwarding, watermarking, online switching function.
+
+    * Cheng Xinyuan: video crawler function, Qiniu cloud data storage function, upload video function, user personal information display and editing function.
 
 <!-- Getting Started -->
 ## 	:toolbox: Getting Started
