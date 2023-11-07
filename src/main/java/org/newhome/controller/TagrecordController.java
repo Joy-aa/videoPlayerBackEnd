@@ -6,12 +6,17 @@ import io.swagger.annotations.ApiOperation;
 import org.newhome.entity.*;
 import org.newhome.req.RelationReq;
 import org.newhome.service.*;
+import org.newhome.util.DataGenerator;
+import org.newhome.util.MD5Util;
 import org.newhome.util.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static org.newhome.util.MD5Util.formPassToDBPass;
 
 /**
  * <p>
@@ -190,6 +195,25 @@ public class TagrecordController {
             result.setData(userList);
         }
         return result;
+
+    }
+
+    @CrossOrigin
+    @ApiOperation("生成视频与标签的对应")
+    @GetMapping("generate")
+    public void userGenerate() {
+        long seed = System.currentTimeMillis();
+        Random random = new Random(seed);
+        for(int i = 64; i <= 234; i++) {
+            int tagId = random.nextInt(14) + 1;
+            int videoId = i;
+            ResultBean<Tagrecord> resultBean = addTagrecord(videoId, tagId);
+            if(resultBean.getCode() != 0) {
+                System.out.println(resultBean.getMsg());
+                break;
+            }
+        }
+//        int tagId = random.nextInt(14) + 1;
 
     }
 }
